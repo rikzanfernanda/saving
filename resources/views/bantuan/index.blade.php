@@ -14,7 +14,7 @@
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
-            <p>Ajukan pertanyaan yang betul-betul Anda tidak tahu. Baca petunjuk terlebih dahulu sebelum mengajukan pertnyaan</p>
+            <p>Ajukan pertanyaan yang betul-betul Anda tidak tahu. Baca petunjuk terlebih dahulu sebelum mengajukan pertanyaan</p>
         </div>
     </div>
 
