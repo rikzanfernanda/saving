@@ -10,6 +10,13 @@
             <a href="" class="" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
         </div>
     </div>
+    <div class="info-box mb-3 bg-success">
+        <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
+
+        <div class="info-box-content">
+            <p>Ajukan pertanyaan yang betul-betul Anda tidak tahu. Baca petunjuk terlebih dahulu sebelum mengajukan pertnyaan</p>
+        </div>
+    </div>
 
     @foreach ($bantuans as $bt)
     <div class="row">

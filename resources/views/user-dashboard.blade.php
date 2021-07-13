@@ -2,23 +2,42 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row">
-        @foreach($banks as $opt)
-        <div class="col-lg-3 col-4">
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>{{ $opt->nama }}</h3>
-
-                    <p>{{ moneyFormat($opt->saldo) }}</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-save"></i>
-                </div>
-                <a href="{{ route('bank.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <div class="card bg-success" id="dashboard-thanks">
+        <div class="text-right text-white">
+            <div class="card-tools">
+                <button type="button" class="btn py-0" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         </div>
-        @endforeach
+        <div class="card-body py-0">
+            <div class="info-box-content">
+                <p>Keuangan Anda akan lebih rapih dan terkelola dengan baik dengan aplikasi saving</p>
+                <p>Terima kasih telah menggunkan layanan kami.</p>
+            </div>
+        </div>
     </div>
+    
+    <div id="dashboard-bank">
+        <div class="row">
+            @foreach($banks as $opt)
+            <div class="col-lg-3 col-4">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ $opt->nama }}</h3>
+
+                        <p>{{ moneyFormat($opt->saldo) }}</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-save"></i>
+                    </div>
+                    <a href="{{ route('bank.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
     <div class="row mb-3">
         <div class="col-sm-6">
             <h5 class="m-0">Pemasukan dan Pengeluaran Anda Selama Tahun {{ date('Y') }}</h5>
@@ -37,11 +56,11 @@
         <div class="card-footer">
             <form method="GET" action="{{ route('history.laporan') }}" class="">
                 <div class="d-flex flex-row-reverse bd-highlight">
-                    <div class="p-2 bd-highlight">
+                    <div class="px-md-2 bd-highlight">
                         <!--<a href="{{route('history.laporan', ['1', '2021'])}}" id="lapor" class="btn btn-info">Buat Laporan</a>-->
-                        <button type="submit" class="btn btn-info text-decoration-none">Buat Laporan</button>
+                        <button type="submit" class="btn btn-info text-decoration-none">Buat</button>
                     </div>
-                    <div class="p-2 bd-highlight">
+                    <div class="px-2 px-md-2 bd-highlight">
                         <div class="form-group">
                             <select class="form-control" name="tahun">
                                 @foreach($tahun as $opt)
@@ -50,7 +69,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="p-2 bd-highlight">
+                    <div class="px-md-2 bd-highlight">
                         <div class="form-group">
                             <select class="form-control" name="bulan">
                                 @foreach($bulan as $key => $opt)
@@ -68,7 +87,7 @@
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
-                <div class="col-3 border-right">
+                <div class="col-6 col-md-3 border-right">
                     <div class="description-block">
                         <span class="description-percentage text-success"><i class="fas fa-download"></i></span>
                         <h6 class="description-header mb-2">{{ moneyFormat($total_masuk)}}</h6>
@@ -76,7 +95,7 @@
                     </div>
                 </div>
 
-                <div class="col-3 border-right">
+                <div class="col-6 col-md-3 border-right" id="dashboard-total">
                     <div class="description-block">
                         <span class="description-percentage text-danger"><i class="fas fa-upload"></i></span>
                         <h6 class="description-header mb-2">{{ moneyFormat($total_keluar)}}</h6>
@@ -84,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="col-3 border-right">
+                <div class="col-6 col-md-3 border-right">
                     <div class="description-block">
                         <span class="description-percentage text-success"><i class="fas fa-download"></i></span>
                         <h6 class="description-header mb-2">{{ moneyFormat($bln_masuk)}}</h6>
@@ -92,7 +111,7 @@
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-6 col-md-3">
                     <div class="description-block">
                         <span class="description-percentage text-danger"><i class="fas fa-upload"></i></span>
                         <h6 class="description-header mb-2">{{ moneyFormat($bln_keluar)}}</h6>
@@ -104,18 +123,18 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6 h-100">
                     <div class="info-box mb-3 bg-warning h-100">
-                        <span class="info-box-icon d-md-flex d-none"><i class="fas fa-money-check-alt"></i></span>
+                        <span class="info-box-icon d-md-flex"><i class="fas fa-money-check-alt"></i></span>
 
                         <div class="info-box-content">
                             <p>Anda menyimpan <b>{{ moneyFormat($total_save) }}</b> dari total semua pemasukan dan pengeluaran</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-md-6 h-100">
                     <div class="info-box mb-3 bg-success h-100">
-                        <span class="info-box-icon d-md-flex d-none"><i class="fas fa-money-check"></i></span>
+                        <span class="info-box-icon d-md-flex"><i class="fas fa-money-check"></i></span>
 
                         <div class="info-box-content">
                             <p>Anda menyimpan <b>{{ moneyFormat($bln_save) }}</b> dari total pemasukan dan pengeluaran bulan ini</p>
@@ -185,7 +204,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-6">
             <h5 class="mb-3">History Terkini</h5>
@@ -216,7 +235,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            
+
         </div>
     </div>
 

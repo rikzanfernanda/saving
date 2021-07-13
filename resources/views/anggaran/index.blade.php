@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-3">
+    <div class="row mb-2">
         <div class="col-sm-6">
             <h5 class="m-0">Anggaran Anda</h5>
         </div>
@@ -10,6 +10,15 @@
             <a href="" class="" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Tambah Anggaran</a>
         </div>
     </div>
+    
+    <div class="info-box mb-3 bg-info">
+        <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
+
+        <div class="info-box-content">
+            <p>Buat beberapa anggaran yang sesuai agar pengeluaran Anda lebih terkontrol</p>
+        </div>
+    </div>
+    
     @if ($jumlah == 0)
     <div class="info-box mb-3 bg-danger">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>

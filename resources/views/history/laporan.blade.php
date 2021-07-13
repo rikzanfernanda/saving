@@ -2,6 +2,14 @@
 @section('content')
 
 <div class="container-fluid">
+    <div class="info-box mb-3 bg-success">
+        <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
+
+        <div class="info-box-content">
+            <p>Anda dapat menyimpan laporan ini dalam bentuk pdf dengan mengeklik tombol download</p>
+        </div>
+    </div>
+    
     <form method="GET" action="{{ route('history.laporan') }}">
         <div class="d-flex flex-row-reverse bd-highlight">
             <div class="bd-highlight">

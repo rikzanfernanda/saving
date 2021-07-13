@@ -18,6 +18,21 @@
             <p>Anda belum memiliki bank apapun, buat terlebih dahulu dengan klik "Tambah Bank"</p>
         </div>
     </div>
+    @else
+    <div class="info-box mb-3 bg-success">
+        <span class="info-box-icon d-md-flex"><i class="fas fa-money-bill-wave"></i></span>
+
+        <div class="info-box-content">
+            <p>Anda memiliki {{$jumlah}} bank dan total saldo Anda <b>{{ moneyFormat($total) }}</b></p>
+        </div>
+    </div>
+    <div class="info-box mb-3 bg-info">
+        <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
+
+        <div class="info-box-content">
+            <p>Kendalikan pengeluraan Anda. Berhemat adalah cara terbaik untuk meraih tujuan keuangan</p>
+        </div>
+    </div>
     @endif
 
     <div class="card mb-4">
