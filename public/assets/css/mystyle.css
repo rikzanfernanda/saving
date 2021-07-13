@@ -1,0 +1,78 @@
+@media (max-width: 768px) {
+    body{
+        font-size: 0.8rem !important;
+    }
+    
+    #myChart{
+        min-height: 20rem !important;
+    }
+
+    .card {
+        border-radius: 0.8rem !important;
+/*        margin-left: -0.8rem !important;
+        margin-right: -0.8rem !important;*/
+    }
+    
+/*    .card-header{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .card-footer{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }*/
+    
+    .card-body{
+        padding: 0.8rem !important;
+    }
+
+    h5{
+        font-size: 1rem !important;
+    }
+    
+    h3{
+        font-size: 1.25rem !important;
+    }
+
+    .form-control{
+        font-size: 0.8rem !important;
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+        height: 2rem!important;
+    }
+
+    .btn{
+        font-size: 0.8rem !important;
+    }
+    .description-block .description-text{
+        font-size: 0.7rem !important;
+    }
+    
+    .bantuan .card-header{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .bantuan .card-body{
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+    .feedback .card-header{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    .feedback .card-body{
+        padding-top: 0rem !important;
+        padding-bottom: 0rem !important;
+    }
+    
+    .info-box{
+        border-radius: 0.8rem !important;
+    }
+
+    textarea.form-control{
+        min-height: 5rem;
+    }
+}
