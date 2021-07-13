@@ -124,7 +124,7 @@ class HistoryController extends Controller {
         $data['histories'] = DB::table('histories')->where('id_user', auth()->user()->id)->get();
 //        return view('history.laporan-pdf', $data);
         $pdf = PDF::loadview('history.laporan-pdf', $data);
-        return $pdf->download('laporan-bulanan-pdf');
+        return $pdf->download('laporan-bulanan.pdf');
     }
 
     // chart
