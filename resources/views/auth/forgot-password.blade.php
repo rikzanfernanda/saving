@@ -13,6 +13,11 @@
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-6">
+                    <p>
+                        Pastikan email Anda sesuai dengan email yang Anda gunakan saat registrasi.
+                        Jika berhasil, Anda akan mendapatkan link reset password melalui email Anda di kotak masuk.
+                        Jika tidak ada dikotak masuk, <b>cek di "Spam" email Anda</b>
+                    </p>
                     <div class="card shadow-sm rounded-lg">
                         <div class="card-body">
                             <form action="{{ route('reset.email')}}" method="POST">
@@ -23,6 +28,7 @@
                                     <small id="emailHelp" class="form-text text-muted"></small>
                                 </div>
                                 <div class="text-right">
+                                    <a href="{{ route('home') }}" class="btn btn-link text-decoration-none">Cancel</a>
                                     <button type="submit" class="btn btn-link text-decoration-none">Submit</button>
                                 </div>
                             </form>
