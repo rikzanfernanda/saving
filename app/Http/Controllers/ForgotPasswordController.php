@@ -33,8 +33,7 @@ class ForgotPasswordController extends Controller {
         ];
 
         $kirim = Mail::to($request->email)->send(new SendMail($data));
-        var_dump($kirim);
-        die();
+        
         return redirect()->route('home')->with('message', 'We have e-mailed your password reset link!');
     }
 
