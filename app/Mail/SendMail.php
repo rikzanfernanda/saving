@@ -29,9 +29,7 @@ class SendMail extends Mailable {
      * @return $this
      */
     public function build() {
-        return $this->from('fernandarikzan@gmail.com')
-                        ->subject("Reset Password")
-                        ->view('auth.verify', $this->data);
+        return $this->subject("Reset Password")->view('auth.verify', $this->data);
     }
 
 }
