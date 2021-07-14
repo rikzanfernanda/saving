@@ -12,11 +12,9 @@ $(document).ready(function () {
             "scrollCollapse": true,
             "columns": [
                 {"data": "kegiatan"},
-                {"data": "kategori"},
-                {"data": "jumlah"},
                 {"data": "created_at"},
             ],
-            "order": [[3, "desc"]]
+            "order": [[1, "desc"]]
         });
     });
 });

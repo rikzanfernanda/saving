@@ -111,7 +111,7 @@
 
         </nav>
 
-        <div class="content-wrapper mt-3">
+        <div class="content-wrapper mt-2 mt-md-3">
             <section class="content">
 
                 @yield('content')

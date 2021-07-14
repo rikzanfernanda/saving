@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     @if ($bantuans > 0)
-    <div class="info-box mb-4 bg-warning">
+    <div class="info-box mb-2 bg-warning">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
         <div class="info-box-content">

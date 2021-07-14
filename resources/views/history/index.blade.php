@@ -14,8 +14,6 @@
                 <thead>
                     <tr>
                         <th>Kegiatan</th>
-                        <th>Kategori</th>
-                        <th>Jumlah</th>
                         <th>Tanggal</th>
                     </tr>
                 </thead>

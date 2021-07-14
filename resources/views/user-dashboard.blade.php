@@ -17,9 +17,9 @@
             </div>
         </div>
     </div>
-    
+
     <div id="dashboard-bank">
-        <div class="row">
+        <div class="row mb-4">
             @foreach($banks as $opt)
             <div class="col-lg-3 col-4">
                 <div class="small-box bg-info">
@@ -38,18 +38,17 @@
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-sm-6">
+    <div class="mb-3">
             <h5 class="m-0">Pemasukan dan Pengeluaran Anda Selama Tahun {{ date('Y') }}</h5>
-        </div>
-        <div class="col-sm-6 text-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
-            <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
-        </div>
     </div>
 
     <div class="card">
-
+        <div class="card-header">
+            <div class="text-md-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
+                <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+            </div>
+        </div>
         <div class="card-body">
             <canvas id="myChart" style="min-height:30rem"></canvas>
         </div>
@@ -124,7 +123,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 h-100">
-                    <div class="info-box mb-3 bg-warning h-100">
+                    <div class="info-box mb-2 bg-warning h-100">
                         <span class="info-box-icon d-md-flex"><i class="fas fa-money-check-alt"></i></span>
 
                         <div class="info-box-content">
@@ -133,7 +132,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 h-100">
-                    <div class="info-box mb-3 bg-success h-100">
+                    <div class="info-box mb-2 bg-success h-100">
                         <span class="info-box-icon d-md-flex"><i class="fas fa-money-check"></i></span>
 
                         <div class="info-box-content">

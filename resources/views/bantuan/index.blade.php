@@ -10,7 +10,7 @@
             <a href="" class="" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
         </div>
     </div>
-    <div class="info-box mb-3 bg-success">
+    <div class="info-box mb-2 bg-success">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">

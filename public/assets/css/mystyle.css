@@ -4,6 +4,7 @@
     }
     .info-box{
         min-height: 4rem !important;
+        box-shadow: none !important;
     }
     
     .info-box p{
@@ -14,6 +15,11 @@
     .small-box{
         border-radius: 0.8rem !important;
         margin-bottom: 0.5rem !important;
+        box-shadow: none !important;
+    }
+    .small-box-footer{
+        border-bottom-left-radius: 0.8rem !important;
+        border-bottom-right-radius: 0.8rem !important;
     }
     .card p{
         line-height: 1rem;
@@ -30,6 +36,7 @@
     }
     #dashboard-thanks{
         border-radius: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
     }
     #dashboard-bank{
         padding-left: 0.25rem;
@@ -51,26 +58,20 @@
 
     .card {
         border-radius: 0.8rem !important;
-        /*        margin-left: -0.8rem !important;
-                margin-right: -0.8rem !important;*/
+        box-shadow: none !important;
     }
-
-    /*    .card-header{
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
-        
-        .card-footer{
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }*/
 
     .card-body{
         padding: 0.8rem !important;
     }
+    
+    .card-footer{
+        border-bottom-left-radius: 0.8rem !important;
+        border-bottom-right-radius: 0.8rem !important;
+    }
 
     h5{
-        font-size: 1rem !important;
+        font-size: 0.9rem !important;
     }
 
     h3{
@@ -100,6 +101,15 @@
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
     }
+    #bantuan-admin{
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+    #bantuan-admin .col-6{
+        padding-right: 0.2rem !important;
+        padding-left: 0.2rem !important;
+    }
+    
     .feedback .card-header{
         padding-left: 1rem !important;
         padding-right: 1rem !important;

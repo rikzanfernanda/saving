@@ -11,7 +11,7 @@
         </div>
     </div>
     @if ($jumlah == 0)
-    <div class="info-box mb-3 bg-danger">
+    <div class="info-box mb-2 bg-danger">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
         <div class="info-box-content">
@@ -19,14 +19,14 @@
         </div>
     </div>
     @else
-    <div class="info-box mb-3 bg-success">
+    <div class="info-box mb-2 bg-success">
         <span class="info-box-icon d-md-flex"><i class="fas fa-money-bill-wave"></i></span>
 
         <div class="info-box-content">
             <p>Anda memiliki {{$jumlah}} bank dan total saldo Anda <b>{{ moneyFormat($total) }}</b></p>
         </div>
     </div>
-    <div class="info-box mb-3 bg-info">
+    <div class="info-box mb-2 bg-info">
         <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
