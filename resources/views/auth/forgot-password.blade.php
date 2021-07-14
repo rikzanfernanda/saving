@@ -18,7 +18,7 @@
                         Jika berhasil, Anda akan mendapatkan link reset password melalui email Anda di kotak masuk.
                         Jika tidak ada dikotak masuk, <b>cek di "Spam" email Anda</b>
                     </p>
-                    <div class="card shadow-sm rounded-lg">
+                    <div class="card shadow-sm rounded-lg mb-2">
                         <div class="card-body">
                             <form action="{{ route('reset.email')}}" method="POST">
                                 @csrf
@@ -34,6 +34,9 @@
                             </form>
                         </div>
                     </div>
+                    <p>
+                        Jika ada kendala Anda dapat menghubungi admin melalui email: admin@saving.savingid.my.id
+                    </p>
                 </div>
             </div>
         </div>
