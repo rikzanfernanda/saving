@@ -1,7 +1,6 @@
 <html>
     <head>
         <title>saving</title>
-        <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>
     </head>
     <body>
         <div class="container">
@@ -17,8 +16,5 @@
                 </div>
             </div>
         </div>
-
-        <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
-        <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     </body>
 </html>

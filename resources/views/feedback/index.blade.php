@@ -54,7 +54,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Feedback Anda</label>
-                        <input type="text" class="form-control" name="komentar" required="required">
+                        <textarea name="komentar" class="form-control" rows="5" required="required"></textarea>
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
@@ -81,7 +81,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Feedback Anda</label>
-                        <input type="text" class="form-control" name="komentar" required="required">
+                        <textarea name="komentar" class="form-control" rows="5" required="required"></textarea>
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">

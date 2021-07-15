@@ -1,11 +1,20 @@
-/**
- * Template Name: Day - v2.2.1
- * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
- */
 !(function ($) {
     "use strict";
+
+    $(document).ready(function () {
+        $("#show_hide_password a").on('click', function (event) {
+            event.preventDefault();
+            if ($('#show_hide_password input').attr("type") == "text") {
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password i').addClass("fa-eye-slash");
+                $('#show_hide_password i').removeClass("fa-eye");
+            } else if ($('#show_hide_password input').attr("type") == "password") {
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password i').removeClass("fa-eye-slash");
+                $('#show_hide_password i').addClass("fa-eye");
+            }
+        });
+    });
 
     // Preloader
     $(window).on('load', function () {
@@ -90,7 +99,7 @@
                 $('.mobile-nav-overly').fadeOut();
             }
         })
-        
+
         $('a[data-target = "#modalLogin"]').click(function () {
             if ($('body').hasClass('mobile-nav-active')) {
                 $('body').removeClass('mobile-nav-active');

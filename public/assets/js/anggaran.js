@@ -23,6 +23,10 @@ $(document).ready(function () {
                 {"data": "no"},
                 {"data": "nama"},
                 {"data": "tindakan"},
+            ],
+            "columnDefs": [
+                {"width": "5%", "targets": 0},
+                {"width": "10%", "targets": 2}
             ]
         });
 

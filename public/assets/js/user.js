@@ -22,6 +22,9 @@ $(document).ready(function () {
                 {"data": "email"},
                 {"data": "created_at"},
                 {"data": "tindakan"},
+            ],
+            "columnDefs": [
+                {"width": "10%", "targets": 3}
             ]
         });
 

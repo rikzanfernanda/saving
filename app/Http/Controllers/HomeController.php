@@ -17,17 +17,21 @@ class HomeController extends Controller {
     }
 
     public function login(Request $request) {
+        $request->validate([
+            'email' => 'required|exists:users,email',
+        ]);
         $data = [
             'email' => $request->email,
             'password' => $request->password
         ];
+        $remember_me = $request->has('remember') ? true : false;
 
-        Auth::attempt($data);
+        Auth::attempt($data, $remember_me);
 
         if (Auth::check()) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('home');
+            return redirect()->route('home')->with('message', 'Password salah');
         }
     }
 
@@ -46,7 +50,7 @@ class HomeController extends Controller {
                     '/admin-dashboard.js',
                     '/datatables.min.js'
                 ];
-                
+
                 $data['users'] = DB::table('users')->where('id_role', 3)->whereMonth('created_at', date("m"))->orderBy('created_at', 'desc')->limit(5)->get();
                 $data['feedbacks'] = DB::table('feedback')
                         ->join('users', 'feedback.id_user', '=', 'users.id', 'left outer')
@@ -129,7 +133,7 @@ class HomeController extends Controller {
                 break;
         }
     }
-    
+
     public function petunjuk() {
         return view('petunjuk');
     }

@@ -41,18 +41,11 @@
             <table id="dt_bank" class="table table-bordered table-hover" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>Nama Bank</th>
                         <th>Saldo</th>
                         <th>Tindakan</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th colspan="2">Total Saldo Anda</th>
-                        <th colspan="2">{{ moneyFormat($total) }}</th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
 
@@ -67,12 +60,12 @@
                         @csrf
                         <input type="hidden" name="route" value="bank">
                         <div class="form-group">
-                            <label for="jumlah">Jumlah Uang</label>
-                            <input type="number" class="form-control" id="jumlah" name="jumlah" required="required">
+                            <label>Jumlah Uang</label>
+                            <input type="number" class="form-control" name="jumlah" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="bank">Bank</label>
-                            <select id="bank" name="bank" class="form-control">
+                            <label>Bank</label>
+                            <select name="bank" class="form-control">
                                 @foreach($banks as $opt)
                                 <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
                                 @endforeach
@@ -94,20 +87,20 @@
                         @csrf
                         <input type="hidden" name="route" value="bank">
                         <div class="form-group">
-                            <label for="jumlah">Jumlah Uang</label>
-                            <input type="number" class="form-control" id="jumlah" name="jumlah" required="required">
+                            <label>Jumlah Uang</label>
+                            <input type="number" class="form-control" name="jumlah" required="required">
                         </div>
                         <div class="form-group">
-                            <label for="bank">Bank</label>
-                            <select id="bank" name="bank" class="form-control">
+                            <label>Bank</label>
+                            <select name="bank" class="form-control">
                                 @foreach($banks as $opt)
                                 <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="anggaran">Anggaran</label>
-                            <select id="anggaran" name="anggaran" class="form-control">
+                            <label>Anggaran</label>
+                            <select name="anggaran" class="form-control">
                                 <option class="form-control"></option>
                                 @foreach($anggarans as $opt)
                                 <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>

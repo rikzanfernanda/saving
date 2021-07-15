@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller {
 
         $kirim = Mail::to($request->email)->send(new SendMail($data));
         
-        return redirect()->route('home')->with('message', 'We have e-mailed your password reset link!');
+        return redirect()->route('home')->with('message', 'Kami telah mengirim link reset password melalui email Anda. Cek dikotak masuk atau dispam email');
     }
 
     public function getPassword($token) {

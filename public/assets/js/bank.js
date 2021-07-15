@@ -20,10 +20,12 @@ $(document).ready(function () {
             "scrollX": true,
             "scrollCollapse": true,
             "columns": [
-                {"data": "no"},
                 {"data": "nama"},
                 {"data": "saldo"},
                 {"data": "tindakan"},
+            ],
+            "columnDefs": [
+                {"width": "10%", "targets": 2}
             ]
         });
 

@@ -46,7 +46,7 @@ $(document).ready(function () {
                 let form = $('#formEditFeedback');
                 let url = form.attr('action') + '/' + id;
 
-                form.find($('input[name="komentar"]')).val(bt.komentar);
+                form.find($('textarea[name="komentar"]')).val(bt.komentar);
 
                 //edit anggaran
                 form.submit(function (e) {

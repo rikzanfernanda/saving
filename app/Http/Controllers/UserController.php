@@ -13,6 +13,8 @@ use App\Models\History;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Wellcome;
 
 class UserController extends Controller {
 
@@ -68,9 +70,10 @@ class UserController extends Controller {
         ];
         $store = User::create($data);
         if ($store) {
-            return redirect()->route('home')->with('success', 'Registrasi berhasil! silakan login');
+            auth()->user() == null ? Mail::to($request->email)->send(new Wellcome($data)): null;
+            return redirect()->route('home')->with('message', 'Registrasi berhasil! silakan login');
         } else {
-            return redirect()->route('home')->with('error', 'Registrasi gagal!');
+            return redirect()->route('home')->with('message', 'Registrasi gagal!');
         }
     }
 

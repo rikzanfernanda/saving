@@ -20,6 +20,9 @@ $(document).ready(function () {
                 {"data": "nama"},
                 {"data": "komentar"},
                 {"data": "tindakan"},
+            ],
+            "columnDefs": [
+                {"width": "10%", "targets": 2}
             ]
         });
 
