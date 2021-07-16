@@ -6,8 +6,12 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
         <title>saving</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
+        <meta name="title" content="saving">
+        <meta name="description" content="saving adalah aplikasi untuk manajemen keuangan pribadi. Pemasukan dan pengeluaran keuangan dapat dicatat dan dievaluasi dengan mudah.">
+        <meta name="keywords" content="saving, savingid, manajemen, manajemen uang, uang, pemasukan, pengeluaran, grafik, anggaran, laporan, mengontrol uang, kelola uang, hemat, gaji, bulanan, aplikasi pengelola uang, aplikasi pengelola uang pribadi">
+        <meta name="robots" content="noindex, nofollow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="author" content="Rikzan Fernanda">
 
         <!-- Favicons -->
         <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
