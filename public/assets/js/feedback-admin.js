@@ -53,7 +53,7 @@ $(document).ready(function () {
                     let url = form.attr('action') + '/' + id;
 
                     form.find($('input[name="nama"]')).val(bk.nama);
-                    form.find($('input[name="komentar"]')).val(bk.komentar);
+                    form.find($('textarea[name="komentar"]')).val(bk.komentar);
 
                     //edit anggaran
                     form.submit(function (e) {

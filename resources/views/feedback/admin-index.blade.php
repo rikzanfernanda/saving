@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label>Komentar</label>
-                        <input type="text" class="form-control" name="komentar" required="required">
+                        <textarea class="form-control" name="komentar" rows="5" required="required"></textarea>
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group">
                         <label>Komentar</label>
-                        <input type="text" class="form-control" name="komentar" required="required">
+                        <textarea class="form-control" name="komentar" rows="5" required="required"></textarea>
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Feedback;
+use Illuminate\Support\Str;
 
 class FeedbackController extends Controller {
 
@@ -41,6 +42,9 @@ class FeedbackController extends Controller {
                 ->selectRaw('feedback.*, if(isnull(feedback.id_user), feedback.nama, users.nama ) nama')
 //                ->select('feedback.*', 'users.nama as nama_user')
                 ->get();
+        foreach ($data as $value) {
+            $value->komentar = Str::limit($value->komentar, 100, '...');
+        }
 
         echo $data;
     }

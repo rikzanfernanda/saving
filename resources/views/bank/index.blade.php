@@ -103,7 +103,7 @@
                             <select name="anggaran" class="form-control">
                                 <option class="form-control"></option>
                                 @foreach($anggarans as $opt)
-                                <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
+                                <option value="{{$opt->id}}" class="form-control">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
                                 @endforeach
                             </select>
                         </div>

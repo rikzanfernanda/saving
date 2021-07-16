@@ -69,7 +69,7 @@
                             @foreach($feedbacks as $opt)
                             <tr>
                                 <td>{{$opt->nama}}</td>
-                                <td>{{$opt->komentar}}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->komentar, 50, $end='...')}}</td>
                                 <td>{{$opt->created_at}}</td>
                             </tr>
                             @endforeach

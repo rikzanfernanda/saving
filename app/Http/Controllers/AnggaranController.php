@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Anggaran;
+use Illuminate\Support\Str;
 
 class AnggaranController extends Controller {
 
@@ -68,6 +69,7 @@ class AnggaranController extends Controller {
                 ->groupBy('anggarans.id')
                 ->get();
         foreach ($data as $value) {
+            $value->nama = Str::limit($value->nama, 50, $end='...');
             $value->jumlah = moneyFormat($value->jumlah);
         }
         echo $data;

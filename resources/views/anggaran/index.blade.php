@@ -111,7 +111,7 @@
                         <tbody>
                             @foreach($bln_anggaran as $opt)
                             <tr>
-                                <td>{{ $opt->nama }}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
                                 <td>{{ moneyFormat($opt->jumlah) }}</td>
                             </tr>
                             @endforeach

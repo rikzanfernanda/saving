@@ -24,12 +24,12 @@
             <div class="col-lg-3 col-4">
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{ $opt->nama }}</h3>
+                        <h3 class="text-truncate w-75 m-auto m-md-0">{{ $opt->nama }}</h3>
 
                         <p>{{ moneyFormat($opt->saldo) }}</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-save"></i>
+                        <i class="fa fa-donate"></i>
                     </div>
                     <a href="{{ route('bank.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -160,7 +160,7 @@
                         <tbody>
                             @foreach($uang_anggaran as $opt)
                             <tr>
-                                <td>{{$opt->nama}}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
                                 <td>{{moneyFormat($opt->jumlah)}}</td>
                             </tr>
                             @endforeach
@@ -188,7 +188,7 @@
                         <tbody>
                             @foreach($bln_uang_anggaran as $opt)
                             <tr>
-                                <td>{{$opt->nama}}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
                                 <td>{{moneyFormat($opt->jumlah)}}</td>
                             </tr>
                             @endforeach
@@ -305,7 +305,7 @@
                         <select id="anggaran" name="anggaran" class="form-control">
                             <option class="form-control"></option>
                             @foreach($anggarans as $opt)
-                            <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
+                            <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
                             @endforeach
                         </select>
                     </div>
