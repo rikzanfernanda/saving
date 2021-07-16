@@ -2,14 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-3">
-        <div class="col-sm-6">
-            <h5 class="m-0">Bank dan Saldo Anda</h5>
-        </div>
-        <div class="col-sm-6 text-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Tambah Bank</a>
-        </div>
-    </div>
+    <h5 class="mb-3">Bank dan Saldo Anda</h5>
     @if ($jumlah == 0)
     <div class="info-box mb-2 bg-danger">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
@@ -35,8 +28,24 @@
     </div>
     @endif
 
-    <div class="card mb-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="text-md-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
+                <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <canvas id="myChart" style="min-height:30rem"></canvas>
+        </div>
+    </div>
 
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="text-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Tambah Bank</a>
+            </div>
+        </div>
         <div class="card-body">
             <table id="dt_bank" class="table table-bordered table-hover" style="width:100%">
                 <thead>
@@ -51,71 +60,85 @@
 
     </div>
 
-    <div class="row mb-3">
-        <div class="col-sm-6">
-            <h5 class="mb-3">Buat Pemasukan</h5>
-            <div class="card">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('bank.masuk') }}" id="formCreatePemasukan">
-                        @csrf
-                        <input type="hidden" name="route" value="bank">
-                        <div class="form-group">
-                            <label>Jumlah Uang</label>
-                            <input type="number" class="form-control" name="jumlah" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Bank</label>
-                            <select name="bank" class="form-control">
-                                @foreach($banks as $opt)
-                                <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <h5 class="mb-3">Buat Pengeluaran</h5>
-            <div class="card">
+</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('bank.keluar') }}" id="formCreatePengeluaran">
-                        @csrf
-                        <input type="hidden" name="route" value="bank">
-                        <div class="form-group">
-                            <label>Jumlah Uang</label>
-                            <input type="number" class="form-control" name="jumlah" required="required">
-                        </div>
-                        <div class="form-group">
-                            <label>Bank</label>
-                            <select name="bank" class="form-control">
-                                @foreach($banks as $opt)
-                                <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Anggaran</label>
-                            <select name="anggaran" class="form-control">
-                                <option class="form-control"></option>
-                                @foreach($anggarans as $opt)
-                                <option value="{{$opt->id}}" class="form-control">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
-                        </div>
-                    </form>
-                </div>
+<!-- create pemasukan -->
+<div class="modal fade" id="modalCreatePemasukan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Buat Pemasukan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('bank.masuk') }}" id="formCreatePemasukan">
+                    @csrf
+                    <input type="hidden" name="route" value="bank">
+                    <div class="form-group">
+                        <label>Jumlah Uang</label>
+                        <input type="number" class="form-control" name="jumlah" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Bank</label>
+                        <select name="bank" class="form-control">
+                            @foreach($banks as $opt)
+                            <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
+<!-- create pengeluaran -->
+<div class="modal fade" id="modalCreatePengeluaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Buat Pengeluaran</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('bank.keluar') }}" id="formCreatePengeluaran">
+                    @csrf
+                    <input type="hidden" name="route" value="bank">
+                    <div class="form-group">
+                        <label>Jumlah Uang</label>
+                        <input type="number" class="form-control" name="jumlah" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Bank</label>
+                        <select name="bank" class="form-control">
+                            @foreach($banks as $opt)
+                            <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Anggaran</label>
+                        <select name="anggaran" class="form-control">
+                            <option class="form-control"></option>
+                            @foreach($anggarans as $opt)
+                            <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal create -->
@@ -179,5 +202,5 @@
         </div>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @endsection

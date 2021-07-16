@@ -37,6 +37,16 @@ class BankController extends Controller {
         }
         echo $data;
     }
+    
+    public function chart() {
+        $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
+        $chart = [];
+        foreach ($data as $value) {
+            $chart[$value->nama] = $value->saldo;
+        }
+        
+        echo json_encode($chart);
+    }
 
     /**
      * Show the form for creating a new resource.

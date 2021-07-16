@@ -1,6 +1,37 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
 
+    $.ajax({
+        url: base_url + '/bank/chart',
+        type: "GET"
+    }).done(function (respon) {
+        let data = JSON.parse(respon);
+        
+        const data_chart = {
+            datasets: [{
+                    type: 'bar',
+                    label: 'Bank',
+                    backgroundColor: 'rgb(0, 214, 111)',
+                    borderColor: 'rgb(0, 214, 111)',
+                    data: data
+                }
+            ]
+        };
+        const config = {
+            data: data_chart,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        var myChart = new Chart(document.getElementById('myChart'), config);
+    });
 
     $.ajax({
         url: base_url + '/bank/dt',

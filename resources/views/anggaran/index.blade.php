@@ -2,23 +2,19 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-            <h5 class="m-0">Anggaran Anda</h5>
-        </div>
-        <div class="col-sm-6 text-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Tambah Anggaran</a>
-        </div>
-    </div>
-    
+    <h5 class="mb-3">Anggaran Anda</h5>
     <div class="info-box mb-2 bg-info">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
-            <p>Buat beberapa anggaran yang sesuai agar pengeluaran Anda lebih terkontrol</p>
+            <p>
+                Buat beberapa anggaran yang sesuai agar pengeluaran Anda lebih terkontrol
+                <br>
+                <b>Anda memiliki {{$jumlah}} anggaran</b>
+            </p>
         </div>
     </div>
-    
+
     @if ($jumlah == 0)
     <div class="info-box mb-2 bg-danger">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
@@ -30,7 +26,11 @@
     @endif
 
     <div class="card mb-4">
-
+        <div class="card-header">
+            <div class="text-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Tambah Anggaran</a>
+            </div>
+        </div>
         <div class="card-body">
             <table id="dt_anggaran" class="table table-bordered table-hover" style="width:100%">
                 <thead>

@@ -51,6 +51,7 @@ Route::name('bank.')->middleware(['auth', 'user'])->group(function () {
     Route::post('/bank/update/{id?}', [BankController::class, 'update'])->name('update');
     Route::post('/bank/masuk', [BankController::class, 'masuk'])->name('masuk');
     Route::post('/bank/keluar', [BankController::class, 'keluar'])->name('keluar');
+    Route::get('/bank/chart', [BankController::class, 'chart'])->name('dt');
 });
 
 Route::name('anggaran.')->middleware(['auth', 'user'])->group(function () {
