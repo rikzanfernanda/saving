@@ -6,7 +6,7 @@
         <div class="col-sm-6">
             <h5 class="m-0">Bantuan dan Tanggapan</h5>
         </div>
-        <div class="col-sm-6 text-right">
+        <div class="col-sm-6 text-md-right">
             <a href="" class="" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
         </div>
     </div>
