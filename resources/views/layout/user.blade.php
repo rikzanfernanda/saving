@@ -13,6 +13,7 @@
         <meta name="author" content="Rikzan Fernanda">
 
         <meta name="base_url" content="{{url('')}}">
+        <meta name="csrf_token" content="{{csrf_token('')}}">
         <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
         <title>saving</title>
         <!--style-->
@@ -77,6 +78,15 @@
                                     <i class="nav-icon fas fa-history"></i>
                                     <p>
                                         History
+                                    </p>
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a href="{{ route('plan.index') }}" class="nav-link">
+                                    <i class="nav-icon fas fa-file-alt"></i>
+                                    <p>
+                                        Plan
                                     </p>
                                 </a>
                             </li>

@@ -103,7 +103,7 @@
                         <td>{{$val->created_at}}</td>
                         <td>{{moneyFormat($val->jumlah)}}</td>
                         <td>{{$val->bank}}</td>
-                        <td>{{$val->anggaran}}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($val->anggaran, 20, $end='...') }}</td>
                     </tr>
                     @endforeach
                 </tbody>

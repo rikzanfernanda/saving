@@ -17,8 +17,8 @@ class AnggaranController extends Controller {
     public function index(Request $req) {
         $data['tahun'] = range(date('Y'), 2020);
         $data['bulan'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-        $bulan = intval(date('m')) == 1 ? 12 : intval(date('m'));
-        $tahun = intval(date('m')) == 1 ? intval(date('Y')) - 1 : intval(date('Y'));
+        $bulan = intval(date('m'));
+        $tahun = intval(date('Y'));
         if ($req->bulan && $req->tahun) {
             $bulan = $req->bulan;
             $tahun = $req->tahun;
