@@ -1,3 +1,35 @@
+.card{
+    border-radius: 0.8rem !important;
+}
+.card-footer{
+    border-bottom-left-radius: 0.8rem !important;
+    border-bottom-right-radius: 0.8rem !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/*table{
+    width: 50rem;
+    overflow: auto;
+    display: inline-block;
+}*/
+
+/*td, th{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}*/
+
 @media (max-width: 768px) {
     body{
         font-size: 0.8rem !important;
@@ -127,13 +159,4 @@
     textarea.form-control{
         min-height: 5rem;
     }
-}
-
-/*device*/
-.card{
-    border-radius: 0.8rem !important;
-}
-.card-footer{
-    border-bottom-left-radius: 0.8rem !important;
-    border-bottom-right-radius: 0.8rem !important;
 }

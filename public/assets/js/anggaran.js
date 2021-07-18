@@ -110,6 +110,9 @@ $(document).ready(function () {
             "columns": [
                 {"data": "nama"},
                 {"data": "jumlah"},
+            ],
+            "columnDefs": [
+                { className: "text-right", "targets": [ 1 ] }
             ]
         });
     });

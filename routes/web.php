@@ -70,6 +70,7 @@ Route::name('history.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/history/dt', [HistoryController::class, 'dt'])->name('dt');
     Route::get('/laporan', [HistoryController::class, 'laporan'])->name('laporan');
     Route::get('/laporan/download', [HistoryController::class, 'download'])->name('download');
+    Route::get('/history/restore/{id?}', [HistoryController::class, 'restore'])->name('restore');
 });
 
 Route::name('bantuan.')->middleware('auth')->group(function () {
@@ -96,3 +97,13 @@ Route::name('tanggapan.')->middleware('auth')->group(function () {
     Route::post('tanggapan/update/{id?}', [TanggapanController::class, 'update'])->name('update');
     Route::get('tanggapan/destroy/{id?}', [TanggapanController::class, 'destroy'])->name('destroy');
 });
+
+Route::name('plan.')->middleware(['auth', 'user'])->group(function () {
+    Route::get('plan', [PlanController::class, 'index'])->name('index');
+    Route::get('plan/option', [PlanController::class, 'option'])->name('option');
+    Route::get('plan/create', [PlanController::class, 'create'])->name('create');
+    Route::post('plan/store', [PlanController::class, 'store'])->name('store');
+    Route::post('plan/update/{id?}', [PlanController::class, 'update'])->name('update');
+    Route::get('plan/destroy/{id?}', [PlanController::class, 'destroy'])->name('destroy');
+});
+//Route::resource('plan', PlanController::class)->middleware(['auth', 'user']);

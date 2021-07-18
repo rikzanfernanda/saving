@@ -103,7 +103,7 @@
                         <td>{{$val->created_at}}</td>
                         <td>{{moneyFormat($val->jumlah)}}</td>
                         <td>{{$val->bank}}</td>
-                        <td>{{$val->anggaran}}</td>
+                        <td>{{ \Illuminate\Support\Str::limit($val->anggaran, 20, $end='...') }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -128,29 +128,29 @@
                 <thead>
                     <tr>
                         <th>Keterangan</th>
-                        <th>Jumlah</th>
+                        <th class="text-right">Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>Total Uang Masuk</th>
-                        <th>{{moneyFormat($total_masuk)}}</th>
+                        <th class="text-right">{{moneyFormat($total_masuk)}}</th>
                     </tr>
                     <tr>
                         <th>Total Uang Keluar</th>
-                        <th>{{moneyFormat($total_keluar)}}</th>
+                        <th class="text-right">{{moneyFormat($total_keluar)}}</th>
                     </tr>
                     @foreach($banks as $val)
                     <tr>
                         <td>Saldo {{$val->nama}}</td>
-                        <td>{{moneyFormat($val->saldo)}}</td>
+                        <td class="text-right">{{moneyFormat($val->saldo)}}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Total Uang Saat ini</th>
-                        <th colspan="2">{{moneyFormat($total)}}</th>
+                        <th colspan="2" class="text-right">{{moneyFormat($total)}}</th>
                     </tr>
                 </tfoot>
 
