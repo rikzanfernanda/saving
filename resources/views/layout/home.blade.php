@@ -85,8 +85,7 @@
                             @csrf
                             <div class="form-group">
                                 <label>Username atau Email</label>
-                                <input type="text" class="form-control" name="email" required="required" value="{{old('email')}}">
-                                @error('email')<small class="form-text text-danger">{{ $message }}</small>@enderror
+                                <input type="text" class="form-control" name="email" required="required">
                             </div>
                             <div class="form-group">
                                 <label>Password</label>

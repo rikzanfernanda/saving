@@ -17,9 +17,6 @@ class HomeController extends Controller {
     }
 
     public function login(Request $request) {
-        $request->validate([
-            'email' => 'required|exists:users,email',
-        ]);
         $data = [
             'email' => $request->email,
             'password' => $request->password
@@ -31,7 +28,7 @@ class HomeController extends Controller {
         if (Auth::check()) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('home')->with('message', 'Password salah');
+            return redirect()->route('home')->with('message', 'Username atau Password Salah');
         }
     }
 
