@@ -159,21 +159,21 @@
                 <thead>
                     <tr>
                         <th>Anggaran</th>
-                        <th>Jumlah</th>
+                        <th class="text-right">Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($bln_anggaran as $opt)
                     <tr>
                         <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
-                        <td>{{ moneyFormat($opt->jumlah) }}</td>
+                        <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Total</th>
-                        <th>{{ moneyFormat($bln_keluar)}}</th>
+                        <th class="text-right">{{ moneyFormat($bln_keluar)}}</th>
                     </tr>
                 </tfoot>
             </table>

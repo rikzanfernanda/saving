@@ -51,7 +51,7 @@
                 <thead>
                     <tr>
                         <th>Nama Bank</th>
-                        <th>Saldo</th>
+                        <th class="text-right">Saldo</th>
                         <th>Tindakan</th>
                     </tr>
                 </thead>

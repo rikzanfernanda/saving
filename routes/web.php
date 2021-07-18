@@ -70,6 +70,7 @@ Route::name('history.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/history/dt', [HistoryController::class, 'dt'])->name('dt');
     Route::get('/laporan', [HistoryController::class, 'laporan'])->name('laporan');
     Route::get('/laporan/download', [HistoryController::class, 'download'])->name('download');
+    Route::get('/history/restore/{id?}', [HistoryController::class, 'restore'])->name('restore');
 });
 
 Route::name('bantuan.')->middleware('auth')->group(function () {

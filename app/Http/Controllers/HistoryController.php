@@ -224,5 +224,17 @@ class HistoryController extends Controller {
         }
         echo json_encode(['pemasukan' => $chart_pemasukan, 'pengeluaran' => $chart_pengeluaran]);
     }
+    
+    public function restore($id) {
+        $history = DB::table('histories')->where('id', $id)->first();
+        $bank = DB::table('banks')->where('id', $history->id_bank)->first();
+        if ($history->kategori == "keluar"){
+            DB::table('banks')->where('id', $history->id_bank)->update(['saldo' => $bank->saldo + $history->jumlah]);
+        } else {
+            DB::table('banks')->where('id', $history->id_bank)->update(['saldo' => $bank->saldo - $history->jumlah]);
+        }
+        
+        return History::where('id', $id)->delete();
+    }
 
 }

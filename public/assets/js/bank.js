@@ -38,11 +38,8 @@ $(document).ready(function () {
         type: "GET"
     }).done(function (data) {
         let bank = JSON.parse(data)
-        let no = 1;
         for (var i = 0; i < bank.length; i++) {
             bank[i].tindakan = '<a href="' + base_url + '/bank/show/' + bank[i].id + '" class="text-green" data-edit="' + bank[i].id + '" data-toggle="modal" data-target="#modalEditBank"><i class="fas fa-edit"></i></a> <a href="' + base_url + '/bank/destroy/' + bank[i].id + '" class="ml-2 text-red" data-hapus="' + bank[i].id + '"><i class="fas fa-trash"></i></a>'
-            bank[i].no = no;
-            no++;
         }
 
         let table = $('#dt_bank').DataTable({
@@ -56,7 +53,8 @@ $(document).ready(function () {
                 {"data": "tindakan"},
             ],
             "columnDefs": [
-                {"width": "10%", "targets": 2}
+                {"width": "10%", "targets": 2},
+                { className: "text-right", "targets": [ 1 ] }
             ]
         });
 
@@ -69,8 +67,8 @@ $(document).ready(function () {
                 $.ajax({
                     type: "GET",
                     url: url
-                })
-            })
+                });
+            });
         });
 
         $('[data-edit]').each(function () {

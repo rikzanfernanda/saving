@@ -15,6 +15,7 @@
                     <tr>
                         <th>Kegiatan</th>
                         <th>Tanggal</th>
+                        <th></th>
                     </tr>
                 </thead>
 

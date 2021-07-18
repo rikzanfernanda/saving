@@ -154,14 +154,14 @@
                         <thead>
                             <tr>
                                 <th>Anggaran</th>
-                                <th>Jumlah</th>
+                                <th class="text-right">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($uang_anggaran as $opt)
                             <tr>
                                 <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
-                                <td>{{moneyFormat($opt->jumlah)}}</td>
+                                <td class="text-right">{{moneyFormat($opt->jumlah)}}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -182,14 +182,14 @@
                         <thead>
                             <tr>
                                 <th>Anggaran</th>
-                                <th>Jumlah</th>
+                                <th class="text-right">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($bln_uang_anggaran as $opt)
                             <tr>
                                 <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
-                                <td>{{moneyFormat($opt->jumlah)}}</td>
+                                <td class="text-right">{{moneyFormat($opt->jumlah)}}</td>
                             </tr>
                             @endforeach
                         </tbody>
