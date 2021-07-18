@@ -126,7 +126,6 @@
                     <div class="form-group">
                         <label>Anggaran</label>
                         <select name="anggaran" class="form-control">
-                            <option class="form-control"></option>
                             @foreach($anggarans as $opt)
                             <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
                             @endforeach

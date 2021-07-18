@@ -23,27 +23,22 @@
                             <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" class="form-control" name="nama" value="{{ $akun->nama }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" class="form-control" name="email" value="{{ $akun->email }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label>Pekerjaan</label>
                                 <input type="text" class="form-control" name="pekerjaan" value="{{ $akun->pekerjaan }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <input type="text" class="form-control" name="alamat" value="{{ $akun->alamat }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
                             </div>
                             <div class="form-group">
                                 <label>Tanggal Registrasi</label>
                                 <input type="text" class="form-control" value="{{ $akun->created_at }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
                             </div>
                         </div>
                     </form>

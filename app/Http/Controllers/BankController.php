@@ -37,14 +37,14 @@ class BankController extends Controller {
         }
         echo $data;
     }
-    
+
     public function chart() {
         $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
         $chart = [];
         foreach ($data as $value) {
             $chart[$value->nama] = $value->saldo;
         }
-        
+
         echo json_encode($chart);
     }
 
@@ -152,13 +152,15 @@ class BankController extends Controller {
         $id_anggaran = $req->anggaran;
         if (!isset($id))
             return redirect()->route('bank.index');
+        if (!isset($id_anggaran))
+            return redirect()->route('anggaran.index');
 
         $anggaran = DB::table('anggarans')->where('id', $id_anggaran)->first();
         $bank = DB::table('banks')->where('id', $id)->first();
         DB::table('banks')->where('id', $id)->update([
             'saldo' => $bank->saldo - $jumlah
         ]);
-        $agr = isset($anggaran)? " untuk anggaran $anggaran->nama": '';
+        $agr = isset($anggaran) ? " untuk anggaran $anggaran->nama" : '';
 
         $data = [
             'id_user' => auth()->user()->id,
