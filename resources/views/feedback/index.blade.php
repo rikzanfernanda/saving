@@ -23,8 +23,6 @@
     @foreach($feedbacks as $feedback)
     <div class="card feedback">
         <div class="card-header">
-            <h5 class="card-title">{{ $feedback->komentar }}</h5>
-
             <div class="card-tools mr-0">
                 <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modalEditFeedback" data-edit="{{ $feedback->id }}">
                     <i class="fas fa-edit"></i>
@@ -33,6 +31,9 @@
                     <i class="fas fa-trash"></i>
                 </button>
             </div>
+        </div>
+        <div class="card-body">
+            <p>{{ $feedback->komentar }}</p>
         </div>
     </div>
     @endforeach
