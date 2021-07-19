@@ -152,8 +152,10 @@
         </div>
     </div>
 
-    <h5 class="mb-3">Pengeluaran Anda dalam Satu Bulan</h5>
-    <div class="card mb-3">
+    <div class="card">
+        <div class="card-header">
+            Pengeluaran Anda dalam Satu Bulan
+        </div>
         <div class="card-body">
             <table id="dt_bln_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
                 <thead>

@@ -19,7 +19,7 @@
     </div>
 
     <div id="dashboard-bank">
-        <div class="row mb-4">
+        <div class="row mb-2">
             @foreach($banks as $opt)
             <div class="col-lg-3 col-4">
                 <div class="small-box bg-info">
@@ -38,15 +38,18 @@
         </div>
     </div>
 
-    <div class="mb-3">
-            <h5 class="m-0">Pemasukan dan Pengeluaran Anda Selama Tahun {{ date('Y') }}</h5>
-    </div>
-
     <div class="card">
         <div class="card-header">
-            <div class="text-md-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
-                <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+            <div class="row">
+                <div class="col-md-6">
+                    Pemasukan dan Pengeluaran Anda Selama Tahun {{ date('Y') }}
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-right">
+                        <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
+                        <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="card-body">
@@ -83,7 +86,7 @@
 
     </div>
 
-    <div class="card mb-4">
+    <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-6 col-md-3 border-right">
@@ -144,11 +147,12 @@
         </div>
     </div>
 
-    <h5>Anggaran</h5>
-    <div class="row mb-4">
+    <div class="row mb-2">
         <div class="col-md-6">
-            <p>Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut</p>
             <div class="card">
+                <div class="card-header">
+                    Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut
+                </div>
                 <div class="card-body">
                     <table class="table table-hover" id="total_anggaran" style="width:100%">
                         <thead>
@@ -175,8 +179,10 @@
             </div>
         </div>
         <div class="col-md-6">
-            <p>Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut selama bulan ini</p>
-            <div class="card mb-0">
+            <div class="card">
+                <div class="card-header">
+                    Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut selama bulan ini
+                </div>
                 <div class="card-body">
                     <table class="table table-hover" id="bln_anggaran" style="width:100%">
                         <thead>
@@ -206,8 +212,10 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h5 class="mb-3">History Terkini</h5>
             <div class="card">
+                <div class="card-header">
+                    History Terkini
+                </div>
                 <div class="card-body">
                     <table class="table table-hover" id="total_anggaran" style="width:100%">
                         <thead>

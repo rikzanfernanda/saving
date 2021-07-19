@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <div class="card mb-4">
+    <div class="card">
         <div class="card-header">
             <div class="text-right">
                 <a href="" class="" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Tambah Bank</a>

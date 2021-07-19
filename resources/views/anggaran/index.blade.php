@@ -25,7 +25,7 @@
     </div>
     @endif
 
-    <div class="card mb-4">
+    <div class="card">
         <div class="card-header">
             <div class="text-right">
                 <a href="" class="" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Tambah Anggaran</a>
@@ -45,10 +45,12 @@
 
     </div>
 
-    <div class="row mb-3">
+    <div class="row">
         <div class="col-sm-6">
-            <p>Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut</p>
             <div class="card">
+                <div class="card-header">
+                    Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut
+                </div>
                 <div class="card-body">
                     <table id="dt_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
                         <thead>
@@ -68,10 +70,10 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <p>Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut perbulan</p>
             <div class="card">
                 <div class="card-header">
-                    <form method="GET" action="{{ route('anggaran.index') }}" class="d-flex flex-row-reverse">
+                    Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut perbulan
+                    <form method="GET" action="{{ route('anggaran.index') }}" class="mt-2 d-flex flex-row-reverse">
                         <div class="bd-highlight">
                             <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
                         </div>

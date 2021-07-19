@@ -9,7 +9,7 @@
             <p>Anda dapat menyimpan laporan ini dalam bentuk pdf dengan mengeklik tombol download</p>
         </div>
     </div>
-    
+
     <form method="GET" action="{{ route('history.laporan') }}">
         <div class="d-flex flex-row-reverse bd-highlight">
             <div class="bd-highlight">
@@ -43,17 +43,18 @@
 
         </div>
     </form>
-    <div class="card-header">
-        <h5 class="card-title">Pemasukan</h5>
-        <div class="card-tools mr-0">
-            <button type="button" class="btn btn-tool">
-                <a href="{{ route('history.download', ['tahun' => $tahun_ini, 'bulan' => $bulan_ini])}}">
-                    <i class="fas fa-download"></i> Download
-                </a>
-            </button>
-        </div>
+
+    <div class="text-right">
+        <button type="button" class="btn">
+            <a href="{{ route('history.download', ['tahun' => $tahun_ini, 'bulan' => $bulan_ini])}}">
+                <i class="fas fa-download"></i> Download
+            </a>
+        </button>
     </div>
     <div class="card">
+        <div class="card-header">
+            Pemasukan
+        </div>
         <div class="card-body">
             <table id="masuk" class="table table-hover" style="width:100%">
                 <thead>
@@ -78,14 +79,10 @@
 
     </div>
 
-    <div class="card-header">
-        <h5 class="card-title">Pengeluaran</h5>
-        <div class="card-tools mr-0">
-            <button type="button" class="btn btn-tool">
-            </button>
-        </div>
-    </div>
     <div class="card">
+        <div class="card-header">
+            Pengeluaran
+        </div>
         <div class="card-body">
 
             <table id="keluar" class="table table-hover" style="width:100%">
@@ -113,15 +110,10 @@
 
     </div>
 
-    <div class="card-header">
-        <h5 class="card-title">Kalkulasi</h5>
-        <div class="card-tools mr-0">
-            <button type="button" class="btn btn-tool">
-            </button>
-        </div>
-    </div>
-
     <div class="card">
+        <div class="card-header">
+            Kalkulasi
+        </div>
         <div class="card-body">
 
             <table class="table table-hover" style="width:100%">
