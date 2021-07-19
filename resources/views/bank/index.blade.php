@@ -151,6 +151,8 @@
                 </button>
             </div>
             <div class="modal-body">
+                Note: nama bank adalah nama tempat dimana Anda menyimpan uang.
+                <small class="font-italic">Contoh: BRI, DANA, ShopeePay, Dompet, Brangkas/Lemari</small>
                 <form method="POST" action="{{ route('bank.store') }}" id="formCreateBank">
                     @csrf
                     <div class="form-group">
