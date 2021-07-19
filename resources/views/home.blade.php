@@ -35,7 +35,7 @@
                     <div class="icon-box w-100">
                         <div class="icon"><i class="bx bx-file"></i></div>
                         <h4>Laporan</h4>
-                        <p>Berisi laporan pemasukan dan pengeluaran serta jumlah uang yang Anda simpan. Buat lebih mudah tanpa ribet</p>
+                        <p>Laporan pemasukan dan pengeluaran serta jumlah uang yang Anda simpan. Buat lebih mudah tanpa ribet</p>
                     </div>
                 </div>
 
@@ -50,8 +50,8 @@
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
                     <div class="icon-box w-100">
                         <div class="icon"><i class="bx bx-calculator"></i></div>
-                        <h4>Kalkulasi</h4>
-                        <p>Menghitung semua pemasukan bulanan dan semua anggaran pengeluaran Anda</p>
+                        <h4>Plan</h4>
+                        <p>Buat rencana anggaran Anda dan evaluasi hasilnya</p>
                     </div>
                 </div>
 
@@ -80,9 +80,8 @@
         <div class="container" data-aos="zoom-in">
 
             <div class="text-center">
-                <h3>ANDA HARUS COBA!</h3>
-                <p>Kapan lagi kalau bukan sekarang, <b>jangan menunda-nunda!</b> kelola arus uang Anda sebelum Anda menyesal dikemudian hari</p>
-                <p><b>Aplikasi ini gratis dan pengguna juga terbatas</b></p>
+                <h4 class="text-white">"Uang tidak pernah membodohi siapa pun, melainkan hanya menunjukkan siapa kita." </h4>
+                <p>Kelola keuangan Anda di saving untuk menuju kesuksesan finansial. Aplikasi ini gratis dan pengguna juga terbatas.</p>
                 <p><b>Yuk registrasi sekarang</b></p>
                 <a class="cta-btn" href="" data-toggle="modal" data-target="#modalRegistrasi">REGISTRASI</a>
             </div>
