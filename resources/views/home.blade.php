@@ -57,7 +57,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="icon-box w-100">
-                        <div class="icon"><i class="bx bx-archive-in"></i></div>
+                        <div class="icon"><i class="bx bx-coin-stack"></i></div>
                         <h4>Bank</h4>
                         <p>Cek berapa uang yang Anda simpan dalam bank Anda</p>
                     </div>
