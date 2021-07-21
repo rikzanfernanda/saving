@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="card mb-4">
+    <div class="card">
         <div class="card-header row">
             <div class="col-4">
                 <a href="{{route('plan.create')}}" class="btn btn-link">Buat Plan</a>
@@ -81,7 +81,7 @@
                         <td class="text-right">{{ moneyFormat($value->total - $value->realisasi) }}</td>
                         <td>
                             <a href="" class="text-green mx-1" data-edit="{{ $value->id }}"><i class="fas fa-edit"></i></a>
-                            <a href="{{route('plan.destroy', $value->id)}}" class="text-red mx-1"><i class="fas fa-trash-alt"></i></a>
+                            <a href="{{route('plan.destroy', $value->id)}}" class="text-red mx-1" data-hapus="{{ $value->id }}"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
                     <tr class="row-field d-none" id="row-{{ $value->id }}">

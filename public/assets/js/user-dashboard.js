@@ -76,5 +76,59 @@ $(document).ready(function () {
 
     });
 
+    // create pengeluaran
+    $("#addRow").click(function (e) {
+        e.preventDefault();
+        var html = '';
+        html += `
+        <div class="border-top pt-2" id="inputFormRow">
+            <div class="text-right">
+                <button id="removeRow" class="btn btn-danger ml-2"><i class="fas fa-trash"></i> Remove</button>
+            </div>
+            <div class="form-group">
+                <label for="jumlah">Jumlah Uang</label>
+                <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
+            </div>
+            <div class="form-group">
+                <label for="bank">Bank</label>
+                <select id="bank" name="bank[]" class="form-control">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="anggaran">Anggaran</label>
+                <select id="anggaran" name="anggaran[]" class="form-control">
+                </select>
+            </div>
+        </div>
+        `;
+        $('#newRow').append(html);
+        
+        let row = $('#newRow').children().last();
+        $.ajax({
+            url: base_url + '/bank/option',
+            type: "GET"
+        }).done(function (respon) {
+            let data = JSON.parse(respon);
+            row.find($('select[name="bank[]"]')).html('');
+            $.each(data, function () {
+                row.find($('select[name="bank[]"]')).append('<option value="' + this.id + '">' + this.nama + '</option>');
+            });
+        });
+        $.ajax({
+            url: base_url + '/anggaran/option',
+            type: "GET"
+        }).done(function (respon) {
+            let data = JSON.parse(respon);
+            row.find($('select[name="anggaran[]"]')).html('');
+            $.each(data, function () {
+                row.find($('select[name="anggaran[]"]')).append('<option value="' + this.id + '">' + this.nama + '</option>');
+            });
+        });
+    });
+    $(document).on('click', '#removeRow', function (e) {
+        e.preventDefault();
+        $(this).closest('#inputFormRow').remove();
+    });
+
 
 });

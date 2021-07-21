@@ -52,6 +52,7 @@ Route::name('bank.')->middleware(['auth', 'user'])->group(function () {
     Route::post('/bank/masuk', [BankController::class, 'masuk'])->name('masuk');
     Route::post('/bank/keluar', [BankController::class, 'keluar'])->name('keluar');
     Route::get('/bank/chart', [BankController::class, 'chart'])->name('dt');
+    Route::get('bank/option', [BankController::class, 'option'])->name('option');
 });
 
 Route::name('anggaran.')->middleware(['auth', 'user'])->group(function () {
@@ -62,6 +63,7 @@ Route::name('anggaran.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/anggaran/show/{id?}', [AnggaranController::class, 'show'])->name('show');
     Route::post('/anggaran/update/{id?}', [AnggaranController::class, 'update'])->name('update');
     Route::get('/anggaran/laporan', [AnggaranController::class, 'dtLaporan'])->name('dt.laporan');
+    Route::get('anggaran/option', [AnggaranController::class, 'option'])->name('option');
 });
 
 Route::name('history.')->middleware(['auth', 'user'])->group(function () {
@@ -100,7 +102,6 @@ Route::name('tanggapan.')->middleware('auth')->group(function () {
 
 Route::name('plan.')->middleware(['auth', 'user'])->group(function () {
     Route::get('plan', [PlanController::class, 'index'])->name('index');
-    Route::get('plan/option', [PlanController::class, 'option'])->name('option');
     Route::get('plan/create', [PlanController::class, 'create'])->name('create');
     Route::post('plan/store', [PlanController::class, 'store'])->name('store');
     Route::post('plan/update/{id?}', [PlanController::class, 'update'])->name('update');

@@ -298,11 +298,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="jumlah">Jumlah Uang</label>
-                        <input type="number" class="form-control" id="jumlah" name="jumlah" required="required">
+                        <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
                     </div>
                     <div class="form-group">
                         <label for="bank">Bank</label>
-                        <select id="bank" name="bank" class="form-control">
+                        <select id="bank" name="bank[]" class="form-control">
                             @foreach($banks as $opt)
                             <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
                             @endforeach
@@ -310,12 +310,15 @@
                     </div>
                     <div class="form-group">
                         <label for="anggaran">Anggaran</label>
-                        <select id="anggaran" name="anggaran" class="form-control">
+                        <select id="anggaran" name="anggaran[]" class="form-control">
                             @foreach($anggarans as $opt)
                             <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
                             @endforeach
                         </select>
                     </div>
+
+                    <div id="newRow"></div>
+                    <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
                         <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
                     </div>

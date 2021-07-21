@@ -92,6 +92,23 @@ $(document).ready(function () {
             window.location.reload();
         });
     });
+    
+    $("#addRow").click(function (e) {
+        e.preventDefault();
+        var html = '';
+        html += `<div class="form-group" id="inputFormRow">`;
+        html += `<label>Nama Anggaran</label>`;
+        html += `<div class="input-group">`;
+        html += `<input type="text" class="form-control" name="nama[]" required="required">`;
+        html += `<div><button id="removeRow" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></button></div>`;
+        html += `</div>`;
+        html += `</div>`;
+        $('#newRow').append(html);
+    });
+    $(document).on('click', '#removeRow', function (e) {
+        e.preventDefault();
+        $(this).closest('#inputFormRow').remove();
+    });
 
     // semua
     $.ajax({

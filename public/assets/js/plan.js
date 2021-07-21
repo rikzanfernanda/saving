@@ -27,17 +27,59 @@ $(document).ready(function () {
         });
     });
 
+    $('input[name="jumlah[]"]').keyup(function () {
+        let jumlah = $(this).val();
+        let frekuensi = $('input[name="frekuensi[]"]').val();
+        let satuan = $('select[name="satuan[]"]').val();
+        let total = $('input[name="total[]"]').val();
+        if (satuan === "Sehari") {
+            total = jumlah * frekuensi * daysInMonth($('select[name="bulan"]').val(), $('select[name="tahun"]').val());
+        } else if (satuan === "Seminggu") {
+            total = jumlah * frekuensi * 4;
+        } else {
+            total = jumlah * frekuensi;
+        }
+        $('input[name="total[]"]').val(total);
+    });
+
+    $('input[name="frekuensi[]"]').keyup(function () {
+        let frekuensi = $(this).val();
+        let jumlah = $('input[name="jumlah[]"]').val();
+        let satuan = $('select[name="satuan[]"]').val();
+        let total = $('input[name="total[]"]').val();
+        if (satuan === "Sehari") {
+            total = jumlah * frekuensi * daysInMonth($('select[name="bulan"]').val(), $('select[name="tahun"]').val());
+        } else if (satuan === "Seminggu") {
+            total = jumlah * frekuensi * 4;
+        } else {
+            total = jumlah * frekuensi;
+        }
+        $('input[name="total[]"]').val(total);
+    });
+
     $('[data-edit]').each(function () {
         $('[data-edit]').click(function (e) {
             e.preventDefault();
             let id_edit = $(this).attr('data-edit');
             $(this).parent().parent().addClass('d-none');
             $('#row-' + id_edit).removeClass('d-none');
-
-//            console.log($('[data-cancel="cancel"]'));
         })
     })
-    
+
+    $('[data-hapus]').each(function () {
+        $(this).click(function (e) {
+            e.preventDefault();
+            $(this).parent().parent().remove();
+            let url = $(this).attr('href');
+            $.ajax({
+                type: "GET",
+                url: url
+            }).done(function () {
+                window.location.reload();
+            });
+        });
+    });
+
     $('[data-cancel]').each(function () {
         $('[data-cancel]').click(function (e) {
             e.preventDefault();
@@ -102,9 +144,11 @@ $(document).ready(function () {
         html += `<div class="input-group"><div class="input-group-prepend"><div class="input-group-text form-control">Rp.</div></div><input type="number" name="total[]" class="form-control" readonly="readonly"><div><button id="removeRow" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></button></div>`;
         html += `</div></div></div>`;
         $('#newRow').append(html);
-        let select = $('select[name="id_anggaran[]"]');
+
+        let row = $('#newRow').children().last();
+        let select = row.find($('select[name="id_anggaran[]"]'));
         $.ajax({
-            url: base_url + '/plan/option',
+            url: base_url + '/anggaran/option',
             type: "GET"
         }).done(function (respon) {
             let data = JSON.parse(respon);
@@ -113,6 +157,39 @@ $(document).ready(function () {
                 select.append('<option value="' + this.id + '">' + this.nama + '</option>');
             })
         });
+
+        $('input[name="jumlah[]"]').keyup(function () {
+            let row = $(this).parent().parent().parent().parent().parent();
+            let jumlah = $(this).val();
+            let frekuensi = row.find($('input[name="frekuensi[]"]')).val();
+            let satuan = row.find($('select[name="satuan[]"]')).val();
+            let total = row.find($('input[name="total[]"]')).val();
+            if (satuan === "Sehari") {
+                total = jumlah * frekuensi * daysInMonth($('select[name="bulan"]').val(), $('select[name="tahun"]').val());
+            } else if (satuan === "Seminggu") {
+                total = jumlah * frekuensi * 4;
+            } else {
+                total = jumlah * frekuensi;
+            }
+            row.find($('input[name="total[]"]')).val(total);
+        });
+
+        $('input[name="frekuensi[]"]').keyup(function () {
+            let row = $(this).parent().parent().parent().parent().parent();
+            let frekuensi = $(this).val();
+            let jumlah = row.find($('input[name="jumlah[]"]')).val();
+            let satuan = row.find($('select[name="satuan[]"]')).val();
+            let total = row.find($('input[name="total[]"]')).val();
+            if (satuan === "Sehari") {
+                total = jumlah * frekuensi * daysInMonth($('select[name="bulan"]').val(), $('select[name="tahun"]').val());
+            } else if (satuan === "Seminggu") {
+                total = jumlah * frekuensi * 4;
+            } else {
+                total = jumlah * frekuensi;
+            }
+            row.find($('input[name="total[]"]')).val(total);
+        });
+
         $('select[name="satuan[]"]').change(function () {
             let row = $(this).parent().parent().parent().parent().parent();
             let jumlah = row.find($('input[name="jumlah[]"]')).val();

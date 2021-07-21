@@ -98,12 +98,6 @@ class PlanController extends Controller {
         return view('plan.form', $data);
     }
 
-    public function option() {
-        $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
-
-        echo json_encode($data);
-    }
-
     /**
      * Store a newly created resource in storage.
      *

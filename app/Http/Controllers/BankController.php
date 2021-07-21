@@ -133,7 +133,7 @@ class BankController extends Controller {
 
         $data = [
             'id_user' => auth()->user()->id,
-            'kegiatan' => 'Uang masuk sebesar ' . moneyFormat($jumlah) . ' ke bank ' . $bank->nama,
+            'kegiatan' => 'Uang masuk sebesar ' . moneyFormat($jumlah) . ' ke ' . $bank->nama,
             'kategori' => 'masuk',
             'jumlah' => $jumlah,
             'id_bank' => $id
@@ -145,35 +145,45 @@ class BankController extends Controller {
         return redirect()->route('dashboard');
     }
 
-    // pemasukan
+    // pengeluaran
     public function keluar(Request $req) {
-        $jumlah = $req->jumlah;
-        $id = $req->bank;
-        $id_anggaran = $req->anggaran;
-        if (!isset($id))
-            return redirect()->route('bank.index');
-        if (!isset($id_anggaran))
-            return redirect()->route('anggaran.index');
+        $data = [];
+        foreach ($req->jumlah as $key => $value) {
+            $jumlah = $req->jumlah[$key];
+            $id = $req->bank[$key];
+            $id_anggaran = $req->anggaran[$key];
+            if (!isset($id))
+                return redirect()->route('bank.index');
+            if (!isset($id_anggaran))
+                return redirect()->route('anggaran.index');
 
-        $anggaran = DB::table('anggarans')->where('id', $id_anggaran)->first();
-        $bank = DB::table('banks')->where('id', $id)->first();
-        DB::table('banks')->where('id', $id)->update([
-            'saldo' => $bank->saldo - $jumlah
-        ]);
-        $agr = isset($anggaran) ? " untuk anggaran $anggaran->nama" : '';
+            $anggaran = DB::table('anggarans')->where('id', $id_anggaran)->first();
+            $bank = DB::table('banks')->where('id', $id)->first();
+            DB::table('banks')->where('id', $id)->update([
+                'saldo' => $bank->saldo - $jumlah
+            ]);
+            $agr = isset($anggaran) ? " untuk anggaran $anggaran->nama" : '';
 
-        $data = [
-            'id_user' => auth()->user()->id,
-            'kegiatan' => 'Uang keluar sebesar ' . moneyFormat($jumlah) . ' dari bank ' . $bank->nama . $agr,
-            'kategori' => 'keluar',
-            'jumlah' => $jumlah,
-            'id_bank' => $id,
-            'id_anggaran' => $id_anggaran
-        ];
-        History::create($data);
+            $data = [
+                'id_user' => auth()->user()->id,
+                'kegiatan' => 'Uang keluar sebesar ' . moneyFormat($jumlah) . ' dari ' . $bank->nama . $agr,
+                'kategori' => 'keluar',
+                'jumlah' => $jumlah,
+                'id_bank' => $id,
+                'id_anggaran' => $id_anggaran
+            ];
+            History::create($data);
+        }
+
         if (isset($req->route))
             return redirect()->route('bank.index');
         return redirect()->route('dashboard');
+    }
+
+    public function option() {
+        $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
+
+        echo json_encode($data);
     }
 
 }

@@ -147,9 +147,11 @@
                     @csrf
                     <div class="form-group">
                         <label>Nama Anggaran</label>
-                        <input type="text" class="form-control" name="nama" required="required">
-                        <small class="form-text text-muted"></small>
+                        <input type="text" class="form-control" name="nama[]" required="required">
                     </div>
+
+                    <div id="newRow"></div>
+                    <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
                         <button type="submit" class="btn btn-link text-decoration-none">Buat Anggaran</button>
                     </div>

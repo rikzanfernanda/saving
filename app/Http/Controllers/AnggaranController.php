@@ -91,12 +91,14 @@ class AnggaranController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $data = [
-            'id_user' => auth()->user()->id,
-            'nama' => $request->nama,
-        ];
-
-        $store = Anggaran::create($data);
+        $data = [];
+        foreach ($request->nama as $key => $value) {
+            $data = [
+                'id_user' => auth()->user()->id,
+                'nama' => $request->nama[$key],
+            ];
+            $store = Anggaran::create($data);
+        }
     }
 
     /**
@@ -142,6 +144,12 @@ class AnggaranController extends Controller {
      */
     public function destroy($id) {
         return Anggaran::where('id', $id)->delete();
+    }
+    
+    public function option() {
+        $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
+
+        echo json_encode($data);
     }
 
 }
