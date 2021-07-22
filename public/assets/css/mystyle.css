@@ -17,22 +17,9 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-/*table{
-    width: 50rem;
-    overflow: auto;
-    display: inline-block;
-}*/
-
-/*td, th{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-}*/
-
 @media (max-width: 768px) {
     body{
-        font-size: 0.8rem !important;
+        font-size: 0.65rem !important;
     }
     .info-box{
         min-height: 4rem !important;
@@ -107,21 +94,24 @@ input[type=number] {
     }
 
     h3{
-        font-size: 1.25rem !important;
+        font-size: 1rem !important;
     }
 
     .form-control{
-        font-size: 0.8rem !important;
+        font-size: 0.65rem !important;
         padding-top: 0rem !important;
         padding-bottom: 0rem !important;
-        height: 2rem!important;
+        height: 1.5rem!important;
+        padding-left: 0.5rem !important;
     }
 
     .btn{
-        font-size: 0.8rem !important;
+        font-size: 0.65rem !important;
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.25rem !important;
     }
     .description-block .description-text{
-        font-size: 0.7rem !important;
+        font-size: 0.65rem !important;
     }
 
     .bantuan .card-header{

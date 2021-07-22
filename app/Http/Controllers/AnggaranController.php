@@ -27,6 +27,7 @@ class AnggaranController extends Controller {
         $data['tahun_ini'] = $tahun;
         $data['bln_anggaran'] = DB::table('anggarans')
                 ->where('anggarans.id_user', auth()->user()->id)
+                ->where('histories.kategori', 'keluar')
                 ->whereMonth('histories.created_at', $bulan)
                 ->whereYear('histories.created_at', $tahun)
                 ->leftJoin('histories', 'anggarans.id', '=', 'histories.id_anggaran')

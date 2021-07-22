@@ -16,6 +16,22 @@ $(document).ready(function () {
         "scrollX": true,
         "scrollCollapse": true,
     });
+    
+    $('#dt_history').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
+    
+    $('#dt_plan').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
 
     $.ajax({
         url: base_url + '/history/chart',

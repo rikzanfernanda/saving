@@ -14,7 +14,33 @@ class BankController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index(Request $req) {
+        $data['tahun'] = range(date('Y'), 2020);
+        $data['bulan'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $bulan = intval(date('m'));
+        $tahun = intval(date('Y'));
+        if ($req->bulan && $req->tahun) {
+            $bulan = $req->bulan;
+            $tahun = $req->tahun;
+        }
+        $data['bulan_ini'] = $bulan;
+        $data['tahun_ini'] = $tahun;
+        $data['bln_bank'] = DB::table('banks')
+                ->where('banks.id_user', auth()->user()->id)
+                ->where('histories.kategori', 'masuk')
+                ->whereMonth('histories.created_at', $bulan)
+                ->whereYear('histories.created_at', $tahun)
+                ->leftJoin('histories', 'banks.id', '=', 'histories.id_bank')
+                ->selectRaw('banks.nama, SUM(histories.jumlah) as jumlah')
+                ->groupBy('banks.id')
+                ->get();
+        $data['bln_masuk'] = DB::table('histories')
+                ->where('histories.id_user', auth()->user()->id)
+                ->where('kategori', 'masuk')
+                ->whereMonth('created_at', $bulan)
+                ->whereYear('created_at', $tahun)
+                ->sum('jumlah');
+        
         $data['banks'] = DB::table('banks')->where('id_user', auth()->user()->id)->get();
         $data['jumlah'] = DB::table('banks')->where('id_user', auth()->user()->id)->count();
         $data['anggarans'] = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();

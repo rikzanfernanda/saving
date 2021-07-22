@@ -141,7 +141,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link text-white">Selamat datang, <b>{{ \Illuminate\Support\Str::limit(auth()->user()->nama, 20, $end='...') }}</b></span>
+                    <span class="nav-link text-white">Selamat datang, <b>{{ explode(' ', auth()->user()->nama, 2)[0] }}</b></span>
                 </li>
             </ul>
 

@@ -49,7 +49,7 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut
+                    Semua Anggaran Anda
                 </div>
                 <div class="card-body">
                     <table id="dt_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
@@ -72,7 +72,7 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                    Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut perbulan
+                    Anggaran Anda perbulan
                     <form method="GET" action="{{ route('anggaran.index') }}" class="mt-2 d-flex flex-row-reverse">
                         <div class="bd-highlight">
                             <button type="submit" class="btn btn-info text-decoration-none">Cek</button>

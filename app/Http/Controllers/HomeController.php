@@ -103,6 +103,27 @@ class HomeController extends Controller {
                         ->groupBy('anggarans.id')
                         ->limit(5)
                         ->get();
+                $data['bln_uang_masuk'] = DB::table('banks')
+                        ->where('banks.id_user', Auth::user()->id)
+                        ->whereMonth('histories.created_at', date('m'))
+                        ->leftJoin('histories', 'banks.id', '=', 'histories.id_bank')
+                        ->selectRaw('banks.nama, SUM(histories.jumlah) as jumlah')
+                        ->groupBy('banks.id')
+                        ->limit(5)
+                        ->get();
+                $data['plans'] = DB::table('plans')
+                        ->where('plans.id_user', Auth::user()->id)
+                        ->where('plans.bulan', date('m'))
+                        ->where('plans.tahun', date("Y"))
+                        ->leftJoin('anggarans', 'plans.id_anggaran', '=', 'anggarans.id')
+                        ->selectRaw('anggarans.nama, SUM(plans.total) as total')
+                        ->groupBy('anggarans.nama')
+                        ->get();
+                $data['total_rencana'] = DB::table('plans')
+                        ->where('plans.id_user', auth()->user()->id)
+                        ->where('bulan', date('m'))
+                        ->where('tahun', date("Y"))
+                        ->sum('total');
                 $data['histories'] = DB::table('histories')->where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->limit(5)->get();
                 $data['css'] = [
                     '/datatables.min.css'

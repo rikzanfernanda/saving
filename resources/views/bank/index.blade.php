@@ -60,6 +60,64 @@
 
     </div>
 
+    <div class="card">
+        <div class="card-header">
+            Pemasukan Anda perbulan
+            <form method="GET" action="{{ route('bank.index') }}" class="mt-2 d-flex flex-row-reverse">
+                <div class="bd-highlight">
+                    <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
+                </div>
+                <div class="form-group mx-2">
+                    <select class="form-control" name="tahun">
+                        @foreach($tahun as $opt)
+                        @if($opt == $tahun_ini)
+                        <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
+                        @else
+                        <option value="{{$opt}}" class="form-control">{{$opt}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" name="bulan">
+                        @foreach($bulan as $key => $opt)
+                        @if($key+1 == $bulan_ini)
+                        <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
+                        @else
+                        <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table id="dt_bln_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Bank</th>
+                        <th class="text-right">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($bln_bank as $opt)
+                    <tr>
+                        <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
+                        <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th class="text-right">{{ moneyFormat($bln_masuk)}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
 </div>
 
 <!-- create pemasukan -->
@@ -113,11 +171,11 @@
                     <input type="hidden" name="route" value="bank">
                     <div class="form-group">
                         <label>Jumlah Uang</label>
-                        <input type="number" class="form-control" name="jumlah" required="required">
+                        <input type="number" class="form-control" name="jumlah[]" required="required">
                     </div>
                     <div class="form-group">
                         <label>Bank</label>
-                        <select name="bank" class="form-control">
+                        <select name="bank[]" class="form-control">
                             @foreach($banks as $opt)
                             <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
                             @endforeach
@@ -125,12 +183,15 @@
                     </div>
                     <div class="form-group">
                         <label>Anggaran</label>
-                        <select name="anggaran" class="form-control">
+                        <select name="anggaran[]" class="form-control">
                             @foreach($anggarans as $opt)
                             <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
                             @endforeach
                         </select>
                     </div>
+
+                    <div id="newRow"></div>
+                    <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
                         <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
                     </div>

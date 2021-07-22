@@ -147,11 +147,11 @@
         </div>
     </div>
 
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="card">
+    <div class="row">
+        <div class="col-md-6 pb-3">
+            <div class="card h-100">
                 <div class="card-header">
-                    Anggaran dan total semua uang yang Anda keluarkan untuk anggaran tersebut
+                    Pemasukan Anda Selama Bulan Ini
                 </div>
                 <div class="card-body">
                     <table class="table table-hover" id="total_anggaran" style="width:100%">
@@ -162,7 +162,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($uang_anggaran as $opt)
+                            @foreach($bln_uang_masuk as $opt)
                             <tr>
                                 <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
                                 <td class="text-right">{{moneyFormat($opt->jumlah)}}</td>
@@ -172,16 +172,16 @@
                     </table>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{{ route('anggaran.index') }}" class="small-box-footer">
+                    <a href="{{ route('bank.index') }}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
+        <div class="col-md-6 pb-3">
+            <div class="card h-100">
                 <div class="card-header">
-                    Anggaran dan total uang yang Anda keluarkan untuk anggaran tersebut selama bulan ini
+                    Anggaran Anda Selama Bulan Ini
                 </div>
                 <div class="card-body">
                     <table class="table table-hover" id="bln_anggaran" style="width:100%">
@@ -211,13 +211,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+        <div class="col-md-6 pb-3">
+            <div class="card h-100">
                 <div class="card-header">
                     History Terkini
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover" id="total_anggaran" style="width:100%">
+                    <table class="table table-hover" id="dt_history" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Keterangan</th>
@@ -241,8 +241,41 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-
+        <div class="col-md-6 pb-3">
+            <div class="card h-100">
+                <div class="card-header">
+                    Plan Anda Selama Bulan Ini
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" id="dt_plan" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Anggaran</th>
+                                <th class="text-right">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($plans as $opt)
+                            <tr>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</td>
+                                <td class="text-right">{{moneyFormat($opt->total)}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total uang yang harus Anda persiapkan untuk bulan ini</th>
+                                <th class="text-right">{{moneyFormat($total_rencana)}}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ route('plan.index') }}" class="small-box-footer">
+                        More info <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
