@@ -150,3 +150,9 @@ input[type=number] {
         min-height: 5rem;
     }
 }
+
+@media (min-width: 768px) {
+    body{
+        font-size: 0.9rem !important;
+    }
+}
