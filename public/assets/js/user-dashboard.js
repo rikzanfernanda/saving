@@ -23,6 +23,7 @@ $(document).ready(function () {
         "dom": 'lrtip',
         "scrollX": true,
         "scrollCollapse": true,
+        "order": [[1, "desc"]]
     });
     
     $('#dt_plan').DataTable({
