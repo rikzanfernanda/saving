@@ -11,8 +11,12 @@
         <title>saving</title>
         <!--style-->
         <style>
+            body{
+                font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                font-size: 0.8rem;
+            }
             .container{
-                /*width: 75%;*/
+                width: 80%;
                 margin: auto;
             }
             .table{
@@ -22,9 +26,12 @@
                 margin-bottom: 2rem;
             }
             .table, .table tr, .table td, .table th{
-                border: 1px solid black;
+                border-top: 1px solid black;
                 padding: 0.5rem;
                 text-align: left;
+            }
+            .table thead{
+                background-color: #50cf73;
             }
         </style>
     </head>
@@ -58,8 +65,8 @@
             <table id="keluar" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Tanggal</th>
-                        <th>Uang Keluar</th>
+                        <th style="min-width: 6rem">Tanggal</th>
+                        <th style="min-width: 6rem">Uang Keluar</th>
                         <th>Bank</th>
                         <th>Keperluan</th>
                     </tr>
@@ -82,27 +89,27 @@
                 <thead>
                     <tr>
                         <th>Keterangan</th>
-                        <th>Jumlah</th>
+                        <th style="text-align: right">Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>Total Uang Masuk</th>
-                        <th>{{moneyFormat($total_masuk)}}</th>
+                        <th style="text-align: right">{{moneyFormat($total_masuk)}}</th>
                     </tr>
                     <tr>
                         <th>Total Uang Keluar</th>
-                        <th>{{moneyFormat($total_keluar)}}</th>
+                        <th style="text-align: right">{{moneyFormat($total_keluar)}}</th>
                     </tr>
                     @foreach($banks as $val)
                     <tr>
                         <td>Saldo {{$val->nama}}</td>
-                        <td>{{moneyFormat($val->saldo)}}</td>
+                        <td style="text-align: right">{{moneyFormat($val->saldo)}}</td>
                     </tr>
                     @endforeach
                     <tr>
                         <th>Total Uang Saat ini</th>
-                        <th>{{moneyFormat($total)}}</th>
+                        <th style="text-align: right">{{moneyFormat($total)}}</th>
                     </tr>
                 </tbody>
 

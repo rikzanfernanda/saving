@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="dt_anggaran" class="table table-bordered table-hover" style="width:100%">
+            <table id="dt_anggaran" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -52,7 +52,7 @@
                     Semua Anggaran Anda
                 </div>
                 <div class="card-body">
-                    <table id="dt_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
+                    <table id="dt_uang_anggaran" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Anggaran</th>
@@ -103,7 +103,7 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <table id="dt_bln_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
+                    <table id="dt_bln_uang_anggaran" class="table table-hover" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Anggaran</th>

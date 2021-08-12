@@ -4,45 +4,50 @@
 <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-md-6">
-            
-            <div class="card-header border-bottom-0">
-                <h5 class="card-title">Akun</h5>
 
-                <div class="card-tools mr-0">
-                    <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modalEditAkun" data-edit="{{ $akun->id }}">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                </div>
-            </div>
             <div class="card">
+                <div class="card-header border-bottom-0">
+                    <h5 class="card-title">Akun</h5>
+
+                    <div class="card-tools mr-0">
+                        <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modalEditAkun" data-edit="{{ $akun->id }}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="">
                         <div class="form-group">
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" class="form-control" name="nama" value="{{ $akun->nama }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
+                            <div class="form-group row">
+                                <label class="col-4">Nama</label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="nama" value="{{ $akun->nama }}" disabled="disabled">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="text" class="form-control" name="email" value="{{ $akun->email }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
+                            <div class="form-group row">
+                                <label class="col-4">Email</label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="email" value="{{ $akun->email }}" disabled="disabled">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Pekerjaan</label>
-                                <input type="text" class="form-control" name="pekerjaan" value="{{ $akun->pekerjaan }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
+                            <div class="form-group row">
+                                <label class="col-4">Pekerjaan</label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="pekerjaan" value="{{ $akun->pekerjaan }}" disabled="disabled">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <input type="text" class="form-control" name="alamat" value="{{ $akun->alamat }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
+                            <div class="form-group row">
+                                <label class="col-4">Alamat</label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" name="alamat" value="{{ $akun->alamat }}" disabled="disabled">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Tanggal Registrasi</label>
-                                <input type="text" class="form-control" value="{{ $akun->created_at }}" disabled="disabled">
-                                <small class="form-text text-muted"></small>
+                            <div class="form-group row">
+                                <label class="col-4">Tanggal Registrasi</label>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" value="{{ $akun->created_at }}" disabled="disabled">
+                                </div>
                             </div>
                         </div>
                     </form>

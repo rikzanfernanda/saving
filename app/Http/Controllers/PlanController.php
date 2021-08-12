@@ -39,7 +39,7 @@ class PlanController extends Controller {
                 ->where('bulan', $bulan)
                 ->where('tahun', $tahun)
                 ->sum('total');
-        
+
         $bln_anggaran = DB::table('anggarans')
                 ->where('anggarans.id_user', auth()->user()->id)
                 ->whereMonth('histories.created_at', $bulan)
@@ -59,7 +59,7 @@ class PlanController extends Controller {
                 }
             }
         }
-        
+
         $data['bln_anggaran'] = DB::table('anggarans')
                 ->where('anggarans.id_user', auth()->user()->id)
                 ->whereMonth('histories.created_at', $bulan)
@@ -68,7 +68,7 @@ class PlanController extends Controller {
                 ->selectRaw('anggarans.nama, SUM(histories.jumlah) as jumlah')
                 ->groupBy('anggarans.id')
                 ->get();
-        
+
         $data['bln_keluar'] = DB::table('histories')
                 ->where('histories.id_user', auth()->user()->id)
                 ->where('kategori', 'keluar')
@@ -76,8 +76,12 @@ class PlanController extends Controller {
                 ->whereYear('created_at', $tahun)
                 ->sum('jumlah');
 
+        $data['css'] = [
+            '/datatables.min.css'
+        ];
         $data['js'] = [
             '/plan.js',
+            '/datatables.min.js'
         ];
 
         return view('plan.index', $data);

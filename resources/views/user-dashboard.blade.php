@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="card bg-success" id="dashboard-thanks">
+    <div class="card bg-success mb-3 mb-md-4" id="dashboard-thanks">
         <div class="text-right text-white">
             <div class="card-tools">
                 <button type="button" class="btn py-0" data-card-widget="remove">
@@ -19,7 +19,7 @@
     </div>
 
     <div id="dashboard-bank">
-        <div class="row mb-2">
+        <div class="row mb-3">
             @foreach($banks as $opt)
             <div class="col-lg-3 col-4">
                 <div class="small-box bg-info">

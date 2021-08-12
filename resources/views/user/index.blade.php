@@ -6,12 +6,14 @@
         <div class="col-sm-6">
             <h5 class="m-0">User Saving</h5>
         </div>
-        <div class="col-sm-6 text-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreateUser"><i class="fas fa-plus"></i> Tambah User</a>
-        </div>
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <div class="col-sm-6 text-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreateUser"><i class="fas fa-plus"></i> Tambah User</a>
+            </div>
+        </div>
 
         <div class="card-body">
             <table id="dt_user" class="table table-bordered table-hover" style="width:100%">

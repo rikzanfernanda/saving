@@ -6,12 +6,14 @@
         <div class="col-sm-6">
             <h5 class="">Feedback</h5>
         </div>
-        <div class="col-sm-6 text-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreateFeedback"><i class="fas fa-plus"></i> Tambah Feedback</a>
-        </div>
     </div>
 
     <div class="card">
+        <div class="card-header">
+            <div class="col-sm-6 text-right">
+                <a href="" class="" data-toggle="modal" data-target="#modalCreateFeedback"><i class="fas fa-plus"></i> Tambah Feedback</a>
+            </div>
+        </div>
 
         <div class="card-body">
             <table id="dt_feedback" class="table table-bordered table-hover" style="width:100%">

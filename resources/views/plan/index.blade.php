@@ -157,7 +157,7 @@
             Pengeluaran Anda dalam Satu Bulan
         </div>
         <div class="card-body">
-            <table id="dt_bln_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
+            <table id="dt_bln_anggaran" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Anggaran</th>

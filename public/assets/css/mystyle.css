@@ -17,142 +17,198 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-@media (max-width: 768px) {
-    body{
-        font-size: 0.65rem !important;
-    }
-    .info-box{
-        min-height: 4rem !important;
-        box-shadow: none !important;
-    }
+body{
+    font-size: 0.68rem !important;
+}
+.nav, .navbar{
+    font-size: 0.8rem !important;
+}
+.navbar .nav-link{
+    height: auto !important;
+    padding: 0;
+}
+.info-box{
+    min-height: 4rem !important;
+    box-shadow: none !important;
+}
 
-    .info-box p{
-        line-height: 1rem;
-        margin-bottom: 0.5rem;
-    }
+.info-box p{
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
+}
 
-    .small-box{
-        border-radius: 0.8rem !important;
-        margin-bottom: 0.5rem !important;
-        box-shadow: none !important;
-    }
-    .small-box-footer{
-        border-bottom-left-radius: 0.8rem !important;
-        border-bottom-right-radius: 0.8rem !important;
-    }
-    .card p{
-        line-height: 1rem;
-        margin-bottom: 0.5rem;
-    }
+#dashboard-bank .small-box p{
+    margin-bottom: 0;
+}
 
-    .container-fluid{
-        padding: 0 !important;
-    }
+.small-box{
+    border-radius: 0.8rem !important;
+    margin-bottom: 0.5rem !important;
+    box-shadow: 0 0.25rem 0.25rem rgba(0,0,0,0.15) !important;
+}
+.small-box-footer{
+    border-bottom-left-radius: 0.8rem !important;
+    border-bottom-right-radius: 0.8rem !important;
+}
+.card p{
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
+}
 
-    .nav-link{
-        padding-right: 0.5rem !important;
-        padding-left: 0.5rem !important;
-    }
-    #dashboard-thanks{
-        border-radius: 0.5rem !important;
-        margin-bottom: 0.5rem !important;
-    }
-    #dashboard-bank{
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
+.container-fluid{
+    padding: 0 !important;
+}
 
-    #dashboard-bank .col-4{
-        padding-right: 0.2rem !important;
-        padding-left: 0.2rem !important;
-    }
+.nav-link{
+    padding-right: 0.5rem !important;
+    padding-left: 0.5rem !important;
+}
+#dashboard-thanks{
+    border-radius: 0.5rem !important;
+}
+#dashboard-bank{
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
 
-    #dashboard-total{
-        border-right: 0px !important;
-    }
+#dashboard-bank .col-4{
+    padding-right: 0.2rem !important;
+    padding-left: 0.2rem !important;
+}
 
-    #myChart{
-        min-height: 20rem !important;
-    }
+#dashboard-total{
+    border-right: 0px !important;
+}
 
-    .card {
-        border-radius: 0.8rem !important;
-        box-shadow: none !important;
-    }
+#myChart{
+    min-height: 20rem !important;
+}
 
-    .card-body{
-        padding: 0.8rem !important;
-    }
+.card {
+    border-radius: 0.8rem !important;
+    box-shadow: none !important;
+}
+.card-header{
+    font-size: 0.8rem !important;
+}
+.card-header a{
+    font-size: 0.68rem !important;
+}
+.card-header .form-group{
+    margin-bottom: 0 !important;
+}
 
-    .card-footer{
-        border-bottom-left-radius: 0.8rem !important;
-        border-bottom-right-radius: 0.8rem !important;
-    }
+.card-body{
+    padding: 0.8rem !important;
+}
 
-    h5{
-        font-size: 0.9rem !important;
-    }
+.card-footer{
+    border-bottom-left-radius: 0.8rem !important;
+    border-bottom-right-radius: 0.8rem !important;
+}
 
-    h3{
-        font-size: 1rem !important;
-    }
+h5{
+    font-size: 0.8rem !important;
+}
 
-    .form-control{
-        font-size: 0.65rem !important;
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-        height: 1.5rem!important;
-        padding-left: 0.5rem !important;
-    }
+h3{
+    font-size: 1rem !important;
+}
 
-    .btn{
-        font-size: 0.65rem !important;
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
-    }
-    .description-block .description-text{
-        font-size: 0.65rem !important;
-    }
+.form-control{
+    font-size: 0.65rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+    height: auto !important;
+    padding-left: 0.5rem !important;
+}
 
-    .bantuan .card-header{
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
+.btn{
+    font-size: 0.65rem !important;
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+.description-block .description-text{
+    font-size: 0.65rem !important;
+}
 
-    .bantuan .card-body{
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-    }
-    #bantuan-admin{
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
-    #bantuan-admin .col-6{
-        padding-right: 0.2rem !important;
-        padding-left: 0.2rem !important;
-    }
+.bantuan .card-header{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
 
-    .feedback .card-header{
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
+.bantuan .card-body{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+#bantuan-admin{
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+#bantuan-admin .col-6{
+    padding-right: 0.2rem !important;
+    padding-left: 0.2rem !important;
+}
 
-    .feedback .card-body{
-        padding-top: 0rem !important;
-        padding-bottom: 0rem !important;
-    }
+.feedback .card-header{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
 
-    .info-box{
-        border-radius: 0.5rem !important;
-    }
+.feedback .card-body{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
 
-    textarea.form-control{
-        min-height: 5rem;
-    }
+.info-box{
+    border-radius: 0.5rem !important;
+}
+
+textarea.form-control{
+    min-height: 5rem;
 }
 
 @media (min-width: 768px) {
     body{
+        font-size: 0.9rem !important;
+    }
+    .container-fluid{
+        padding-right: 7.5px !important;
+        padding-left: 7.5px !important;
+    }
+    .btn{
+        font-size: 0.9rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    .form-control{
+        font-size: 0.9rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+        height: auto !important;
+        padding-left: 0.5rem !important;
+    }
+    .nav, .navbar{
+        font-size: 1rem !important;
+    }
+    .navbar .nav-link{
+        height: 2.5rem !important;
+        padding: .5rem 1rem;
+    }
+    #dashboard-bank .small-box p{
+        margin-bottom: 2rem;
+    }
+    #dashboard-bank .col-4{
+        padding-right: 0.4rem !important;
+        padding-left: 0.4rem !important;
+    }
+    .small-box{
+        margin-bottom: 0.95rem !important;
+    }
+    .card-header{
+        font-size: 1rem !important;
+    }
+    .card-header a{
         font-size: 0.9rem !important;
     }
 }

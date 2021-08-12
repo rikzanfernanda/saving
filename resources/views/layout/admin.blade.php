@@ -15,11 +15,11 @@
         <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
         <title>saving</title>
         <!--style-->
-        <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}"/>
         <!--<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>-->
         <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}"/>
         @if(isset($css))
         @foreach ($css as $style)
         <link rel="stylesheet" href="{{asset('assets/css'). $style}}"/>
@@ -102,7 +102,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none d-md-block">
                     <span class="nav-link text-white">Selamat datang, <b>{{ explode(' ', auth()->user()->nama, 2)[0] }}</b></span>
                 </li>
             </ul>

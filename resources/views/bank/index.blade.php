@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="dt_bank" class="table table-bordered table-hover" style="width:100%">
+            <table id="dt_bank" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Nama Bank</th>
@@ -93,7 +93,7 @@
             </form>
         </div>
         <div class="card-body">
-            <table id="dt_bln_uang_anggaran" class="table table-bordered table-hover" style="width:100%">
+            <table id="dt_bln_uang_anggaran" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Bank</th>

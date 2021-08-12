@@ -140,7 +140,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none d-md-block">
                     <span class="nav-link text-white">Selamat datang, <b>{{ explode(' ', auth()->user()->nama, 2)[0] }}</b></span>
                 </li>
             </ul>

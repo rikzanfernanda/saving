@@ -53,4 +53,20 @@ $(document).ready(function () {
 
     });
 
+    $('#dt_user').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
+    
+    $('#dt_feedback').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
+
 });

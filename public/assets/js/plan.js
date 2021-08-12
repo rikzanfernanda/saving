@@ -1,6 +1,14 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
     const csrf_token = $("meta[name='csrf_token']").attr("content");
+    
+    $('#dt_bln_anggaran').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
 
     $('input[name="simpan"]').each(function () {
         $('input[name="simpan"]').click(function (e) {
@@ -212,6 +220,6 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).closest('#inputFormRow').remove();
     });
-})
-        ;
+    
+});
 
