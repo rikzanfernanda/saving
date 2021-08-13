@@ -10,8 +10,8 @@
         Kami sebagai pengembang aplikasi juga berterima kasih kepada Anda yang sudah menggunakan aplikasi saving ini.
     </p>
     
-    <div class="text-right mb-4">
-        <a href="" class="" data-toggle="modal" data-target="#modalCreateFeedback">Kirim Feedback</a>
+    <div class="text-right mb-2">
+        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateFeedback">Kirim Feedback</a>
     </div>
     @foreach($feedbacks as $feedback)
     <div class="card feedback">
@@ -52,7 +52,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Kirim</button>
+                        <button type="submit" class="btn btn-info">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -79,7 +79,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </form>
             </div>

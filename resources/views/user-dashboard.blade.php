@@ -46,8 +46,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-right">
-                        <a href="" class="btn btn-info mr-md-2" data-toggle="modal" data-target="#modalCreatePemasukan">+ Pemasukan</a>
-                        <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran">+ Pengeluaran</a>
+                        <a href="" class="btn btn-info mr-md-2" data-toggle="modal" data-target="#modalCreatePemasukan"><i class="fas fa-plus"></i> Pemasukan</a>
+                        <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran"><i class="fas fa-plus"></i> Pengeluaran</a>
                     </div>
                 </div>
             </div>
@@ -308,7 +308,7 @@
                         </select>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                        <button type="submit" class="btn btn-info">Buat</button>
                     </div>
                 </form>
             </div>
@@ -353,7 +353,7 @@
                     <div id="newRow"></div>
                     <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                        <button type="submit" class="btn btn-info">Buat</button>
                     </div>
                 </form>
             </div>

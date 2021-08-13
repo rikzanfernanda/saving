@@ -153,7 +153,7 @@
                         </select>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                        <button type="submit" class="btn btn-info">Buat</button>
                     </div>
                 </form>
             </div>
@@ -199,7 +199,7 @@
                     <div id="newRow"></div>
                     <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat</button>
+                        <button type="submit" class="btn btn-info">Buat</button>
                     </div>
                 </form>
             </div>
@@ -232,7 +232,7 @@
                         <input type="number" class="form-control" name="saldo" required="required">
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat Bank</button>
+                        <button type="submit" class="btn btn-info">Buat Bank</button>
                     </div>
                 </form>
             </div>
@@ -263,7 +263,7 @@
                         <input type="number" class="form-control" name="saldo" required="required">
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </form>
             </div>

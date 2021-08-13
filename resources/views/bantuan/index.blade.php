@@ -2,20 +2,17 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-3">
-        <div class="col-sm-6">
-            <h5 class="mb-3">Bantuan dan Tanggapan</h5>
-        </div>
-        <div class="col-sm-6 text-md-right">
-            <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
-        </div>
-    </div>
+    <h5 class="mb-3">Bantuan dan Tanggapan</h5>
+    
     <div class="info-box mb-3 bg-success shadow">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
             <p>Ajukan pertanyaan yang betul-betul Anda tidak tahu. Baca petunjuk terlebih dahulu sebelum mengajukan pertanyaan</p>
         </div>
+    </div>
+    <div class="text-right mb-2">
+        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
     </div>
 
     @foreach ($bantuans as $bt)
@@ -36,7 +33,7 @@
                 </div>
 
                 <div class="card-body">
-                    <ul class="products-list product-list-in-card text-right">
+                    <ul class="products-list product-list-in-card">
                         @foreach ($bt->tanggapan as $tg)
                         <li class="item">{{ $tg->tanggapan }}</li>
                         @endforeach
@@ -82,7 +79,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Kirim</button>
+                        <button type="submit" class="btn btn-info">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -109,7 +106,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </form>
             </div>

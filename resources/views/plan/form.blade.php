@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Buat atau Edit Plan</h5>
+    <h5 class="mb-3">Buat Plan Baru</h5>
 
     <div class="card">
         <div class="card-body">
@@ -88,8 +88,8 @@
                 <div id="newRow"></div>
                 <a href="" class="" id="addRow">Tambah</a>
                 <div class="text-right">
-                    <a href="{{route('plan.index')}}" class="btn btn-link">Cancel</a>
-                    <button type="submit" class="btn btn-link">Buat</button>
+                    <a href="{{route('plan.index')}}" class="btn btn-outline-info">Cancel</a>
+                    <button type="submit" class="btn btn-info ml-md-2">Buat</button>
                 </div>
             </form>
         </div>

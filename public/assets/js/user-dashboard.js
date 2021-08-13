@@ -16,7 +16,7 @@ $(document).ready(function () {
         "scrollX": true,
         "scrollCollapse": true,
     });
-    
+
     $('#dt_history').DataTable({
         "processing": true,
         "paging": false,
@@ -25,7 +25,7 @@ $(document).ready(function () {
         "scrollCollapse": true,
         "order": [[1, "desc"]]
     });
-    
+
     $('#dt_plan').DataTable({
         "processing": true,
         "paging": false,
@@ -72,7 +72,8 @@ $(document).ready(function () {
 //                    data: [5, 3, 10, 1, 10, 25, 15, 25, 45, 30, 30, 10],
                     data: chart.pengeluaran
                 }
-            ]
+            ],
+            
         };
         const config = {
             data: data,
@@ -119,7 +120,7 @@ $(document).ready(function () {
         </div>
         `;
         $('#newRow').append(html);
-        
+
         let row = $('#newRow').children().last();
         $.ajax({
             url: base_url + '/bank/option',

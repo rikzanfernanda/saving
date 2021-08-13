@@ -153,7 +153,7 @@
                     <div id="newRow"></div>
                     <a href="" class="" id="addRow">Tambah</a>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Buat Anggaran</button>
+                        <button type="submit" class="btn btn-info">Buat Anggaran</button>
                     </div>
                 </form>
             </div>
@@ -180,7 +180,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </form>
             </div>
