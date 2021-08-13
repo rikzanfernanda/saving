@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <h5 class="mb-3">Bank dan Saldo Anda</h5>
     @if ($jumlah == 0)
-    <div class="info-box mb-2 bg-danger">
+    <div class="info-box mb-3 bg-danger shadow">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
         <div class="info-box-content">
@@ -12,27 +12,33 @@
         </div>
     </div>
     @else
-    <div class="info-box mb-2 bg-success">
-        <span class="info-box-icon d-md-flex"><i class="fas fa-money-bill-wave"></i></span>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="info-box mb-2 bg-success shadow">
+                <span class="info-box-icon d-md-flex"><i class="fas fa-money-bill-wave"></i></span>
 
-        <div class="info-box-content">
-            <p>Anda memiliki {{$jumlah}} bank dan total saldo Anda <b>{{ moneyFormat($total) }}</b></p>
+                <div class="info-box-content">
+                    <p>Anda memiliki {{$jumlah}} bank dan total saldo Anda <b>{{ moneyFormat($total) }}</b></p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="info-box mb-2 bg-info">
-        <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
+        <div class="col-md-6">
+            <div class="info-box bg-info shadow">
+                <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
 
-        <div class="info-box-content">
-            <p>Kendalikan pengeluraan Anda. Berhemat adalah cara terbaik untuk meraih tujuan keuangan</p>
+                <div class="info-box-content">
+                    <p>Kendalikan pengeluraan Anda. Berhemat adalah cara terbaik untuk meraih tujuan keuangan</p>
+                </div>
+            </div>
         </div>
     </div>
     @endif
 
     <div class="card">
         <div class="card-header">
-            <div class="text-md-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
-                <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+            <div class="text-right">
+                <a href="" class="btn btn-info mr-md-2" data-toggle="modal" data-target="#modalCreatePemasukan"><i class="fas fa-plus"></i> Pemasukan</a>
+                <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran"><i class="fas fa-plus"></i> Pengeluaran</a>
             </div>
         </div>
         <div class="card-body">
@@ -43,7 +49,7 @@
     <div class="card">
         <div class="card-header">
             <div class="text-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Tambah Bank</a>
+                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Bank</a>
             </div>
         </div>
         <div class="card-body">

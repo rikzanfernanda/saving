@@ -2,14 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-sm-6">
-            <h5 class="m-0">Feedback</h5>
-        </div>
-        <div class="col-sm-6">
-            
-        </div>
-    </div>
+    <h5 class="mb-3">Feedback</h5>
     <p>
         Feedback Anda sangat berarti untuk pengembangan aplikasi saving, kritik dan masukan Anda melalui feedback ini akan kami terima dengan baik demi kemajuan aplikasi saving.
         Kami sebagai pengembang aplikasi saving meminta Anda memberikan feedback Anda, apa saja fitur yang harus ditambahkan ataupun fitur mana yang harus diperbaiki.

@@ -3,8 +3,8 @@
 
 <div class="container-fluid">
     <h5 class="mb-3">History Anda</h5>
-    <div class="info-box mb-2 bg-info">
-        <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
+    <div class="info-box mb-3 bg-info shadow">
+        <span class="info-box-icon d-none d-md-flex"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
             <p>

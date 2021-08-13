@@ -4,18 +4,18 @@
 <div class="container-fluid">
     <div class="row mb-2">
         <div class="col-md-6">
-            
-            <div class="card-header border-bottom-0">
-                <h5 class="card-title">Akun</h5>
 
-                <div class="card-tools mr-0">
-                    <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modalEditAkun" data-edit="{{ $akun->id }}">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <a href="{{ route('user.destroy', $akun->id)}}" class="btn btn-tool" onclick="return confirm('Akun Anda akan dihapus dan Anda akan keluar dari aplikasi')"><i class="fas fa-trash"></i></a>
-                </div>
-            </div>
             <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Akun</h5>
+
+                    <div class="card-tools mr-0">
+                        <button type="button" class="btn btn-tool" data-toggle="modal" data-target="#modalEditAkun" data-edit="{{ $akun->id }}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <a href="{{ route('user.destroy', $akun->id)}}" class="btn btn-tool" onclick="return confirm('Akun Anda akan dihapus dan Anda akan keluar dari aplikasi')"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="">

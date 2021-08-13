@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="card bg-success mb-3 mb-md-4" id="dashboard-thanks">
+    <div class="card bg-success mb-3 mb-md-4 shadow" id="dashboard-thanks">
         <div class="text-right text-white">
             <div class="card-tools">
                 <button type="button" class="btn py-0" data-card-widget="remove">
@@ -41,13 +41,13 @@
     <div class="card">
         <div class="card-header">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-2 mb-md-0">
                     Pemasukan dan Pengeluaran Anda Selama Tahun {{ date('Y') }}
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-right">
-                        <a href="" class="" data-toggle="modal" data-target="#modalCreatePemasukan">Buat Pemasukan</a>
-                        <a href="" class="ml-3" data-toggle="modal" data-target="#modalCreatePengeluaran">Buat Pengeluaran</a>
+                    <div class="text-right">
+                        <a href="" class="btn btn-info mr-md-2" data-toggle="modal" data-target="#modalCreatePemasukan">+ Pemasukan</a>
+                        <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran">+ Pengeluaran</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
         <div class="card-footer">
             <form method="GET" action="{{ route('history.laporan') }}" class="">
                 <div class="d-flex flex-row-reverse bd-highlight">
-                    <div class="px-md-2 bd-highlight">
+                    <div class="pl-md-2">
                         <!--<a href="{{route('history.laporan', ['1', '2021'])}}" id="lapor" class="btn btn-info">Buat Laporan</a>-->
                         <button type="submit" class="btn btn-info text-decoration-none">Buat</button>
                     </div>
@@ -126,7 +126,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6 h-100">
-                    <div class="info-box mb-2 bg-warning h-100">
+                    <div class="info-box mb-3 bg-warning h-100 shadow">
                         <span class="info-box-icon d-md-flex"><i class="fas fa-money-check-alt"></i></span>
 
                         <div class="info-box-content">
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 h-100">
-                    <div class="info-box mb-2 bg-success h-100">
+                    <div class="info-box mb-3 bg-success h-100 shadow">
                         <span class="info-box-icon d-md-flex"><i class="fas fa-money-check"></i></span>
 
                         <div class="info-box-content">

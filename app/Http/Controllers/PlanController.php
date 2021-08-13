@@ -96,8 +96,12 @@ class PlanController extends Controller {
         $data['anggarans'] = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
         $data['tahun'] = range(date('Y'), 2020);
         $data['bulan'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $data['css'] = [
+            '/datatables.min.css'
+        ];
         $data['js'] = [
             '/plan.js',
+            '/datatables.min.js'
         ];
         return view('plan.form', $data);
     }

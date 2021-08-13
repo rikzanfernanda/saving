@@ -4,13 +4,13 @@
 <div class="container-fluid">
     <div class="row mb-3">
         <div class="col-sm-6">
-            <h5 class="m-0">Bantuan dan Tanggapan</h5>
+            <h5 class="mb-3">Bantuan dan Tanggapan</h5>
         </div>
         <div class="col-sm-6 text-md-right">
-            <a href="" class="" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
+            <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
         </div>
     </div>
-    <div class="info-box mb-2 bg-success">
+    <div class="info-box mb-3 bg-success shadow">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">

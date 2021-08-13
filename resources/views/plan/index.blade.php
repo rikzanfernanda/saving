@@ -4,8 +4,8 @@
 <div class="container-fluid">
     <h5 class="mb-3">Rencana Anggaran Anda dalam Satu Bulan</h5>
 
-    <div class="info-box mb-2 bg-success">
-        <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
+    <div class="info-box mb-3 bg-success shadow">
+        <span class="info-box-icon d-none d-md-flex"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
             <p>
@@ -18,7 +18,7 @@
     <div class="card">
         <div class="card-header row">
             <div class="col-4">
-                <a href="{{route('plan.create')}}" class="btn btn-link">Buat Plan</a>
+                <a href="{{route('plan.create')}}" class=""><i class="fas fa-plus"></i> Plan</a>
             </div>
             <div class="col-8">
                 <form method="GET" action="{{ route('plan.index') }}">

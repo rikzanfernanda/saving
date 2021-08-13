@@ -2,7 +2,8 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="info-box mb-2 bg-success">
+    <h5 class="mb-3">Laporan</h5>
+    <div class="info-box mb-3 bg-success shadow">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">

@@ -3,7 +3,7 @@
 
 <div class="container-fluid">
     <h5 class="mb-3">Anggaran Anda</h5>
-    <div class="info-box mb-2 bg-info">
+    <div class="info-box mb-3 bg-info shadow">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
@@ -16,7 +16,7 @@
     </div>
 
     @if ($jumlah == 0)
-    <div class="info-box mb-2 bg-danger">
+    <div class="info-box mb-3 bg-danger shadow">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
         <div class="info-box-content">
@@ -28,7 +28,7 @@
     <div class="card">
         <div class="card-header">
             <div class="text-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Tambah Anggaran</a>
+                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateAnggaran"><i class="fas fa-plus"></i> Anggaran</a>
             </div>
         </div>
         <div class="card-body">
