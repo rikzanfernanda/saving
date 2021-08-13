@@ -10,8 +10,8 @@
 
     <div class="card">
         <div class="card-header">
-            <div class="col-sm-6 text-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreateUser"><i class="fas fa-plus"></i> Tambah User</a>
+            <div class="text-right">
+                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateUser"><i class="fas fa-plus"></i> Tambah User</a>
             </div>
         </div>
 
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Submit</button>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </div>
                 </form>
             </div>
@@ -126,7 +126,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Submit</button>
+                        <button type="submit" class="btn btn-info">Submit</button>
                     </div>
                 </form>
             </div>

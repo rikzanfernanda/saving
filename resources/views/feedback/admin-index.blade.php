@@ -10,8 +10,8 @@
 
     <div class="card">
         <div class="card-header">
-            <div class="col-sm-6 text-right">
-                <a href="" class="" data-toggle="modal" data-target="#modalCreateFeedback"><i class="fas fa-plus"></i> Tambah Feedback</a>
+            <div class="text-right">
+                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateFeedback"><i class="fas fa-plus"></i> Tambah Feedback</a>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Kirim</button>
+                        <button type="submit" class="btn btn-info">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -92,7 +92,7 @@
                         <small class="form-text text-muted"></small>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-link text-decoration-none">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </form>
             </div>
