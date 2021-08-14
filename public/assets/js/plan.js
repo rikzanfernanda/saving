@@ -167,7 +167,7 @@ $(document).ready(function () {
         });
 
         $('input[name="jumlah[]"]').keyup(function () {
-            let row = $(this).parent().parent().parent().parent().parent();
+            let row = $(this).parent().parent().parent().parent();
             let jumlah = $(this).val();
             let frekuensi = row.find($('input[name="frekuensi[]"]')).val();
             let satuan = row.find($('select[name="satuan[]"]')).val();
