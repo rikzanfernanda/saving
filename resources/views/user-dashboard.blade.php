@@ -157,7 +157,7 @@
                     <table class="table table-hover" id="total_anggaran" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Anggaran</th>
+                                <th>Bank</th>
                                 <th class="text-right">Jumlah</th>
                             </tr>
                         </thead>

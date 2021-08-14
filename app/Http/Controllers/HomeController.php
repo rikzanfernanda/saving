@@ -104,8 +104,10 @@ class HomeController extends Controller {
                         ->limit(5)
                         ->get();
                 $data['bln_uang_masuk'] = DB::table('banks')
-                        ->where('banks.id_user', Auth::user()->id)
+                        ->where('banks.id_user', auth()->user()->id)
+                        ->where('histories.kategori', 'masuk')
                         ->whereMonth('histories.created_at', date('m'))
+                        ->whereYear('histories.created_at', date("Y"))
                         ->leftJoin('histories', 'banks.id', '=', 'histories.id_bank')
                         ->selectRaw('banks.nama, SUM(histories.jumlah) as jumlah')
                         ->groupBy('banks.id')

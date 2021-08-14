@@ -26,7 +26,7 @@
                 <div class="card h-100">
                     <div class="card-header">
                         <h5 class="card-title">{{ \Illuminate\Support\Str::limit($bt->pertanyaan, 100, $end='...') }}</h5>
-
+                        
                         <div class="card-tools mr-0">
                             <button type="button" class="btn btn-tool" data-hapus="{{ $bt->id }}">
                                 <i class="fas fa-trash"></i>
@@ -35,6 +35,7 @@
                     </div>
 
                     <div class="card-body">
+                        <small class="d-block text-right mb-2">{{ $bt->nama }}</small>
                         @php
                         $tg = count($bt->tanggapan);
                         @endphp
