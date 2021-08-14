@@ -37,8 +37,8 @@
     <div class="card">
         <div class="card-header">
             <div class="text-right">
-                <a href="" class="btn btn-info mr-md-2" data-toggle="modal" data-target="#modalCreatePemasukan"><i class="fas fa-plus"></i> Pemasukan</a>
                 <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran"><i class="fas fa-plus"></i> Pengeluaran</a>
+                <a href="" class="btn btn-info ml-md-2" data-toggle="modal" data-target="#modalCreatePemasukan"><i class="fas fa-plus"></i> Pemasukan</a>
             </div>
         </div>
         <div class="card-body">
@@ -99,7 +99,7 @@
             </form>
         </div>
         <div class="card-body">
-            <table id="dt_bln_uang_anggaran" class="table table-hover" style="width:100%">
+            <table id="dt_bln_masuk" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Bank</th>

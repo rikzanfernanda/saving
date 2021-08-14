@@ -175,6 +175,14 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).closest('#inputFormRow').remove();
     });
+    
+    $('#dt_bln_masuk').DataTable({
+        "processing": true,
+        "paging": false,
+        "dom": 'lrtip',
+        "scrollX": true,
+        "scrollCollapse": true,
+    });
 
 });
 

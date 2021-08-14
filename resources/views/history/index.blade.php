@@ -17,7 +17,7 @@
 
     <div class="card">
         <div class="card-body">
-            <table id="dt_history" class="table table-bordered table-hover" style="width:100%">
+            <table id="dt_history" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
                         <th>Kegiatan</th>
