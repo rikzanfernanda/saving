@@ -53,6 +53,8 @@ Route::name('bank.')->middleware(['auth', 'user'])->group(function () {
     Route::post('/bank/keluar', [BankController::class, 'keluar'])->name('keluar');
     Route::get('/bank/chart', [BankController::class, 'chart'])->name('dt');
     Route::get('bank/option', [BankController::class, 'option'])->name('option');
+    Route::get('pemasukan/create', [BankController::class, 'createPemasukan'])->name('create.pemasukan');
+    Route::get('pengeluaran/create', [BankController::class, 'createPengeluaran'])->name('create.pengeluaran');
 });
 
 Route::name('anggaran.')->middleware(['auth', 'user'])->group(function () {

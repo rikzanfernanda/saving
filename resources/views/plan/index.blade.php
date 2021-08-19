@@ -125,14 +125,13 @@
                             <input type="hidden" name="id" value="{{ $value->id }}">
                             <input type="hidden" name="bulan" value="{{ $bulan_ini }}">
                             <input type="hidden" name="tahun" value="{{ $tahun_ini }}">
-                            <input type="submit" value="Simpan" name="simpan" class="btn btn-primary">
+                            <input type="submit" value="Simpan" name="simpan" class="btn btn-info">
                         </td>
                         <td>
                             <a href="" class="btn btn-danger" data-cancel="{{ $value->id }}">Cancel</a>
                         </td>
-                        <td>
-
-                        </td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     @endforeach
                 </tbody>

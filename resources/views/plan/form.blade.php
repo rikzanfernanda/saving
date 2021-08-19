@@ -34,10 +34,8 @@
                     <div class="col-md-3 col-6">
                         <div class="form-group">
                             <label class="">Anggaran</label>
-                            <select name="id_anggaran[]" class="form-control">
-                                @foreach($anggarans as $opt)
-                                <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
-                                @endforeach
+                            <select name="id_anggaran[]" class="form-control" required="required">
+                                <option value="">---</option>
                             </select>
                         </div>
                     </div>

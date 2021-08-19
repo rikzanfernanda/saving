@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
     const csrf_token = $("meta[name='csrf_token']").attr("content");
-    
+
     $('#dt_bln_anggaran').DataTable({
         "processing": true,
         "paging": false,
@@ -9,9 +9,89 @@ $(document).ready(function () {
         "scrollX": true,
         "scrollCollapse": true,
     });
+    
+    // select2 anggaran in index
+    $('select[name="id_anggaran"]').select2({
+        ajax: {
+            url: base_url + '/anggaran/option',
+            type: "get",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: $.map(response, function (item) {
+                        return {
+                            text: item.nama,
+                            id: item.id
+                        }
+                    })
+                }
+            }
+        },
+        tags: true,
+        createTag: function (params) {
+            return {
+                id: params.term,
+                text: params.term,
+                newOption: true
+            }
+        },
+        templateResult: function (data) {
+            var $result = $('<span></span>')
+            $result.text(data.text)
+            if (data.newOption)
+                $result.append('<em> (add new)</em>')
+            return $result
+        }
+    });
+
+    // select2 anggaran row 1
+    $('select[name="id_anggaran[]"]').select2({
+        ajax: {
+            url: base_url + '/anggaran/option',
+            type: "get",
+            dataType: 'json',
+            delay: 250,
+            data: function (params) {
+                return {
+                    q: params.term
+                };
+            },
+            processResults: function (response) {
+                return {
+                    results: $.map(response, function (item) {
+                        return {
+                            text: item.nama,
+                            id: item.id
+                        }
+                    })
+                }
+            }
+        },
+        tags: true,
+        createTag: function (params) {
+            return {
+                id: params.term,
+                text: params.term,
+                newOption: true
+            }
+        },
+        templateResult: function (data) {
+            var $result = $('<span></span>')
+            $result.text(data.text)
+            if (data.newOption)
+                $result.append('<em> (add new)</em>')
+            return $result
+        }
+    });
 
     $('input[name="simpan"]').each(function () {
-        $('input[name="simpan"]').click(function (e) {
+        $(this).click(function (e) {
             e.preventDefault();
             let row = $(this).parent().parent();
             let id = row.find($('input[name="id"]')).val();
@@ -126,7 +206,7 @@ $(document).ready(function () {
         html += '<div class="col-md-3 col-6">';
         html += '<div class="form-group">';
         html += '<label class="">Anggaran</label>';
-        html += '<select name="id_anggaran[]" class="form-control">';
+        html += '<select name="id_anggaran[]" class="form-control" required="required"><option value="">---</option>';
         html += `</select>`;
         html += `</div>`;
         html += `</div>`;
@@ -154,16 +234,44 @@ $(document).ready(function () {
         $('#newRow').append(html);
 
         let row = $('#newRow').children().last();
-        let select = row.find($('select[name="id_anggaran[]"]'));
-        $.ajax({
-            url: base_url + '/anggaran/option',
-            type: "GET"
-        }).done(function (respon) {
-            let data = JSON.parse(respon);
-            select.html('');
-            $.each(data, function () {
-                select.append('<option value="' + this.id + '">' + this.nama + '</option>');
-            })
+        // select2 anggaran row tambahan
+        $('select[name="id_anggaran[]"]').select2({
+            ajax: {
+                url: base_url + '/anggaran/option',
+                type: "get",
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        q: params.term
+                    };
+                },
+                processResults: function (response) {
+                    return {
+                        results: $.map(response, function (item) {
+                            return {
+                                text: item.nama,
+                                id: item.id
+                            }
+                        })
+                    }
+                }
+            },
+            tags: true,
+            createTag: function (params) {
+                return {
+                    id: params.term,
+                    text: params.term,
+                    newOption: true
+                }
+            },
+            templateResult: function (data) {
+                var $result = $('<span></span>')
+                $result.text(data.text)
+                if (data.newOption)
+                    $result.append('<em> (add new)</em>')
+                return $result
+            }
         });
 
         $('input[name="jumlah[]"]').keyup(function () {
@@ -220,6 +328,6 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).closest('#inputFormRow').remove();
     });
-    
+
 });
 

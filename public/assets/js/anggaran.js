@@ -110,7 +110,7 @@ $(document).ready(function () {
         $(this).closest('#inputFormRow').remove();
     });
 
-    // semua
+    // semua anggaran
     $.ajax({
         url: base_url + '/anggaran/laporan',
         type: "GET"
@@ -118,8 +118,6 @@ $(document).ready(function () {
         let dt = JSON.parse(data)
         $('#dt_uang_anggaran').DataTable({
             "processing": true,
-            "scrollY": 400,
-            "scrollX": true,
             "paging": false,
             "scrollCollapse": true,
             "data": dt,
@@ -136,8 +134,6 @@ $(document).ready(function () {
 
     $('#dt_bln_uang_anggaran').DataTable({
         "processing": true,
-        "scrollY": 400,
-        "scrollX": true,
         "paging": false,
         "scrollCollapse": true,
         "dom": 'lrtip'

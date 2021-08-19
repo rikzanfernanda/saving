@@ -46,8 +46,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-right">
-                        <a href="" class="btn btn-outline-info" data-toggle="modal" data-target="#modalCreatePengeluaran"><i class="fas fa-plus"></i> Pengeluaran</a>
-                        <a href="" class="btn btn-info ml-md-2" data-toggle="modal" data-target="#modalCreatePemasukan"><i class="fas fa-plus"></i> Pemasukan</a>
+                        <a href="{{ route('bank.create.pengeluaran') }}" class="btn btn-outline-info mr-md-2"><i class="fas fa-plus"></i> Pengeluaran</a>
+                        <a href="{{ route('bank.create.pemasukan') }}" class="btn btn-info"><i class="fas fa-plus"></i> Pemasukan</a>
                     </div>
                 </div>
             </div>
@@ -275,87 +275,6 @@
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-<!-- create pemasukan -->
-<div class="modal fade" id="modalCreatePemasukan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Buat Pemasukan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('bank.masuk') }}" id="formCreatePemasukan">
-                    @csrf
-                    <div class="form-group">
-                        <label for="jumlah">Jumlah Uang</label>
-                        <input type="number" class="form-control" id="jumlah" name="jumlah" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="bank">Bank</label>
-                        <select id="bank" name="bank" class="form-control">
-                            @foreach($banks as $opt)
-                            <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-info">Buat</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- create pengeluaran -->
-<div class="modal fade" id="modalCreatePengeluaran" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Buat Pengeluaran</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('bank.keluar') }}" id="formCreatePengeluaran">
-                    @csrf
-                    <div class="form-group">
-                        <label for="jumlah">Jumlah Uang</label>
-                        <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
-                    </div>
-                    <div class="form-group">
-                        <label for="bank">Bank</label>
-                        <select id="bank" name="bank[]" class="form-control">
-                            @foreach($banks as $opt)
-                            <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="anggaran">Anggaran</label>
-                        <select id="anggaran" name="anggaran[]" class="form-control">
-                            @foreach($anggarans as $opt)
-                            <option value="{{$opt->id}}" class="form-control text-truncate">{{ \Illuminate\Support\Str::limit($opt->nama, 30, $end='...')}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div id="newRow"></div>
-                    <a href="" class="" id="addRow">Tambah</a>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-info">Buat</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

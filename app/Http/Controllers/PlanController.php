@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plan;
+use App\Models\Anggaran;
 
 class PlanController extends Controller {
 
@@ -77,11 +78,13 @@ class PlanController extends Controller {
                 ->sum('jumlah');
 
         $data['css'] = [
-            '/datatables.min.css'
+            '/datatables.min.css',
+            '/select2.min.css'
         ];
         $data['js'] = [
+            '/datatables.min.js',
+            '/select2.min.js',
             '/plan.js',
-            '/datatables.min.js'
         ];
 
         return view('plan.index', $data);
@@ -97,11 +100,13 @@ class PlanController extends Controller {
         $data['tahun'] = range(date('Y'), 2020);
         $data['bulan'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         $data['css'] = [
-            '/datatables.min.css'
+            '/datatables.min.css',
+            '/select2.min.css'
         ];
         $data['js'] = [
+            '/datatables.min.js',
+            '/select2.min.js',
             '/plan.js',
-            '/datatables.min.js'
         ];
         return view('plan.form', $data);
     }
@@ -115,11 +120,18 @@ class PlanController extends Controller {
     public function store(Request $request) {
         $data = [];
         foreach ($request->id_anggaran as $key => $value) {
+            $id_anggaran = $request->id_anggaran[$key];
+            if (Anggaran::find($request->id_anggaran[$key]) == null) {
+                $id_anggaran = Anggaran::create([
+                            'id_user' => auth()->user()->id,
+                            'nama' => $id_anggaran
+                        ])->id;
+            }
             $data = [
                 'id_user' => auth()->user()->id,
                 'bulan' => $request->bulan,
                 'tahun' => $request->tahun,
-                'id_anggaran' => $request->id_anggaran[$key],
+                'id_anggaran' => $id_anggaran,
                 'jumlah' => $request->jumlah[$key],
                 'frekuensi' => $request->frekuensi[$key],
                 'satuan' => $request->satuan[$key],
@@ -168,8 +180,17 @@ class PlanController extends Controller {
         } else {
             $total = $request->jumlah * $request->frekuensi;
         }
+        
+        $id_anggaran = $request->id_anggaran;
+        if (Anggaran::find($request->id_anggaran) == null) {
+            $id_anggaran = Anggaran::create([
+                        'id_user' => auth()->user()->id,
+                        'nama' => $id_anggaran
+                    ])->id;
+        }
+        
         $data = [
-            'id_anggaran' => $request->id_anggaran,
+            'id_anggaran' => $id_anggaran,
             'jumlah' => $request->jumlah,
             'frekuensi' => $request->frekuensi,
             'satuan' => $request->satuan,

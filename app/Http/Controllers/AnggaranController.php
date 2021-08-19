@@ -147,8 +147,11 @@ class AnggaranController extends Controller {
         return Anggaran::where('id', $id)->delete();
     }
     
-    public function option() {
+    public function option(Request $req) {
         $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
+        if (isset($req->q)){
+            $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%'.$req->q.'%')->get();
+        }
 
         echo json_encode($data);
     }

@@ -128,11 +128,13 @@ class HomeController extends Controller {
                         ->sum('total');
                 $data['histories'] = DB::table('histories')->where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->limit(5)->get();
                 $data['css'] = [
-                    '/datatables.min.css'
+                    '/datatables.min.css',
+                    '/select2.min.css'
                 ];
                 $data['js'] = [
                     '/user-dashboard.js',
-                    '/datatables.min.js'
+                    '/datatables.min.js',
+                    '/select2.min.js'
                 ];
                 return view('user-dashboard', $data);
                 break;

@@ -127,23 +127,36 @@ $(document).ready(function () {
         e.preventDefault();
         var html = '';
         html += `
-        <div class="border-top pt-2" id="inputFormRow">
-            <div class="text-right">
-                <button id="removeRow" class="btn btn-danger ml-2"><i class="fas fa-trash"></i> Remove</button>
-            </div>
-            <div class="form-group">
-                <label for="jumlah">Jumlah Uang</label>
-                <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
-            </div>
-            <div class="form-group">
-                <label for="bank">Bank</label>
-                <select id="bank" name="bank[]" class="form-control">
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="anggaran">Anggaran</label>
-                <select id="anggaran" name="anggaran[]" class="form-control">
-                </select>
+        <div class="mb-2" id="inputFormRow">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="jumlah">Jumlah Uang</label>
+                        <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="bank">Bank</label>
+                        <select id="bank" name="bank[]" class="form-control">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="anggaran">Anggaran</label>
+                        <div class="d-flex">
+                            <div class="input-group">
+                                <select id="anggaran" name="anggaran[]" class="form-control">
+                                </select>
+                            </div>
+                            <div class="">
+                                <button id="removeRow" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
         `;
@@ -175,7 +188,65 @@ $(document).ready(function () {
         e.preventDefault();
         $(this).closest('#inputFormRow').remove();
     });
-    
+
+    // create pemasukan
+    $("#addRowPemasukan").click(function (e) {
+        e.preventDefault();
+        var html = '';
+        html += `
+        <div class="mb-2" id="inputFormRowPemasukan">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="jumlah">Jumlah Uang</label>
+                        <input type="number" class="form-control" id="jumlah" name="jumlah[]" required="required">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="bank">Bank</label>
+                        <div class="input-group">
+                            <select id="bank" name="bank[]" class="form-control">
+                                @foreach($banks as $opt)
+                                <option value="{{$opt->id}}" class="form-control">{{$opt->nama}}</option>
+                                @endforeach
+                            </select>
+                            <button id="removeRowPemasukan" class="btn btn-danger ml-2"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+        $('#newRowPemasukan').append(html);
+
+        let row = $('#newRowPemasukan').children().last();
+        $.ajax({
+            url: base_url + '/bank/option',
+            type: "GET"
+        }).done(function (respon) {
+            let data = JSON.parse(respon);
+            row.find($('select[name="bank[]"]')).html('');
+            $.each(data, function () {
+                row.find($('select[name="bank[]"]')).append('<option value="' + this.id + '">' + this.nama + '</option>');
+            });
+        });
+        $.ajax({
+            url: base_url + '/anggaran/option',
+            type: "GET"
+        }).done(function (respon) {
+            let data = JSON.parse(respon);
+            row.find($('select[name="anggaran[]"]')).html('');
+            $.each(data, function () {
+                row.find($('select[name="anggaran[]"]')).append('<option value="' + this.id + '">' + this.nama + '</option>');
+            });
+        });
+    });
+    $(document).on('click', '#removeRowPemasukan', function (e) {
+        e.preventDefault();
+        $(this).closest('#inputFormRowPemasukan').remove();
+    });
+
     $('#dt_bln_masuk').DataTable({
         "processing": true,
         "paging": false,

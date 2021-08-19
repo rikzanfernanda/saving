@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Bank;
 use App\Models\History;
+use App\Models\Anggaran;
 
 class BankController extends Controller {
 
@@ -40,7 +41,7 @@ class BankController extends Controller {
                 ->whereMonth('created_at', $bulan)
                 ->whereYear('created_at', $tahun)
                 ->sum('jumlah');
-        
+
         $data['banks'] = DB::table('banks')->where('id_user', auth()->user()->id)->get();
         $data['jumlah'] = DB::table('banks')->where('id_user', auth()->user()->id)->count();
         $data['anggarans'] = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
@@ -145,30 +146,58 @@ class BankController extends Controller {
         return Bank::where('id', $id)->delete();
     }
 
+    // create pemasukan
+    public function createPemasukan() {
+        $data['css'] = [
+            '/select2.min.css'
+        ];
+        $data['js'] = [
+            '/select2.min.js',
+            '/create-pemasukan.js'
+        ];
+        return view('bank.create-pemasukan', $data);
+    }
+
+    // create pengeluaran
+    public function createPengeluaran() {
+        $data['css'] = [
+            '/select2.min.css'
+        ];
+        $data['js'] = [
+            '/select2.min.js',
+            '/create-pengeluaran.js'
+        ];
+        return view('bank.create-pengeluaran', $data);
+    }
+
     // pemasukan
     public function masuk(Request $req) {
-        $jumlah = $req->jumlah;
-        $id = $req->bank;
-        if (!isset($id))
-            return redirect()->route('bank.index');
+        $data = [];
+        foreach ($req->jumlah as $key => $value) {
+            $jumlah = $req->jumlah[$key];
+            $id = $req->bank[$key];
+            if (!isset($id))
+                return redirect()->route('bank.index');
 
-        $bank = DB::table('banks')->where('id', $id)->first();
-        DB::table('banks')->where('id', $id)->update([
-            'saldo' => $bank->saldo + $jumlah
-        ]);
+            $bank = DB::table('banks')->where('id', $id)->first();
+            DB::table('banks')->where('id', $id)->update([
+                'saldo' => $bank->saldo + $jumlah
+            ]);
 
-        $data = [
-            'id_user' => auth()->user()->id,
-            'kegiatan' => 'Uang masuk sebesar ' . moneyFormat($jumlah) . ' ke ' . $bank->nama,
-            'kategori' => 'masuk',
-            'jumlah' => $jumlah,
-            'id_bank' => $id
-        ];
+            $data = [
+                'id_user' => auth()->user()->id,
+                'kegiatan' => 'Uang masuk sebesar ' . moneyFormat($jumlah) . ' ke ' . $bank->nama,
+                'kategori' => 'masuk',
+                'jumlah' => $jumlah,
+                'id_bank' => $id
+            ];
 
-        History::create($data);
+            History::create($data);
+        }
+
         if (isset($req->route))
             return redirect()->route('bank.index');
-        return redirect()->route('dashboard');
+        return redirect()->route('bank.create.pemasukan');
     }
 
     // pengeluaran
@@ -180,12 +209,16 @@ class BankController extends Controller {
             $id_anggaran = $req->anggaran[$key];
             if (!isset($id))
                 return redirect()->route('bank.index');
-            if (!isset($id_anggaran))
-                return redirect()->route('anggaran.index');
+            if (Anggaran::find($req->anggaran[$key]) == null){
+                $id_anggaran = Anggaran::create([
+                    'id_user' => auth()->user()->id,
+                    'nama' => $id_anggaran
+                ])->id;
+            }
 
             $anggaran = DB::table('anggarans')->where('id', $id_anggaran)->first();
             $bank = DB::table('banks')->where('id', $id)->first();
-            DB::table('banks')->where('id', $id)->update([
+            Bank::where('id', $id)->update([
                 'saldo' => $bank->saldo - $jumlah
             ]);
             $agr = isset($anggaran) ? " untuk anggaran $anggaran->nama" : '';
@@ -203,11 +236,14 @@ class BankController extends Controller {
 
         if (isset($req->route))
             return redirect()->route('bank.index');
-        return redirect()->route('dashboard');
+        return redirect()->route('bank.create.pengeluaran');
     }
 
-    public function option() {
+    public function option(Request $req) {
         $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
+        if (isset($req->q)){
+            $data = DB::table('banks')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%'.$req->q.'%')->get();
+        }
 
         echo json_encode($data);
     }
