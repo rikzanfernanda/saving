@@ -17,7 +17,7 @@ class CreateBanksTable extends Migration
             $table->id();
             $table->integer('id_user');
             $table->string('nama', 20);
-            $table->integer('saldo');
+            $table->bigInteger('saldo');
             $table->timestamps();
         });
     }

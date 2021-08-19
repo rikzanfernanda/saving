@@ -18,7 +18,7 @@ class CreateHistoriesTable extends Migration
             $table->integer('id_user');
             $table->string('kegiatan', 100);
             $table->string('kategori', 20);
-            $table->integer('jumlah');
+            $table->bigInteger('jumlah');
             $table->integer('id_bank')->nullable();
             $table->integer('id_anggaran')->nullable();
             $table->timestamps();

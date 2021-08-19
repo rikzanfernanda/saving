@@ -19,10 +19,10 @@ class CreatePlansTable extends Migration
             $table->integer('bulan');
             $table->integer('tahun');
             $table->integer('id_anggaran');
-            $table->integer('jumlah');
+            $table->bigInteger('jumlah');
             $table->tinyInteger('frekuensi');
             $table->string('satuan', 50);
-            $table->integer('total');
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }
