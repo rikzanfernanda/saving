@@ -5,11 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Laravel\Socialite\Facades\Socialite;
+use Exception;
+use App\Models\User;
 
 class HomeController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth')->except(['index', 'login']);
+        $this->middleware('auth')->except([
+            'index',
+            'login',
+            'redirectToProvider',
+            'handleProviderCallback',
+        ]);
     }
 
     public function index() {
@@ -158,6 +166,44 @@ class HomeController extends Controller {
 
     public function petunjuk() {
         return view('petunjuk');
+    }
+
+    public function redirectToProvider($driver) {
+        return Socialite::driver($driver)->redirect();
+    }
+
+    public function handleProviderCallback($driver) {
+        try {
+
+            $user = Socialite::driver($driver)->user();
+
+            $finduser = User::where('provider_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+
+                return redirect()->intended('dashboard');
+            } else {
+                if (User::where('email', $user->email)->first()){
+                    return redirect()->route('home')->with('message', 'Email sudah terdaftar');
+                }
+                $newUser = User::create([
+                            'id_role' => 3,
+                            'nama' => $user->name,
+                            'email' => $user->email,
+                            'provider' => $driver,
+                            'provider_id' => $user->id,
+                            'password' => ''
+                ]);
+
+                Auth::login($newUser);
+
+                return redirect()->intended('dashboard');
+            }
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
     }
 
 }
