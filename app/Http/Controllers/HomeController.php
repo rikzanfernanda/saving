@@ -17,12 +17,6 @@ class HomeController extends Controller {
             'login',
             'redirectToProvider',
             'handleProviderCallback',
-            'sendSuccessResponse',
-            'sendFailedResponse',
-            'loginOrCreateAccount',
-            'isProviderAllowed',
-            'redirectToGoogle',
-            'handleGoogleCallback'
         ]);
     }
 
