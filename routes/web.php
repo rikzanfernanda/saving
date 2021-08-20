@@ -30,6 +30,11 @@ Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/akun', [HomeController::class, 'akun'])->name('akun');
 Route::get('/petunjuk', [HomeController::class, 'petunjuk'])->name('petunjuk');
+// login socialite
+Route::get('oauth/{driver}', [HomeController::class, 'redirectToProvider'])->name('social.oauth');
+Route::get('oauth/{driver}/callback', [HomeController::class, 'handleProviderCallback'])->name('social.callback');
+//Route::get('oauth/google', [HomeController::class, 'redirectToGoogle'])->name('login.google');
+//Route::get('oauth/google/callback', [HomeController::class, 'handleGoogleCallback']);
 
 Route::name('user.')->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('index');

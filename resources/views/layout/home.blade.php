@@ -106,6 +106,12 @@
                             </div>
                             <a href="{{ route('reset.index') }}" class="btn btn-link text-decoration-none">Forgot Password</a>
                             <div class="text-right">
+                                <a href="{{ route('social.oauth', 'github') }}" class="btn btn-default">
+                                    Login with Github
+                                </a>
+                                <a href="{{ route('social.oauth', 'google') }}" class="btn btn-google">
+                                    Login with Google
+                                </a>
                                 <button type="submit" class="btn btn-link text-decoration-none">Submit</button>
                             </div>
                         </form>
@@ -193,9 +199,9 @@
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
         <script>
-            @if (session()->has('message'))
-                    alert('{{ session('message') }}');
-            @endif
+<?php if (session()->has('message')): ?>
+                alert('{{ session('message') }}');
+<?php endif ?>
         </script>
 
     </body>
