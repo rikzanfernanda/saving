@@ -12,7 +12,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Jumlah Uang</label>
-                            <input type="number" class="form-control" name="jumlah[]" required="required">
+                            <input type="text" class="form-control" name="jumlah[]" required="required" data-number="true">
                         </div>
                     </div>
                     <div class="col-md-6">

@@ -1,6 +1,45 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
 
+    $('#formCreatePengeluaran').submit(function (e) {
+        $('[data-number]').each(function () {
+            $(this).val(getNumber($(this)));
+        });
+        return true;
+    });
+
+    /* Fungsi formatRupiah */
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                number = number_string.replace(/,/g, ''),
+                split = number.split(","),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            separator = sisa ? "," : "";
+            rupiah += separator + ribuan.join(",");
+        }
+
+        rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+    }
+
+    function getNumber(element) {
+        var val = element.val() || element.html();
+        val = val.replace(/[^,\d]/g, "").toString();
+        val = val.split(',').join('');
+        return isNaN(val) || val.length < 1 ? 0 : parseInt(val);
+    }
+
+    // format number row 1
+    $('[data-number="true"]').each(function () {
+        $(this).keyup(function () {
+            $(this).val(formatRupiah($(this).val(), "Rp. "));
+        });
+    });
+
     // select2 bank row 1
     $('select[name="bank[]"]').select2({
         ajax: {
@@ -76,7 +115,7 @@ $(document).ready(function () {
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jumlah Uang</label>
-                        <input type="number" class="form-control" name="jumlah[]" required="required">
+                        <input type="text" class="form-control" name="jumlah[]" required="required" data-number="true">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -107,6 +146,13 @@ $(document).ready(function () {
         </div>
         `;
         $('#newRow').append(html);
+        
+        // format number row tambahan
+        $('[data-number="true"]').each(function () {
+            $(this).keyup(function () {
+                $(this).val(formatRupiah($(this).val(), "Rp. "));
+            });
+        });
 
         // select2 bank row tambahan
         $('select[name="bank[]"]').select2({

@@ -148,7 +148,7 @@
                     </div>
                     <div class="form-group">
                         <label>Saldo</label>
-                        <input type="number" class="form-control" name="saldo" required="required">
+                        <input type="text" class="form-control" name="saldo" required="required" data-number="true">
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-info">Buat Bank</button>
@@ -179,7 +179,7 @@
                     </div>
                     <div class="form-group">
                         <label>Saldo</label>
-                        <input type="number" class="form-control" name="saldo" required="required">
+                        <input type="text" class="form-control" name="saldo" required="required" data-number="true">
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-info">Simpan</button>

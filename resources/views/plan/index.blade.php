@@ -98,10 +98,7 @@
                         </td>
                         <td>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text form-control">Rp.</div>
-                                </div>
-                                <input type="number" name="jumlah" class="form-control" value="{{ $value->jumlah }}" required="required">
+                                <input type="text" name="jumlah" class="form-control" value="{{ $value->jumlah }}" required="required" data-number="true">
                             </div>
                         </td>
                         <td>

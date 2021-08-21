@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="{{route('plan.store')}}">
+            <form method="POST" action="{{route('plan.store')}}" id="formCreatePlan">
                 @csrf
                 <div class="row justify-content-end">
                     <div class="col-md-2 col-6">
@@ -43,10 +43,7 @@
                         <div class="form-group">
                             <label class="">Jumlah</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text form-control">Rp.</div>
-                                </div>
-                                <input type="number" name="jumlah[]" class="form-control" required="required">
+                                <input type="text" name="jumlah[]" class="form-control" required="required" data-number="true">
                             </div>
                         </div>
                     </div>
@@ -75,10 +72,7 @@
                         <div class="form-group">
                             <label class="">Total</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text form-control">Rp.</div>
-                                </div>
-                                <input type="number" name="total[]" class="form-control" readonly="readonly">
+                                <input type="text" name="total[]" class="form-control" readonly="readonly" data-number="true">
                             </div>
                         </div>
                     </div>
