@@ -4,6 +4,7 @@ $(document).ready(function () {
     $('#formCreatePengeluaran').submit(function (e) {
         $('[data-number]').each(function () {
             $(this).val(getNumber($(this)));
+            $('button[type=submit]').prop('disabled',true);
         });
         return true;
     });

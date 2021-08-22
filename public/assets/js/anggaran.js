@@ -14,7 +14,7 @@ $(document).ready(function () {
             no++;
         }
 
-        let table = $('#dt_anggaran').DataTable({
+        $('#dt_anggaran').DataTable({
             "processing": true,
             "data": dt,
             "scrollX": true,
@@ -46,6 +46,7 @@ $(document).ready(function () {
         $('[data-edit]').each(function () {
             $(this).click(function (e) {
                 e.preventDefault();
+                
                 let id = $(this).attr('data-edit');
                 let url = $(this).attr('href');
                 $.ajax({
@@ -55,12 +56,13 @@ $(document).ready(function () {
                     let bk = JSON.parse(data);
                     let form = $('#formEditAnggaran');
                     let url = form.attr('action') + '/' + id;
-
+                    
                     form.find($('input[name="nama"]')).val(bk.nama);
 
                     //edit anggaran
                     form.submit(function (e) {
                         e.preventDefault();
+                        $('button[type=submit]').prop('disabled',true);
 
                         $.ajax({
                             type: "POST",
@@ -80,6 +82,7 @@ $(document).ready(function () {
     //create anggaran
     $('#formCreateAnggaran').submit(function (e) {
         e.preventDefault();
+        $('button[type=submit]').prop('disabled',true);
 
         var form = $(this);
         var url = form.attr('action');

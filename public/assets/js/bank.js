@@ -115,6 +115,7 @@ $(document).ready(function () {
                     //edit bank
                     form.submit(function (e) {
                         e.preventDefault();
+                        $('button[type=submit]').prop('disabled',true);
                         $('[data-number]').each(function () {
                             $(this).val(getNumber($(this)));
                         });
@@ -144,6 +145,7 @@ $(document).ready(function () {
     //create bank
     $('#formCreateBank').submit(function (e) {
         e.preventDefault();
+        $('button[type=submit]').prop('disabled',true);
         $('[data-number]').each(function () {
             $(this).val(getNumber($(this)));
         });

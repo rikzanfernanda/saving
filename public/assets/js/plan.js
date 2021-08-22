@@ -87,6 +87,7 @@ $(document).ready(function () {
     $('input[name="simpan"]').each(function () {
         $(this).click(function (e) {
             e.preventDefault();
+            $(this).prop('disabled',true);
             let row = $(this).parent().parent();
             let id = row.find($('input[name="id"]')).val();
             let data = {
@@ -114,6 +115,7 @@ $(document).ready(function () {
     $('#formCreatePlan').submit(function (e) {
         $('[data-number]').each(function () {
             $(this).val(getNumber($(this)));
+            $('button[type=submit]').prop('disabled',true);
         });
         return true;
     });

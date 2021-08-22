@@ -4,6 +4,7 @@ $(document).ready(function () {
     //create feedback
     $('#formCreateFeedback').submit(function (e) {
         e.preventDefault();
+        $('button[type=submit]').prop('disabled',true);
 
         var form = $(this);
         var url = form.attr('action');
@@ -51,6 +52,7 @@ $(document).ready(function () {
                 //edit anggaran
                 form.submit(function (e) {
                     e.preventDefault();
+                    $('button[type=submit]').prop('disabled',true);
 
                     $.ajax({
                         type: "POST",
