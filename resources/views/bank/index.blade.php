@@ -172,10 +172,10 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('bank.update') }}" id="formEditBank">
                     @csrf
+                    <input type="hidden" name="id">
                     <div class="form-group">
                         <label>Nama Bank</label>
                         <input type="text" class="form-control" name="nama" required="required">
-                        <small class="form-text text-muted"></small>
                     </div>
                     <div class="form-group">
                         <label>Saldo</label>

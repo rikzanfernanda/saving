@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Bank;
 use App\Models\History;
 use App\Models\Anggaran;
+use Yajra\DataTables\Facades\DataTables;
 
 class BankController extends Controller {
 
@@ -57,12 +58,19 @@ class BankController extends Controller {
     }
 
     public function dt() {
-        $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
-        foreach ($data as $dt) {
-//            $dt->tindakan = '<a href="' . route('pelanggan.bank.destroy', $dt->id) . '" class="mr-2"><i class="fas fa-trash-alt"></i></a> <a href="' . route('pelanggan.bank.edit', $dt->id) . '"><i class="fas fa-pen-alt"></i></a>';
-            $dt->saldo = moneyFormat($dt->saldo);
-        }
-        echo $data;
+        $data = DB::table('banks')->where('id_user', auth()->user()->id);
+
+        return Datatables::of($data)
+                        ->filterColumn('id', function ($query, $keyword) {
+                            $query->whereRaw("CONCAT(id,'-',id) like ?", ["%{$keyword}%"]);
+                        })
+                        ->addColumn('tindakan', function ($row) {
+                            $btn = '<a href="' . route('bank.show', $row->id) . '" class="text-green" data-edit="' . $row->id . '" data-toggle="modal" data-target="#modalEditBank"><i class="fas fa-edit"></i></a> <a href="' . route('bank.destroy', $row->id) . '" class="ml-2 text-red" data-hapus="' . $row->id . '"><i class="fas fa-trash"></i></a>';
+                            return $btn;
+                        })
+                        ->rawColumns(['tindakan'])
+                        ->editColumn('saldo', '{{moneyFormat($saldo)}}')
+                        ->make(true);
     }
 
     public function chart() {
@@ -209,11 +217,11 @@ class BankController extends Controller {
             $id_anggaran = $req->anggaran[$key];
             if (!isset($id))
                 return redirect()->route('bank.index');
-            if (Anggaran::find($req->anggaran[$key]) == null){
+            if (Anggaran::find($req->anggaran[$key]) == null) {
                 $id_anggaran = Anggaran::create([
-                    'id_user' => auth()->user()->id,
-                    'nama' => $id_anggaran
-                ])->id;
+                            'id_user' => auth()->user()->id,
+                            'nama' => $id_anggaran
+                        ])->id;
             }
 
             $anggaran = DB::table('anggarans')->where('id', $id_anggaran)->first();
@@ -241,8 +249,8 @@ class BankController extends Controller {
 
     public function option(Request $req) {
         $data = DB::table('banks')->where('id_user', auth()->user()->id)->get();
-        if (isset($req->q)){
-            $data = DB::table('banks')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%'.$req->q.'%')->get();
+        if (isset($req->q)) {
+            $data = DB::table('banks')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%' . $req->q . '%')->get();
         }
 
         echo json_encode($data);

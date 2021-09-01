@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
+    const csrf = $("meta[name='csrf_token']").attr("content");
 
     /* Fungsi formatRupiah */
     function formatRupiah(angka, prefix) {
@@ -58,81 +59,28 @@ $(document).ready(function () {
         var myChart = new Chart(document.getElementById('myChart'), config);
     });
 
-    $.ajax({
-        url: base_url + '/bank/dt',
-        type: "GET"
-    }).done(function (data) {
-        let bank = JSON.parse(data)
-        for (var i = 0; i < bank.length; i++) {
-            bank[i].tindakan = '<a href="' + base_url + '/bank/show/' + bank[i].id + '" class="text-green" data-edit="' + bank[i].id + '" data-toggle="modal" data-target="#modalEditBank"><i class="fas fa-edit"></i></a> <a href="' + base_url + '/bank/destroy/' + bank[i].id + '" class="ml-2 text-red" data-hapus="' + bank[i].id + '"><i class="fas fa-trash"></i></a>'
-        }
-
-        let table = $('#dt_bank').DataTable({
-            "processing": true,
-            "data": bank,
-            "scrollX": true,
-            "scrollCollapse": true,
-            "columns": [
-                {"data": "nama"},
-                {"data": "saldo"},
-                {"data": "tindakan"},
-            ],
-            "columnDefs": [
-                {"width": "10%", "targets": 2},
-                {className: "text-right", "targets": [1]}
-            ]
-        });
-
-        $('[data-hapus]').each(function () {
-            $(this).click(function (e) {
-                e.preventDefault();
-                $(this).parent().parent().remove();
-                let id = $(this).attr('data-hapus');
-                let url = $(this).attr('href');
-                $.ajax({
-                    type: "GET",
-                    url: url
-                });
-            });
-        });
-
-        $('[data-edit]').each(function () {
-            $(this).click(function (e) {
-                e.preventDefault();
-                let id = $(this).attr('data-edit');
-                let url = $(this).attr('href');
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                }).done(function (data) {
-                    let bk = JSON.parse(data);
-                    let form = $('#formEditBank');
-                    let url = form.attr('action') + '/' + id;
-
-                    form.find($('input[name="nama"]')).val(bk.nama);
-                    form.find($('input[name="saldo"]')).val(bk.saldo);
-
-                    //edit bank
-                    form.submit(function (e) {
-                        e.preventDefault();
-                        $('button[type=submit]').prop('disabled',true);
-                        $('[data-number]').each(function () {
-                            $(this).val(getNumber($(this)));
-                        });
-
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: form.serialize()
-                        }).done(function () {
-                            window.location.reload();
-                        });
-                    });
-                });
-            })
-        });
-
-
+    $('#dt_bank').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": base_url + '/bank/dt',
+            "dataType": "json",
+            "type": "POST",
+            "data": {
+                "_token": csrf
+            }
+        },
+        "scrollX": true,
+        "scrollCollapse": true,
+        "columns": [
+            {"data": "nama"},
+            {"data": "saldo"},
+            {"data": "tindakan"},
+        ],
+        "columnDefs": [
+            {"width": "10%", "targets": 2},
+            {className: "text-right", "targets": [1]}
+        ]
     });
 
     // format number row 1
@@ -142,11 +90,67 @@ $(document).ready(function () {
         });
     });
 
+    //klik edit bank
+    $('#dt_bank').on('click', '[data-edit]', function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        $.ajax({
+            type: "GET",
+            url: url,
+        }).done(function (data) {
+            let bk = JSON.parse(data);
+            let form = $('#formEditBank');
+
+            form.find($('input[name="id"]')).val(bk.id);
+            form.find($('input[name="nama"]')).val(bk.nama);
+            form.find($('input[name="saldo"]')).val(bk.saldo);
+        });
+    });
+
+    //edit bank
+    $('#formEditBank').submit(function (e) {
+        e.preventDefault();
+        let url = $(this).attr('action') + '/' + $(this).find($('input[name="id"]')).val();
+        $('button[type=submit]').prop('disabled', true);
+        $(this).find($('[data-number]')).each(function () {
+            $(this).val(getNumber($(this)));
+        });
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $(this).serialize(),
+            success: function () {
+                alert('Berhasil');
+            }
+        }).done(function () {
+            $("#formEditBank")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+            $('#dt_bank').DataTable().ajax.reload();
+            $('#modalEditBank').modal('hide');
+        });
+    });
+
+    //hapus bank
+    $('#dt_bank').on('click', '[data-hapus]', function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function () {
+                alert('Berhasil');
+            }
+        }).done(function () {
+            $('#dt_bank').DataTable().ajax.reload();
+        });
+    });
+
     //create bank
     $('#formCreateBank').submit(function (e) {
         e.preventDefault();
-        $('button[type=submit]').prop('disabled',true);
-        $('[data-number]').each(function () {
+        $('button[type=submit]').prop('disabled', true);
+        $(this).find($('[data-number]')).each(function () {
             $(this).val(getNumber($(this)));
         });
 
@@ -156,9 +160,14 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: url,
-            data: form.serialize()
+            data: form.serialize(),
+            success: function () {
+                alert('Berhasil');
+            }
         }).done(function () {
-            window.location.reload();
+            $("#formCreateBank")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+            $('#dt_bank').DataTable().ajax.reload();
         });
     });
 
