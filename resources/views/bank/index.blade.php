@@ -2,125 +2,133 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Bank dan Saldo Anda</h5>
-    @if ($jumlah == 0)
-    <div class="info-box mb-3 bg-danger shadow">
-        <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
+    <h5 class="mb-3 mx-3 mx-md-0">Bank dan Saldo Anda</h5>
+    <div class="row mx-0">
+        <div class="col-md-8 px-0 pr-md-2">
+            <!--info-->
+            @if ($jumlah == 0)
+            <div class="info-box mb-3 bg-danger shadow-sm">
+                <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
-        <div class="info-box-content">
-            <p>Anda belum memiliki bank apapun, buat terlebih dahulu dengan klik "Tambah Bank"</p>
-        </div>
-    </div>
-    @else
-    <div class="row">
-        <div class="col-md-6">
-            <div class="info-box mb-2 bg-success shadow">
+                <div class="info-box-content">
+                    <p>Anda belum memiliki bank apapun, buat terlebih dahulu dengan klik "<i class="fas fa-plus"></i> Bank"</p>
+                </div>
+            </div>
+            @else
+            <div class="info-box mb-2 bg-success shadow-sm">
                 <span class="info-box-icon d-md-flex"><i class="fas fa-money-bill-wave"></i></span>
 
                 <div class="info-box-content">
                     <p>Anda memiliki {{$jumlah}} bank dan total saldo Anda <b>{{ moneyFormat($total) }}</b></p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="info-box bg-info shadow">
+            <div class="info-box mb-3 bg-info shadow-sm">
                 <span class="info-box-icon d-md-flex"><i class="fas fa-inbox"></i></span>
 
                 <div class="info-box-content">
                     <p>Kendalikan pengeluraan Anda. Berhemat adalah cara terbaik untuk meraih tujuan keuangan</p>
                 </div>
             </div>
-        </div>
-    </div>
-    @endif
+            @endif
+            <!--end info-->
 
-    <div class="card">
-        <div class="card-header">
-            <div class="text-right">
-                <a href="{{ route('bank.create.pengeluaran') }}" class="btn btn-outline-info mr-md-2"><i class="fas fa-plus"></i> Pengeluaran</a>
-                <a href="{{ route('bank.create.pemasukan') }}" class="btn btn-info"><i class="fas fa-plus"></i> Pemasukan</a>
+            <!--chart-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-right">
+                        <a href="{{ route('bank.create.pengeluaran') }}" class="btn btn-outline-info mr-md-2"><i class="fas fa-plus"></i> Pengeluaran</a>
+                        <a href="{{ route('bank.create.pemasukan') }}" class="btn btn-info"><i class="fas fa-plus"></i> Pemasukan</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="myChart" style="min-height:30rem"></canvas>
+                </div>
             </div>
-        </div>
-        <div class="card-body">
-            <canvas id="myChart" style="min-height:30rem"></canvas>
-        </div>
-    </div>
+            <!--end chart-->
 
-    <div class="card">
-        <div class="card-header">
-            <div class="text-right">
-                <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Bank</a>
+            <!--dt bank-->
+            <div class="card">
+                <div class="card-header">
+                    <div class="text-right">
+                        <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBank"><i class="fas fa-plus"></i> Bank</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="dt_bank" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Nama Bank</th>
+                                <th class="text-right">Saldo</th>
+                                <th>Tindakan</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
             </div>
-        </div>
-        <div class="card-body">
-            <table id="dt_bank" class="table table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Nama Bank</th>
-                        <th class="text-right">Saldo</th>
-                        <th>Tindakan</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+            <!--end dt bank-->
 
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            Pemasukan Anda perbulan
-            <form method="GET" action="{{ route('bank.index') }}" class="mt-2 d-flex flex-row-reverse">
-                <div class="bd-highlight">
-                    <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
-                </div>
-                <div class="form-group mx-2">
-                    <select class="form-control" name="tahun">
-                        @foreach($tahun as $opt)
-                        @if($opt == $tahun_ini)
-                        <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
-                        @else
-                        <option value="{{$opt}}" class="form-control">{{$opt}}</option>
-                        @endif
-                        @endforeach
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <select class="form-control" name="bulan">
-                        @foreach($bulan as $key => $opt)
-                        @if($key+1 == $bulan_ini)
-                        <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
-                        @else
-                        <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
-                        @endif
-                        @endforeach
-                    </select>
-                </div>
-            </form>
         </div>
-        <div class="card-body">
-            <table id="dt_bln_masuk" class="table table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Bank</th>
-                        <th class="text-right">Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($bln_bank as $opt)
-                    <tr>
-                        <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
-                        <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Total</th>
-                        <th class="text-right">{{ moneyFormat($bln_masuk)}}</th>
-                    </tr>
-                </tfoot>
-            </table>
+        <div class="col-md-4 px-0 pl-md-2">
+            <!--pemasukan-->
+            <div class="card bank-masuk">
+                <div class="card-header">
+                    Pemasukan Anda perbulan
+                    <form method="GET" action="{{ route('bank.index') }}" class="mt-2 d-flex flex-row-reverse">
+                        <div class="bd-highlight">
+                            <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
+                        </div>
+                        <div class="form-group mx-2">
+                            <select class="form-control" name="tahun">
+                                @foreach($tahun as $opt)
+                                @if($opt == $tahun_ini)
+                                <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
+                                @else
+                                <option value="{{$opt}}" class="form-control">{{$opt}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="bulan">
+                                @foreach($bulan as $key => $opt)
+                                @if($key+1 == $bulan_ini)
+                                <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
+                                @else
+                                <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <table id="dt_bln_masuk" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Bank</th>
+                                <th class="text-right">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($bln_bank as $opt)
+                            <tr>
+                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
+                                <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th class="text-right">{{ moneyFormat($bln_masuk)}}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <!--end pemasukan-->
         </div>
     </div>
 

@@ -57,7 +57,11 @@ $(document).ready(function () {
             url: url,
             data: $(this).serialize(),
             success: function () {
-                alert('Berhasil');
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
             }
         }).done(function () {
             $("#formEditAnggaran")[0].reset();
@@ -75,7 +79,11 @@ $(document).ready(function () {
             type: "GET",
             url: url,
             success: function () {
-                alert('Berhasil');
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
             }
         }).done(function () {
             $('#dt_anggaran').DataTable().ajax.reload();
@@ -95,7 +103,11 @@ $(document).ready(function () {
             url: url,
             data: form.serialize(),
             success: function () {
-                alert('Berhasil');
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
             }
         }).done(function () {
             $("#formCreateAnggaran")[0].reset();

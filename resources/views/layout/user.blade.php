@@ -21,7 +21,7 @@
         <!--<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>-->
         <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}">
         @if(isset($css))
         @foreach ($css as $style)
         <link rel="stylesheet" href="{{asset('assets/css'). $style}}"/>
@@ -32,7 +32,7 @@
     <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
         <div class="wrapper">
             <!-- Main Sidebar Container -->
-            <aside class="main-sidebar sidebar-dark-primary elevation-2">
+            <aside class="main-sidebar sidebar-dark-primary">
                 <!-- Brand Logo -->
                 <a href="{{ route('home') }}" class="brand-link">
                     <img src="{{ url('logo.png') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -81,7 +81,7 @@
                                     </p>
                                 </a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a href="{{ route('plan.index') }}" class="nav-link">
                                     <i class="nav-icon fas fa-file-alt"></i>
@@ -134,7 +134,7 @@
             </aside>
         </div>
 
-        <nav class="main-header navbar navbar-expand navbar-dark">
+        <nav class="main-header navbar navbar-expand border-bottom-0">
 
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -183,7 +183,7 @@
         <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
         <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('assets/js/adminlte.min.js')}}"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="{{asset('assets/js/toastr.min.js')}}"></script>
         @if(isset($js))
         @foreach ($js as $script)
         <script src="{{asset('assets/js'). $script}}"></script>
@@ -196,7 +196,7 @@
                     "newestOnTop": false,
                     "progressBar": false,
                     "positionClass": "toast-top-right",
-                    "preventDuplicates": true,
+                    "preventDuplicates": false,
                     "onclick": null,
                     "showDuration": "200",
                     "hideDuration": "1000",
@@ -207,16 +207,6 @@
                     "showMethod": "fadeIn",
                     "hideMethod": "fadeOut"
             }
-            //message with toastr
-            @if (session()->has('success'))
-                    toastr.success('{{ session('success') }}', 'BERHASIL!');
-            @elseif(session()->has('error'))
-                    toastr.error('{{ session('error') }}', 'GAGAL!');
-            @elseif(session()->has('info'))
-                    toastr.info('{{ session('info') }}', 'INFO!');
-            @elseif(session()->has('info'))
-                    toastr.warning('{{ session('warning') }}', 'PERINGATAN!');
-            @endif
         </script>
     </body>
 </html>

@@ -79,7 +79,6 @@ $(document).ready(function () {
             e.preventDefault();
             let id_edit = $(this).attr('data-cancel');
             $(this).parent().parent().addClass('d-none');
-            console.log(id_edit);
             $('#tr-' + id_edit).removeClass('d-none');
         });
     });
@@ -87,7 +86,7 @@ $(document).ready(function () {
     $('input[name="simpan"]').each(function () {
         $(this).click(function (e) {
             e.preventDefault();
-            $(this).prop('disabled',true);
+            $(this).prop('disabled', true);
             let row = $(this).parent().parent();
             let id = row.find($('input[name="id"]')).val();
             let data = {
@@ -113,13 +112,31 @@ $(document).ready(function () {
     // form
     // select2 anggaran row 1
     $('#formCreatePlan').submit(function (e) {
+        e.preventDefault();
         $('[data-number]').each(function () {
             $(this).val(getNumber($(this)));
-            $('button[type=submit]').prop('disabled',true);
         });
-        return true;
+        $('button[type=submit]').prop('disabled', true);
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(),
+            success: function () {
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
+            }
+        }).done(function () {
+            $("#formCreatePlan")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+        });
     });
-    
+
     $('select[name="id_anggaran[]"]').select2({
         ajax: {
             url: base_url + '/anggaran/option',

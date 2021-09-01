@@ -1,10 +1,25 @@
-.card{
-    border-radius: 0.8rem !important;
+.content{
+    padding: 0 !important;
 }
-.card-footer{
-    border-bottom-left-radius: 0.8rem !important;
-    border-bottom-right-radius: 0.8rem !important;
+.navbar a{
+    color: white;
 }
+
+/*slide bank*/
+.slick-prev,
+.slick-next{
+    top: 110% !important;
+    z-index: 2;
+}
+.slider .slick-next{
+    right: 1rem;
+}
+.slider .slick-prev{
+    left: auto;
+    right: 3rem;
+}
+/*end slide bank*/
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -40,7 +55,6 @@ body{
 }
 .info-box{
     min-height: 4rem !important;
-    box-shadow: none !important;
 }
 
 .info-box p{
@@ -97,8 +111,8 @@ body{
 }
 
 .card {
-    border-radius: 0.8rem !important;
-    box-shadow: none !important;
+    border-radius: 0 !important;
+    /*box-shadow: none !important;*/
 }
 .card-header{
     font-size: 0.8rem !important;
@@ -112,8 +126,8 @@ body{
 }
 
 .card-header, .card-body, .card-footer{
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
 }
 .card-body{
     overflow: auto;
@@ -159,14 +173,14 @@ h3{
 }
 
 .info-box{
-    border-radius: 0.5rem !important;
+    border-radius: 0rem !important;
 }
 
 textarea.form-control{
     min-height: 5rem;
 }
 
-/*select2 anggaran*/
+/*select2*/
 .select2-container .select2-selection--single{
     height: auto !important;
 }
@@ -191,6 +205,9 @@ textarea.form-control{
 @media (min-width: 768px) {
     body{
         font-size: 0.9rem !important;
+    }
+    .content{
+        padding: 0 .5rem !important;
     }
     .btn{
         padding-left: 1.5rem !important;
@@ -233,6 +250,9 @@ textarea.form-control{
     .small-box{
         margin-bottom: 0.95rem !important;
     }
+    .card{
+        border-radius: 0.8rem !important;
+    }
     .card-header{
         font-size: 1rem !important;
     }
@@ -245,6 +265,9 @@ textarea.form-control{
     }
     .modal-title{
         font-size: 1rem !important;
+    }
+    .info-box{
+        border-radius: 0.8rem !important;
     }
 
     /*select2*/

@@ -2,22 +2,22 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Bantuan dan Tanggapan</h5>
+    <h5 class="mb-3 mx-3 mx-md-0">Bantuan dan Tanggapan</h5>
     
-    <div class="info-box mb-3 bg-success shadow">
+    <div class="info-box mb-3 bg-success shadow-sm">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
             <p>Ajukan pertanyaan yang betul-betul Anda tidak tahu. Baca petunjuk terlebih dahulu sebelum mengajukan pertanyaan</p>
         </div>
     </div>
-    <div class="text-right mb-2">
+    <div class="text-right mb-2 mx-3 mx-md-0">
         <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateBantuan">Ajukan Pertanyaan</a>
     </div>
 
     @foreach ($bantuans as $bt)
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row mx-0">
+        <div class="col-md-6 px-0 pr-md-2">
             <div class="card bantuan">
                 <div class="card-header">
                     <h5 class="card-title">{{ $bt->pertanyaan }}</h5>

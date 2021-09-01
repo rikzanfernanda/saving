@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Buat Plan Baru</h5>
+    <h5 class="mb-3 mx-3 mx-md-0">Buat Plan Baru</h5>
 
     <div class="card">
         <div class="card-body">
@@ -80,7 +80,7 @@
                 <div id="newRow"></div>
                 <a href="" class="" id="addRow">Tambah</a>
                 <div class="text-right">
-                    <a href="{{route('plan.index')}}" class="btn btn-outline-info">Cancel</a>
+                    <a href="{{route('plan.index')}}" class="btn btn-outline-info">Kembali</a>
                     <button type="submit" class="btn btn-info ml-md-2">Buat</button>
                 </div>
             </form>

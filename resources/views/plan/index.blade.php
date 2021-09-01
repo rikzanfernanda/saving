@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Rencana Anggaran Anda dalam Satu Bulan</h5>
+    <h5 class="mb-3 mx-3 mx-md-0">Rencana Anggaran Anda dalam Satu Bulan</h5>
 
-    <div class="info-box mb-3 bg-success shadow">
+    <div class="info-box mb-3 bg-success shadow-sm">
         <span class="info-box-icon d-none d-md-flex"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
@@ -16,46 +16,47 @@
     </div>
 
     <div class="card">
-        <div class="card-header row">
-            <div class="col-4">
-                <a href="{{route('plan.create')}}" class=""><i class="fas fa-plus"></i> Plan</a>
+        <div class="card-header">
+            <div class="row">
+                <div class="col-4">
+                    <a href="{{route('plan.create')}}" class=""><i class="fas fa-plus"></i> Plan</a>
+                </div>
+                <div class="col-8">
+                    <form method="GET" action="{{ route('plan.index') }}">
+                        <div class="d-flex flex-row-reverse">
+                            <div class="">
+                                <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
+                            </div>
+
+                            <div class="form-group px-2">
+                                <select class="form-control" name="tahun">
+                                    @foreach($tahun as $opt)
+                                    @if($opt == $tahun_ini)
+                                    <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
+                                    @else
+                                    <option value="{{$opt}}" class="form-control">{{$opt}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <select class="form-control" name="bulan">
+                                    @foreach($bulan as $key => $opt)
+                                    @if($key+1 == $bulan_ini)
+                                    <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
+                                    @else
+                                    <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="col-8">
-                <form method="GET" action="{{ route('plan.index') }}">
-                    <div class="d-flex flex-row-reverse">
-                        <div class="">
-                            <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
-                        </div>
-
-                        <div class="form-group px-2">
-                            <select class="form-control" name="tahun">
-                                @foreach($tahun as $opt)
-                                @if($opt == $tahun_ini)
-                                <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
-                                @else
-                                <option value="{{$opt}}" class="form-control">{{$opt}}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <select class="form-control" name="bulan">
-                                @foreach($bulan as $key => $opt)
-                                @if($key+1 == $bulan_ini)
-                                <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
-                                @else
-                                <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-
-                    </div>
-                </form>
-            </div>
-
         </div>
         <div class="card-body">
             <table class="table table-responsive-sm" style="width: 100%;">

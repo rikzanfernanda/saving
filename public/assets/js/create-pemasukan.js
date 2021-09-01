@@ -2,11 +2,29 @@ $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
 
     $('#formCreatePemasukan').submit(function (e) {
+        e.preventDefault();
         $('[data-number]').each(function () {
             $(this).val(getNumber($(this)));
-            $('button[type=submit]').prop('disabled',true);
         });
-        return true;
+        $('button[type=submit]').prop('disabled', true);
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(),
+            success: function () {
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
+            }
+        }).done(function () {
+            $("#formCreatePemasukan")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+        });
     });
 
     /* Fungsi formatRupiah */

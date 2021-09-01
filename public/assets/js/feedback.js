@@ -4,7 +4,7 @@ $(document).ready(function () {
     //create feedback
     $('#formCreateFeedback').submit(function (e) {
         e.preventDefault();
-        $('button[type=submit]').prop('disabled',true);
+        $('button[type=submit]').prop('disabled', true);
 
         var form = $(this);
         var url = form.attr('action');
@@ -12,7 +12,14 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: url,
-            data: form.serialize()
+            data: form.serialize(),
+            success: function () {
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
+            }
         }).done(function () {
             window.location.reload();
         });
@@ -21,12 +28,18 @@ $(document).ready(function () {
     $('[data-hapus]').each(function () {
         $(this).click(function (e) {
             e.preventDefault();
-            $(this).parent().parent().parent().remove();
             let id = $(this).attr('data-hapus');
             let url = base_url + "/feedback/destroy/" + id;
             $.ajax({
                 type: "GET",
-                url: url
+                url: url,
+                success: function () {
+                    toastr.success('Berhasil');
+                },
+                error: function () {
+                    toastr.error('Gagal');
+                    window.location.reload();
+                }
             }).done(function () {
                 window.location.reload();
             });
@@ -52,12 +65,19 @@ $(document).ready(function () {
                 //edit anggaran
                 form.submit(function (e) {
                     e.preventDefault();
-                    $('button[type=submit]').prop('disabled',true);
+                    $('button[type=submit]').prop('disabled', true);
 
                     $.ajax({
                         type: "POST",
                         url: url,
-                        data: form.serialize()
+                        data: form.serialize(),
+                        success: function () {
+                            toastr.success('Berhasil');
+                        },
+                        error: function () {
+                            toastr.error('Gagal');
+                            window.location.reload();
+                        }
                     }).done(function () {
                         window.location.reload();
                     });

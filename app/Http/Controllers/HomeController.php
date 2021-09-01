@@ -137,9 +137,12 @@ class HomeController extends Controller {
                 $data['histories'] = DB::table('histories')->where('id_user', auth()->user()->id)->orderBy('created_at', 'desc')->limit(5)->get();
                 $data['css'] = [
                     '/datatables.min.css',
-                    '/select2.min.css'
+                    '/select2.min.css',
+                    '/slick.css',
+                    '/slick-theme.css'
                 ];
                 $data['js'] = [
+                    '/slick.js',
                     '/user-dashboard.js',
                     '/datatables.min.js',
                     '/select2.min.js'

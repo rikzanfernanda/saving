@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Laporan</h5>
-    <div class="info-box mb-3 bg-success shadow">
+    <h5 class="mb-3 mx-3 mx-md-0">Laporan</h5>
+    <div class="info-box mb-3 bg-success shadow-sm">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
@@ -11,10 +11,10 @@
         </div>
     </div>
 
-    <form method="GET" action="{{ route('history.laporan') }}">
+    <form method="GET" action="{{ route('history.laporan') }}" class="mx-3 mx-md-0">
         <div class="d-flex flex-row-reverse bd-highlight">
             <div class="bd-highlight">
-                <button type="submit" class="btn btn-info text-decoration-none">Buat Laporan</button>
+                <button type="submit" class="btn btn-info text-decoration-none">Buat</button>
             </div>
 
             <div class="form-group px-2">
@@ -52,106 +52,117 @@
             </a>
         </button>
     </div>
-    <div class="card">
-        <div class="card-header">
-            Pemasukan
-        </div>
-        <div class="card-body">
-            <table id="masuk" class="table table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Uang Masuk</th>
-                        <th>Bank</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($masuk as $val)
-                    <tr>
-                        <td>{{$val->created_at}}</td>
-                        <td>{{moneyFormat($val->jumlah)}}</td>
-                        <td>{{$val->bank}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
 
-            </table>
-        </div>
+    <div class="row mx-0">
+        <div class="col-md-8 px-0 pr-md-2">
+            <!--pemasukan-->
+            <div class="card">
+                <div class="card-header">
+                    Pemasukan
+                </div>
+                <div class="card-body">
+                    <table id="masuk" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Uang Masuk</th>
+                                <th>Bank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($masuk as $val)
+                            <tr>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{moneyFormat($val->jumlah)}}</td>
+                                <td>{{$val->bank}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
 
+                    </table>
+                </div>
+
+            </div>
+            <!--end pemasukan-->
+
+            <!--pengeluaran-->
+            <div class="card">
+                <div class="card-header">
+                    Pengeluaran
+                </div>
+                <div class="card-body">
+
+                    <table id="keluar" class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Uang Keluar</th>
+                                <th>Bank</th>
+                                <th>Keperluan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($keluar as $val)
+                            <tr>
+                                <td>{{$val->created_at}}</td>
+                                <td>{{moneyFormat($val->jumlah)}}</td>
+                                <td>{{$val->bank}}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($val->anggaran, 20, $end='...') }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+            <!--end pengeluaran-->
+        </div>
+        <div class="col-md-4 px-0 pl-md-2">
+            <!--kalkulasi-->
+            <div class="card">
+                <div class="card-header">
+                    Kalkulasi
+                </div>
+                <div class="card-body">
+
+                    <table class="table table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Keterangan</th>
+                                <th class="text-right">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Total Uang Masuk</th>
+                                <th class="text-right">{{moneyFormat($total_masuk)}}</th>
+                            </tr>
+                            <tr>
+                                <th>Total Uang Keluar</th>
+                                <th class="text-right">{{moneyFormat($total_keluar)}}</th>
+                            </tr>
+                            @foreach($banks as $val)
+                            <tr>
+                                <td>Saldo {{$val->nama}}</td>
+                                <td class="text-right">{{moneyFormat($val->saldo)}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total Uang Saat ini</th>
+                                <th colspan="2" class="text-right">{{moneyFormat($total)}}</th>
+                            </tr>
+                        </tfoot>
+
+                    </table>
+                </div>
+
+            </div>
+            <!--end kalkulasi-->
+        </div>
     </div>
-
-    <div class="card">
-        <div class="card-header">
-            Pengeluaran
-        </div>
-        <div class="card-body">
-
-            <table id="keluar" class="table table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Uang Keluar</th>
-                        <th>Bank</th>
-                        <th>Keperluan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($keluar as $val)
-                    <tr>
-                        <td>{{$val->created_at}}</td>
-                        <td>{{moneyFormat($val->jumlah)}}</td>
-                        <td>{{$val->bank}}</td>
-                        <td>{{ \Illuminate\Support\Str::limit($val->anggaran, 20, $end='...') }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
-        </div>
-
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            Kalkulasi
-        </div>
-        <div class="card-body">
-
-            <table class="table table-hover" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Keterangan</th>
-                        <th class="text-right">Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Total Uang Masuk</th>
-                        <th class="text-right">{{moneyFormat($total_masuk)}}</th>
-                    </tr>
-                    <tr>
-                        <th>Total Uang Keluar</th>
-                        <th class="text-right">{{moneyFormat($total_keluar)}}</th>
-                    </tr>
-                    @foreach($banks as $val)
-                    <tr>
-                        <td>Saldo {{$val->nama}}</td>
-                        <td class="text-right">{{moneyFormat($val->saldo)}}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Total Uang Saat ini</th>
-                        <th colspan="2" class="text-right">{{moneyFormat($total)}}</th>
-                    </tr>
-                </tfoot>
-
-            </table>
-        </div>
-
-    </div>
-
 
 </div>
 

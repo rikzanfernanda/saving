@@ -32,7 +32,11 @@ $(document).ready(function () {
             type: "GET",
             url: url,
             success: function () {
-                alert('Berhasil');
+                toastr.success('Berhasil');
+            },
+            error: function () {
+                toastr.error('Gagal');
+                window.location.reload();
             }
         }).done(function (data) {
             $('#dt_history').DataTable().ajax.reload();

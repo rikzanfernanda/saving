@@ -1,5 +1,23 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
+
+    $('.slide-bank').slick({
+        dots: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        touchMove: true,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false,
+                }
+            }
+        ]
+    });
+
     $('#bln_anggaran').DataTable({
         "processing": true,
         "paging": false,
@@ -14,21 +32,7 @@ $(document).ready(function () {
         "scrollX": true,
         "scrollCollapse": true,
     });
-    $('#dt_history').DataTable({
-        "processing": true,
-        "paging": false,
-        "dom": 'lrtip',
-        "scrollX": true,
-        "scrollCollapse": true,
-        "order": [[1, "desc"]]
-    });
-    $('#dt_plan').DataTable({
-        "processing": true,
-        "paging": false,
-        "dom": 'lrtip',
-        "scrollX": true,
-        "scrollCollapse": true,
-    });
+
     $.ajax({
         url: base_url + '/history/chart',
         type: "GET"
@@ -84,5 +88,5 @@ $(document).ready(function () {
                 config
                 );
     });
-    
+
 });

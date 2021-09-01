@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Anggaran Anda</h5>
-    <div class="info-box mb-3 bg-info shadow">
+    <h5 class="mb-3 mx-3 mx-md-0">Anggaran Anda</h5>
+    <div class="info-box mb-3 bg-info shadow-sm">
         <span class="info-box-icon"><i class="fas fa-inbox"></i></span>
 
         <div class="info-box-content">
@@ -16,11 +16,11 @@
     </div>
 
     @if ($jumlah == 0)
-    <div class="info-box mb-3 bg-danger shadow">
+    <div class="info-box mb-3 bg-danger shadow-sm">
         <span class="info-box-icon"><i class="fas fa-info-circle"></i></span>
 
         <div class="info-box-content">
-            <p>Anda belum memiliki anggaran apapun, buat terlebih dahulu dengan klik "Tambah Anggaran"</p>
+            <p>Anda belum memiliki anggaran apapun, buat terlebih dahulu dengan klik "<i class="fas fa-plus"></i> Anggaran"</p>
         </div>
     </div>
     @endif

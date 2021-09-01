@@ -2,15 +2,15 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Feedback</h5>
-    <p>
+    <h5 class="mb-3 mx-3 mx-md-0">Feedback</h5>
+    <p class="mx-3 mx-md-0">
         Feedback Anda sangat berarti untuk pengembangan aplikasi saving, kritik dan masukan Anda melalui feedback ini akan kami terima dengan baik demi kemajuan aplikasi saving.
         Kami sebagai pengembang aplikasi saving meminta Anda memberikan feedback Anda, apa saja fitur yang harus ditambahkan ataupun fitur mana yang harus diperbaiki.
         Anda juga bisa memberikan feedback kepada kami berisi kesan dan pesan Anda selama menggunakan aplikasi saving ini.
         Kami sebagai pengembang aplikasi juga berterima kasih kepada Anda yang sudah menggunakan aplikasi saving ini.
     </p>
     
-    <div class="text-right mb-2">
+    <div class="text-right mb-2 mx-3 mx-md-0">
         <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalCreateFeedback">Kirim Feedback</a>
     </div>
     @foreach($feedbacks as $feedback)

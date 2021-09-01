@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <h5 class="mb-3">Buat Pemasukan</h5>
+    <h5 class="mb-3 mx-3 mx-md-0">Buat Pemasukan</h5>
 
     <div class="card">
         <div class="card-body">

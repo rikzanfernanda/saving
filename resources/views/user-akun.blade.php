@@ -2,8 +2,8 @@
 @section('content')
 
 <div class="container-fluid">
-    <div class="row mb-2">
-        <div class="col-md-6">
+    <div class="row mb-2 mx-0">
+        <div class="col-md-6 px-0 pr-md-2">
 
             <div class="card">
                 <div class="card-header">
@@ -56,7 +56,7 @@
 
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 px-0 pl-md-2">
 
         </div>
     </div>
