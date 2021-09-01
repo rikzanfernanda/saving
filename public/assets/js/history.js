@@ -1,38 +1,42 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
+    const csrf = $("meta[name='csrf_token']").attr("content");
 
-    $.ajax({
-        url: base_url + '/history/dt',
-        type: "GET"
-    }).done(function (data) {
-        let admins = JSON.parse(data);
-        for (var i = 0; i < admins.length; i++) {
-            admins[i].tindakan = '<a href="' + base_url + '/history/restore/' + admins[i].id + '" class="ml-2 text-red" data-restore="' + admins[i].id + '"><i class="fas fa-trash-restore"></i></a>';
-        }
-        $('#dt_history').DataTable({
-            "data": admins,
-            "scrollX": true,
-            "scrollCollapse": true,
-            "columns": [
-                {"data": "kegiatan"},
-                {"data": "created_at"},
-                {"data": "tindakan"}
-            ],
-            "order": [[1, "desc"]]
-        });
+    $('#dt_history').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": base_url + '/history/dt',
+            "dataType": "json",
+            "type": "POST",
+            "data": {
+                "_token": csrf
+            }
+        },
+        "scrollX": true,
+        "scrollCollapse": true,
+        "columns": [
+            {"data": "created_at"},
+            {"data": "kegiatan"},
+            {"data": "tindakan"},
+        ],
+        "columnDefs": [
+            {"width": "10%", "targets": 2},
+        ]
+    });
 
-        $('[data-restore]').each(function () {
-            $(this).click(function (e) {
-                e.preventDefault();
-                let id = $(this).attr('data-restore');
-                let url = $(this).attr('href');
-                $.ajax({
-                    type: "GET",
-                    url: url
-                }).done(function () {
-                    window.location.reload();
-                });
-            });
+    $('#dt_history').on('click', '[data-restore]', function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function () {
+                alert('Berhasil');
+            }
+        }).done(function (data) {
+            $('#dt_history').DataTable().ajax.reload();
         });
     });
+    
 });

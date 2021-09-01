@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\History;
 use Barryvdh\DomPDF\Facade as PDF;
+use Yajra\DataTables\Facades\DataTables;
 
 class HistoryController extends Controller {
 
@@ -21,11 +22,18 @@ class HistoryController extends Controller {
     }
 
     public function dt() {
-        $data = DB::table('histories')->where('id_user', auth()->user()->id)->limit(1000)->orderBy('created_at', 'desc')->get();
-        foreach ($data as $dt) {
-            $dt->jumlah = moneyFormat($dt->jumlah);
-        }
-        echo json_encode($data);
+        $data = DB::table('histories')->where('id_user', auth()->user()->id)->limit(1000)->orderBy('created_at', 'desc');
+        
+        return Datatables::of($data)
+                        ->filterColumn('id', function ($query, $keyword) {
+                            $query->whereRaw("CONCAT(id,'-',id) like ?", ["%{$keyword}%"]);
+                        })
+                        ->addColumn('tindakan', function ($row) {
+                            $btn = '<a href="' .route('history.restore', $row->id). '" class="ml-2 text-red" data-restore="' . $row->id . '"><i class="fas fa-trash-restore"></i></a>';
+                            return $btn;
+                        })
+                        ->rawColumns(['tindakan'])
+                        ->make(true);
     }
 
     public function laporan(Request $req) {
@@ -224,16 +232,16 @@ class HistoryController extends Controller {
         }
         echo json_encode(['pemasukan' => $chart_pemasukan, 'pengeluaran' => $chart_pengeluaran]);
     }
-    
+
     public function restore($id) {
         $history = DB::table('histories')->where('id', $id)->first();
         $bank = DB::table('banks')->where('id', $history->id_bank)->first();
-        if ($history->kategori == "keluar"){
+        if ($history->kategori == "keluar") {
             DB::table('banks')->where('id', $history->id_bank)->update(['saldo' => $bank->saldo + $history->jumlah]);
         } else {
             DB::table('banks')->where('id', $history->id_bank)->update(['saldo' => $bank->saldo - $history->jumlah]);
         }
-        
+
         return History::where('id', $id)->delete();
     }
 

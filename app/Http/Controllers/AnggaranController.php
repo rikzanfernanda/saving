@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Anggaran;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class AnggaranController extends Controller {
 
@@ -57,23 +58,24 @@ class AnggaranController extends Controller {
     }
 
     public function dt() {
-        $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
-        echo $data;
-    }
-
-    public function dtLaporan(Request $req) {
-
+//        $data = DB::table('anggarans')->where('id_user', auth()->user()->id);
         $data = DB::table('anggarans')
                 ->where('anggarans.id_user', auth()->user()->id)
                 ->leftJoin('histories', 'anggarans.id', '=', 'histories.id_anggaran')
-                ->selectRaw('anggarans.nama, SUM(histories.jumlah) as jumlah')
-                ->groupBy('anggarans.id')
-                ->get();
-        foreach ($data as $value) {
-            $value->nama = Str::limit($value->nama, 50, $end='...');
-            $value->jumlah = moneyFormat($value->jumlah);
-        }
-        echo $data;
+                ->selectRaw('anggarans.*, SUM(histories.jumlah) as total')
+                ->groupBy('anggarans.id');
+        return Datatables::of($data)
+                        ->filterColumn('id', function ($query, $keyword) {
+                            $query->whereRaw("CONCAT(id,'-',id) like ?", ["%{$keyword}%"]);
+                        })
+                        ->addColumn('tindakan', function ($row) {
+                            $btn = '<a href="' . route('anggaran.show', $row->id) . '" class="text-green" data-edit="' . $row->id . '" data-toggle="modal" data-target="#modalEditAnggaran"><i class="fas fa-edit"></i></a> <a href="' . route('anggaran.destroy', $row->id) . '" class="ml-2 text-red" data-hapus="' . $row->id . '"><i class="fas fa-trash"></i></a>';
+                            return $btn;
+                        })
+                        ->rawColumns(['tindakan'])
+                        ->addIndexColumn()
+                        ->editColumn('total', '{{moneyFormat($total)}}')
+                        ->make(true);
     }
 
     /**
@@ -146,11 +148,11 @@ class AnggaranController extends Controller {
     public function destroy($id) {
         return Anggaran::where('id', $id)->delete();
     }
-    
+
     public function option(Request $req) {
         $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->get();
-        if (isset($req->q)){
-            $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%'.$req->q.'%')->get();
+        if (isset($req->q)) {
+            $data = DB::table('anggarans')->where('id_user', auth()->user()->id)->where('nama', 'LIKE', '%' . $req->q . '%')->get();
         }
 
         echo json_encode($data);

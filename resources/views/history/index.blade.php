@@ -20,8 +20,8 @@
             <table id="dt_history" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Kegiatan</th>
                         <th>Tanggal</th>
+                        <th>Keterangan</th>
                         <th></th>
                     </tr>
                 </thead>

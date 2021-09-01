@@ -35,8 +35,9 @@
             <table id="dt_anggaran" class="table table-hover" style="width:100%">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>Dibuat</th>
                         <th>Anggaran</th>
+                        <th>Total</th>
                         <th>Tindakan</th>
                     </tr>
                 </thead>
@@ -45,88 +46,61 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    Semua Anggaran Anda
+    <div class="card">
+        <div class="card-header">
+            Anggaran Anda perbulan
+            <form method="GET" action="{{ route('anggaran.index') }}" class="mt-2 d-flex flex-row-reverse">
+                <div class="bd-highlight">
+                    <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
                 </div>
-                <div class="card-body">
-                    <table id="dt_uang_anggaran" class="table table-hover" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Anggaran</th>
-                                <th class="text-right">Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>Total</th>
-                                <th class="text-right">{{ moneyFormat($total_keluar)}}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                <div class="form-group mx-2">
+                    <select class="form-control" name="tahun">
+                        @foreach($tahun as $opt)
+                        @if($opt == $tahun_ini)
+                        <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
+                        @else
+                        <option value="{{$opt}}" class="form-control">{{$opt}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                 </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-header">
-                    Anggaran Anda perbulan
-                    <form method="GET" action="{{ route('anggaran.index') }}" class="mt-2 d-flex flex-row-reverse">
-                        <div class="bd-highlight">
-                            <button type="submit" class="btn btn-info text-decoration-none">Cek</button>
-                        </div>
-                        <div class="form-group mx-2">
-                            <select class="form-control" name="tahun">
-                                @foreach($tahun as $opt)
-                                @if($opt == $tahun_ini)
-                                <option value="{{$opt}}" class="form-control" selected="selected">{{$opt}}</option>
-                                @else
-                                <option value="{{$opt}}" class="form-control">{{$opt}}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
 
-                        <div class="form-group">
-                            <select class="form-control" name="bulan">
-                                @foreach($bulan as $key => $opt)
-                                @if($key+1 == $bulan_ini)
-                                <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
-                                @else
-                                <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <select class="form-control" name="bulan">
+                        @foreach($bulan as $key => $opt)
+                        @if($key+1 == $bulan_ini)
+                        <option value="{{$key+1}}" class="form-control" selected="selected">{{$opt}}</option>
+                        @else
+                        <option value="{{$key+1}}" class="form-control">{{$opt}}</option>
+                        @endif
+                        @endforeach
+                    </select>
                 </div>
-                <div class="card-body">
-                    <table id="dt_bln_uang_anggaran" class="table table-hover" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Anggaran</th>
-                                <th class="text-right">Jumlah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($bln_anggaran as $opt)
-                            <tr>
-                                <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
-                                <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Total</th>
-                                <th class="text-right">{{ moneyFormat($bln_keluar)}}</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table id="dt_bln_uang_anggaran" class="table table-hover" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Anggaran</th>
+                        <th class="text-right">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($bln_anggaran as $opt)
+                    <tr>
+                        <td>{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...') }}</td>
+                        <td class="text-right">{{ moneyFormat($opt->jumlah) }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th class="text-right">{{ moneyFormat($bln_keluar)}}</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 
@@ -174,6 +148,7 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('anggaran.update') }}" id="formEditAnggaran">
                     @csrf
+                    <input type="hidden" name="id">
                     <div class="form-group">
                         <label>Nama Anggaran</label>
                         <input type="text" class="form-control" name="nama" required="required">

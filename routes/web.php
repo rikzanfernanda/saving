@@ -48,7 +48,7 @@ Route::name('user.')->group(function () {
 
 Route::name('bank.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/bank', [BankController::class, 'index'])->name('index');
-    Route::get('/bank/dt', [BankController::class, 'dt'])->name('dt');
+    Route::post('/bank/dt', [BankController::class, 'dt'])->name('dt');
     Route::get('/bank/create', [BankController::class, 'create'])->name('create');
     Route::post('/bank/store', [BankController::class, 'store'])->name('store');
     Route::get('/bank/destroy/{id?}', [BankController::class, 'destroy'])->name('destroy');
@@ -64,19 +64,18 @@ Route::name('bank.')->middleware(['auth', 'user'])->group(function () {
 
 Route::name('anggaran.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/anggaran', [AnggaranController::class, 'index'])->name('index');
-    Route::get('/anggaran/dt', [AnggaranController::class, 'dt'])->name('dt');
+    Route::post('/anggaran/dt', [AnggaranController::class, 'dt'])->name('dt');
     Route::post('/anggaran/store', [AnggaranController::class, 'store'])->name('store');
     Route::get('/anggaran/destroy/{id?}', [AnggaranController::class, 'destroy'])->name('destroy');
     Route::get('/anggaran/show/{id?}', [AnggaranController::class, 'show'])->name('show');
     Route::post('/anggaran/update/{id?}', [AnggaranController::class, 'update'])->name('update');
-    Route::get('/anggaran/laporan', [AnggaranController::class, 'dtLaporan'])->name('dt.laporan');
     Route::get('anggaran/option', [AnggaranController::class, 'option'])->name('option');
 });
 
 Route::name('history.')->middleware(['auth', 'user'])->group(function () {
     Route::get('/history/chart', [HistoryController::class, 'chart'])->name('chart');
     Route::get('/history', [HistoryController::class, 'index'])->name('index');
-    Route::get('/history/dt', [HistoryController::class, 'dt'])->name('dt');
+    Route::post('/history/dt', [HistoryController::class, 'dt'])->name('dt');
     Route::get('/laporan', [HistoryController::class, 'laporan'])->name('laporan');
     Route::get('/laporan/download', [HistoryController::class, 'download'])->name('download');
     Route::get('/history/restore/{id?}', [HistoryController::class, 'restore'])->name('restore');

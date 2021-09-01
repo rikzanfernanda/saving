@@ -1,88 +1,91 @@
 $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
+    const csrf = $("meta[name='csrf_token']").attr("content");
 
+    $('#dt_anggaran').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": base_url + '/anggaran/dt',
+            "dataType": "json",
+            "type": "POST",
+            "data": {
+                "_token": csrf
+            }
+        },
+        "scrollX": true,
+        "scrollCollapse": true,
+        "columns": [
+            {"data": "created_at"},
+            {"data": "nama"},
+            {"data": "total"},
+            {"data": "tindakan"}
+        ],
+        "columnDefs": [
+            {"width": "15%", "targets": 0},
+            {"width": "20%", "targets": 2},
+            {"width": "10%", "targets": 3}
+        ]
+    });
 
-    $.ajax({
-        url: base_url + '/anggaran/dt',
-        type: "GET"
-    }).done(function (data) {
-        let dt = JSON.parse(data)
-        let no = 1;
-        for (var i = 0; i < dt.length; i++) {
-            dt[i].tindakan = '<a href="' + base_url + '/anggaran/show/' + dt[i].id + '" class="text-green" data-edit="' + dt[i].id + '" data-toggle="modal" data-target="#modalEditAnggaran"><i class="fas fa-edit"></i></a> <a href="' + base_url + '/anggaran/destroy/' + dt[i].id + '" class="ml-2 text-red" data-hapus="' + dt[i].id + '"><i class="fas fa-trash"></i></a>'
-            dt[i].no = no;
-            no++;
-        }
+    //klik edit anggaran
+    $('#dt_anggaran').on('click', '[data-edit]', function (e) {
+        e.preventDefault();
 
-        $('#dt_anggaran').DataTable({
-            "processing": true,
-            "data": dt,
-            "scrollX": true,
-            "scrollCollapse": true,
-            "columns": [
-                {"data": "no"},
-                {"data": "nama"},
-                {"data": "tindakan"},
-            ],
-            "columnDefs": [
-                {"width": "5%", "targets": 0},
-                {"width": "10%", "targets": 2}
-            ]
+        let id = $(this).attr('data-edit');
+        let url = $(this).attr('href');
+        $.ajax({
+            type: "GET",
+            url: url,
+        }).done(function (data) {
+            let bk = JSON.parse(data);
+            let form = $('#formEditAnggaran');
+
+            form.find($('input[name="id"]')).val(bk.id);
+            form.find($('input[name="nama"]')).val(bk.nama);
         });
+    });
+    
+    //edit anggaran
+    $('#formEditAnggaran').submit(function (e) {
+        e.preventDefault();
+        let url = $(this).attr('action') + '/' + $(this).find($('input[name="id"]')).val();
+        $('button[type=submit]').prop('disabled', true);
 
-        $('[data-hapus]').each(function () {
-            $(this).click(function (e) {
-                e.preventDefault();
-                $(this).parent().parent().remove();
-                let id = $(this).attr('data-hapus');
-                let url = $(this).attr('href');
-                $.ajax({
-                    type: "GET",
-                    url: url
-                })
-            })
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $(this).serialize(),
+            success: function () {
+                alert('Berhasil');
+            }
+        }).done(function () {
+            $("#formEditAnggaran")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+            $('#dt_anggaran').DataTable().ajax.reload();
+            $('#modalEditAnggaran').modal('hide');
         });
+    });
 
-        $('[data-edit]').each(function () {
-            $(this).click(function (e) {
-                e.preventDefault();
-                
-                let id = $(this).attr('data-edit');
-                let url = $(this).attr('href');
-                $.ajax({
-                    type: "GET",
-                    url: url,
-                }).done(function (data) {
-                    let bk = JSON.parse(data);
-                    let form = $('#formEditAnggaran');
-                    let url = form.attr('action') + '/' + id;
-                    
-                    form.find($('input[name="nama"]')).val(bk.nama);
-
-                    //edit anggaran
-                    form.submit(function (e) {
-                        e.preventDefault();
-                        $('button[type=submit]').prop('disabled',true);
-
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: form.serialize()
-                        }).done(function () {
-                            window.location.reload();
-                        });
-                    });
-                });
-            })
+    //hapus anggaran
+    $('#dt_anggaran').on('click', '[data-hapus]', function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function () {
+                alert('Berhasil');
+            }
+        }).done(function () {
+            $('#dt_anggaran').DataTable().ajax.reload();
         });
-
-
     });
 
     //create anggaran
     $('#formCreateAnggaran').submit(function (e) {
         e.preventDefault();
-        $('button[type=submit]').prop('disabled',true);
+        $('button[type=submit]').prop('disabled', true);
 
         var form = $(this);
         var url = form.attr('action');
@@ -90,12 +93,17 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: url,
-            data: form.serialize()
+            data: form.serialize(),
+            success: function () {
+                alert('Berhasil');
+            }
         }).done(function () {
-            window.location.reload();
+            $("#formCreateAnggaran")[0].reset();
+            $('button[type=submit]').prop('disabled', false);
+            $('#dt_anggaran').DataTable().ajax.reload();
         });
     });
-    
+
     $("#addRow").click(function (e) {
         e.preventDefault();
         var html = '';
@@ -111,28 +119,6 @@ $(document).ready(function () {
     $(document).on('click', '#removeRow', function (e) {
         e.preventDefault();
         $(this).closest('#inputFormRow').remove();
-    });
-
-    // semua anggaran
-    $.ajax({
-        url: base_url + '/anggaran/laporan',
-        type: "GET"
-    }).done(function (data) {
-        let dt = JSON.parse(data)
-        $('#dt_uang_anggaran').DataTable({
-            "processing": true,
-            "paging": false,
-            "scrollCollapse": true,
-            "data": dt,
-            "dom": 'lrtip',
-            "columns": [
-                {"data": "nama"},
-                {"data": "jumlah"},
-            ],
-            "columnDefs": [
-                { className: "text-right", "targets": [ 1 ] }
-            ]
-        });
     });
 
     $('#dt_bln_uang_anggaran').DataTable({
