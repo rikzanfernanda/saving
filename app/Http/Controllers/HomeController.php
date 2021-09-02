@@ -17,6 +17,8 @@ class HomeController extends Controller {
             'login',
             'redirectToProvider',
             'handleProviderCallback',
+            'loginPage',
+            'registrasiPage',
         ]);
     }
 
@@ -24,7 +26,20 @@ class HomeController extends Controller {
         return view('home');
     }
 
+    public function loginPage() {
+        return view('login');
+    }
+    
+    public function registrasiPage() {
+        return view('registrasi');
+    }
+
     public function login(Request $request) {
+        $request->validate([
+            'email' => ['required', 'exists:users,email'],
+            'password' => ['required'],
+        ]);
+        
         $data = [
             'email' => $request->email,
             'password' => $request->password
@@ -36,7 +51,7 @@ class HomeController extends Controller {
         if (Auth::check()) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('home')->with('message', 'Username atau Password Salah');
+            return redirect()->route('login.page')->withErrors('Coba lagi! Password Anda salah');
         }
     }
 

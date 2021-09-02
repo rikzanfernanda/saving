@@ -54,7 +54,8 @@
                         <li><a href="#fitur">Fitur</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li>
-                            <a class="" href="" data-toggle="modal" data-target="#modalRegistrasi">Registrasi</a>
+                            <a class="" href="{{ route('registrasi.page') }}">Registrasi</a>
+                            <!--<a class="" href="" data-toggle="modal" data-target="#modalRegistrasi">Registrasi</a>-->
                         </li>
                         @if(auth()->user())
                         <li>
@@ -62,7 +63,8 @@
                         </li>
                         @else
                         <li>
-                            <a class="" href="" data-toggle="modal" data-target="#modalLogin">Login</a>
+                            <a class="" href="{{ route('login.page') }}">Login</a>
+                            <!--<a class="" href="" data-toggle="modal" data-target="#modalLogin">Login</a>-->
                         </li>
                         @endif
                     </ul>

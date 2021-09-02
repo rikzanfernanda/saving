@@ -25,6 +25,8 @@ Route::name('reset.')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/login', [HomeController::class, 'loginPage'])->name('login.page');
+Route::get('/registrasi', [HomeController::class, 'registrasiPage'])->name('registrasi.page');
 Route::post('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');

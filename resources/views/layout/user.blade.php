@@ -160,7 +160,7 @@
         </nav>
 
         <div class="content-wrapper mt-2 mt-md-3">
-            <section class="content">
+            <section class="">
 
                 @yield('content')
 

@@ -55,7 +55,38 @@
 
     <div class="row mx-0">
         <div class="col-md-8 px-0 pr-md-2">
-            <!--pemasukan-->
+            <div class="laporan border border-light mb-3">
+                <div class="bg-light px-3 px-md-4 py-2">
+                    <h5>Pemasukan</h5>
+                </div>
+                <div class="px-3 px-md-4 py-2 mb-4">
+                    @foreach($masuk as $val)
+                    <div class="row mx-0 py-2">
+                        <div class="col-9 pl-0 pr-4">
+                            <div class="border-bottom border-light">{{$val->created_at}} - {{$val->bank}}</div>
+                        </div>
+                        <div class="col-3 border-bottom border-light text-right pr-0">{{moneyFormat($val->jumlah)}}</div>
+                    </div>
+                    @endforeach
+                </div>
+                <div class="bg-light px-3 px-md-4 py-2">
+                    <h5>Pengeluaran</h5>
+                </div>
+                <div class="px-3 px-md-4 py-2 mb-4">
+                    @foreach($keluar as $val)
+                    <div class="row mx-0 py-2">
+                        <div class="col-9 pl-0 pr-4">
+                            <div class="border-bottom border-light">
+                                {{$val->created_at}} - {{$val->bank}} <span class="text-info">( {{ \Illuminate\Support\Str::limit($val->anggaran, 20, $end='...') }} )</span>
+                            </div>
+                        </div>
+                        <div class="col-3 border-bottom border-light text-right pr-0">{{moneyFormat($val->jumlah)}}</div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+<!--            pemasukan
             <div class="card">
                 <div class="card-header">
                     Pemasukan
@@ -83,9 +114,9 @@
                 </div>
 
             </div>
-            <!--end pemasukan-->
+            end pemasukan
 
-            <!--pengeluaran-->
+            pengeluaran
             <div class="card">
                 <div class="card-header">
                     Pengeluaran
@@ -116,7 +147,7 @@
                 </div>
 
             </div>
-            <!--end pengeluaran-->
+            end pengeluaran-->
         </div>
         <div class="col-md-4 px-0 pl-md-2">
             <!--kalkulasi-->

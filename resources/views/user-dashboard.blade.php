@@ -234,9 +234,9 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         @foreach($plans as $opt)
-                        <li class="list-group-item px-0">
+                        <li class="list-group-item px-0 d-flex justify-content-between">
+                            <div class="">{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</div>
                             <div class="text-lg">{{moneyFormat($opt->total)}}</div>
-                            <div class="text-info">{{ \Illuminate\Support\Str::limit($opt->nama, 50, $end='...')}}</div>
                         </li>
                         @endforeach
                     </ul>

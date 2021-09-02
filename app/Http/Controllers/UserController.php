@@ -62,7 +62,7 @@ class UserController extends Controller {
         ]);
         $data = [
             'nama' => $request->nama,
-            'id_role' => $request->id_role,
+            'id_role' => 3,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'pekerjaan' => $request->pekerjaan,
@@ -71,9 +71,9 @@ class UserController extends Controller {
         $store = User::create($data);
         if ($store) {
             auth()->user() == null ? Mail::to($request->email)->send(new Wellcome($data)): null;
-            return redirect()->route('home')->with('message', 'Registrasi berhasil! silakan login');
+            return redirect()->route('login.page')->with('message', 'Registrasi berhasil! silakan login');
         } else {
-            return redirect()->route('home')->with('message', 'Registrasi gagal!');
+            return redirect()->route('registrasi.page')->withErrors('Registrasi gagal!');
         }
     }
 
