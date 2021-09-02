@@ -204,7 +204,7 @@ class HomeController extends Controller {
                 return redirect()->intended('dashboard');
             } else {
                 if (User::where('email', $user->email)->first()) {
-                    return redirect()->route('home')->with('message', 'Email sudah terdaftar');
+                    return redirect()->route('login.page')->with('gagal', 'Email sudah terdaftar');
                 }
                 $newUser = User::create([
                             'id_role' => 3,
@@ -221,7 +221,7 @@ class HomeController extends Controller {
             }
         } catch (Exception $e) {
 //            dd($e->getMessage());
-            return redirect()->route('home')->with('message', 'Gunakan Login yang Lain');
+            return redirect()->route('login.page')->with('gagal', 'Gunakan Login yang Lain');
         }
     }
 

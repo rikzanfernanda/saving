@@ -116,6 +116,8 @@
             });
 <?php if (session()->has('message')): ?>
                 toastr.success('{{ session('message') }}');
+<?php elseif (session()->has('gagal')): ?>
+                toastr.error('{{ session('gagal') }}');
 <?php endif ?>
         </script>
     </body>
