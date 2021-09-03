@@ -37,6 +37,10 @@
         * Author: BootstrapMade.com
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
+        <!-- PWA  -->
+        <meta name="theme-color" content="#6777ef"/>
+        <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+        <link rel="manifest" href="{{ asset('/manifest.json') }}">
     </head>
 
     <body>
@@ -204,6 +208,14 @@
 <?php if (session()->has('message')): ?>
                 alert('{{ session('message') }}');
 <?php endif ?>
+        </script>
+        <script src="{{ asset('/sw.js') }}"></script>
+        <script>
+            if (!navigator.serviceWorker.controller) {
+                navigator.serviceWorker.register("/sw.js").then(function (reg) {
+                    console.log("Service worker has been registered for scope: " + reg.scope);
+                });
+            }
         </script>
 
     </body>
