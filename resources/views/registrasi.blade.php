@@ -15,7 +15,7 @@
         <meta name="base_url" content="{{url('')}}">
         <meta name="csrf_token" content="{{csrf_token('')}}">
         <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
-        <title>saving | Login</title>
+        <title>saving | Registrasi</title>
 
         <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}"/>

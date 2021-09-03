@@ -17,11 +17,11 @@
         <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
         <title>saving</title>
         <!--style-->
-        <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}"/>
         <!--<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>-->
         <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets/css/all.min.css')}}"/>
         <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/mystyle.css')}}"/>
         @if(isset($css))
         @foreach ($css as $style)
         <link rel="stylesheet" href="{{asset('assets/css'). $style}}"/>
