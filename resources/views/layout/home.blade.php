@@ -14,7 +14,7 @@
         <meta name="author" content="Rikzan Fernanda">
 
         <!-- Favicons -->
-        <link rel="shortcut icon" href="{{ url('logo.png') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/x-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -39,7 +39,7 @@
         ======================================================== -->
         <!-- PWA  -->
         <meta name="theme-color" content="#6777ef"/>
-        <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+        <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
     </head>
 
