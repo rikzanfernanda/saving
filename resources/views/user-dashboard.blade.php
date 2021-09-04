@@ -103,35 +103,52 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-6 col-md-3">
+                        <div class="col-6 border-right">
                             <div class="description-block">
-                                <span class="description-percentage text-success"><i class="fas fa-download"></i></span>
-                                <h6 class="description-header mb-2">{{ moneyFormat($total_masuk)}}</h6>
-                                <span class="description-text">TOTAL SEMUA PEMASUKAN</span>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-3" id="dashboard-total">
-                            <div class="description-block">
-                                <span class="description-percentage text-danger"><i class="fas fa-upload"></i></span>
-                                <h6 class="description-header mb-2">{{ moneyFormat($total_keluar)}}</h6>
-                                <span class="description-text">TOTAL SEMUA PENGELUARAN</span>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-3">
-                            <div class="description-block">
-                                <span class="description-percentage text-success"><i class="fas fa-download"></i></span>
+                                <span class="text-success text-lg"><i class="fas fa-download"></i></span>
                                 <h6 class="description-header mb-2">{{ moneyFormat($bln_masuk)}}</h6>
                                 <span class="description-text">PEMASUKAN BULAN INI</span>
                             </div>
                         </div>
 
-                        <div class="col-6 col-md-3">
+                        <div class="col-6">
                             <div class="description-block">
-                                <span class="description-percentage text-danger"><i class="fas fa-upload"></i></span>
+                                <span class="text-danger text-lg"><i class="fas fa-upload"></i></span>
                                 <h6 class="description-header mb-2">{{ moneyFormat($bln_keluar)}}</h6>
                                 <span class="description-text">PENGELUARAN BULAN INI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="description-block">
+                                <span class="text-success text-lg"><i class="fas fa-download"></i></span>
+                                <h6 class="description-header mb-2">{{ moneyFormat($thn_masuk)}}</h6>
+                                <span class="description-text">PEMASUKAN TAHUN INI</span>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="description-block">
+                                <span class="text-danger text-lg"><i class="fas fa-upload"></i></span>
+                                <h6 class="description-header mb-2">{{ moneyFormat($thn_keluar)}}</h6>
+                                <span class="description-text">PENGELUARAN TAHUN INI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 border-right">
+                            <div class="description-block">
+                                <span class="text-success text-lg"><i class="fas fa-download"></i></span>
+                                <h6 class="description-header mb-2">{{ moneyFormat($total_masuk)}}</h6>
+                                <span class="description-text">TOTAL SEMUA PEMASUKAN</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="description-block">
+                                <span class="text-danger text-lg"><i class="fas fa-upload"></i></span>
+                                <h6 class="description-header mb-2">{{ moneyFormat($total_keluar)}}</h6>
+                                <span class="description-text">TOTAL SEMUA PENGELUARAN</span>
                             </div>
                         </div>
                     </div>
@@ -144,7 +161,7 @@
                                 <span class="info-box-icon d-md-flex"><i class="fas fa-money-check-alt"></i></span>
 
                                 <div class="info-box-content">
-                                    <p>Anda menyimpan <b>{{ moneyFormat($total_save) }}</b> dari total semua pemasukan dan pengeluaran</p>
+                                    <p>Anda menyimpan <b>{{ moneyFormat($total_save) }}</b> dari total semua pemasukan dan pengeluaran tahun ini</p>
                                 </div>
                             </div>
                         </div>

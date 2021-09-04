@@ -4,7 +4,7 @@
     "start_url": "/index.php",
     "background_color": "#454d55",
     "description": "Personal Money Management",
-    "display": "minimal-ui",
+    "display": "standalone",
     "theme_color": "#454d55",
     "icons": [
         {

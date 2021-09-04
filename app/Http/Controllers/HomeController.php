@@ -109,7 +109,17 @@ class HomeController extends Controller {
                         ->where('kategori', 'keluar')
                         ->whereMonth('created_at', date('m'))
                         ->sum('jumlah');
-                $data['total_save'] = $data['total_masuk'] - $data['total_keluar'];
+                $data['thn_masuk'] = DB::table('histories')
+                        ->where('histories.id_user', auth()->user()->id)
+                        ->where('kategori', 'masuk')
+                        ->whereYear('created_at', date('Y'))
+                        ->sum('jumlah');
+                $data['thn_keluar'] = DB::table('histories')
+                        ->where('histories.id_user', auth()->user()->id)
+                        ->where('kategori', 'keluar')
+                        ->whereYear('created_at', date('Y'))
+                        ->sum('jumlah');
+                $data['total_save'] = $data['thn_masuk'] - $data['thn_keluar'];
                 $data['bln_save'] = $data['bln_masuk'] - $data['bln_keluar'];
                 $data['uang_anggaran'] = DB::table('anggarans')
                         ->where('anggarans.id_user', Auth::user()->id)
