@@ -16,10 +16,10 @@ $(document).ready(function () {
         "scrollX": true,
         "scrollCollapse": true,
         "columns": [
-            {"data": "created_at"},
+            {"data": "created_at", "searchable": false},
             {"data": "nama"},
-            {"data": "total"},
-            {"data": "tindakan"}
+            {"data": "total", "searchable": false},
+            {"data": "tindakan", "searchable": false}
         ],
         "columnDefs": [
             {"width": "15%", "targets": 0},

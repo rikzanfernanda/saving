@@ -205,6 +205,11 @@ textarea.form-control{
 }
 /*end laporan*/
 
+/*datatables*/
+div.dataTables_filter label {
+    white-space: normal !important;
+}
+
 @media (min-width: 768px) {
     body{
         font-size: 0.9rem !important;

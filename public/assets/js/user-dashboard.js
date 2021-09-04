@@ -2,7 +2,7 @@ $(document).ready(function () {
     const base_url = $("meta[name='base_url']").attr("content");
 
     $('.slide-bank').slick({
-        dots: true,
+        dots: false,
         slidesToShow: 3,
         slidesToScroll: 1,
         touchMove: true,
