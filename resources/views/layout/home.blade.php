@@ -38,7 +38,7 @@
         * License: https://bootstrapmade.com/license/
         ======================================================== -->
         <!-- PWA  -->
-        <meta name="theme-color" content="#6777ef"/>
+        <meta name="theme-color" content="#454d55">
         <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
         <link rel="manifest" href="{{ asset('/manifest.json') }}">
     </head>
